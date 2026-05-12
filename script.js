@@ -175,6 +175,5 @@ function confirmOrder(){
   })
 .catch(function(error){
   alert("Erreur EmailJS : " + JSON.stringify(error));
-  console.log("Erreur EmailJS :", error);
 });
 }

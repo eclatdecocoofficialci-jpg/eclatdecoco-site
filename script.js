@@ -8,7 +8,9 @@ const stock = {
   "Douceur de Coco": 8,
   "Câlin d’Orange": 6,
   "Élixir de Ruche": 10,
-  "Organique Pur Olive": 14
+  "Organique Pur Olive": 14,
+  "Éclat de Laurier": 14,
+  "Éclat de Romarin": 14
 };
 
 function openMenu(){

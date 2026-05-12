@@ -3,8 +3,12 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
 const stock = {
-  "Rose & Vanille":21,
-  "Douceur de Coco":8,
+  "Rose & Vanille": 21,
+  "Douceur de Coco": 8,
+  "Câlin d’Orange": 6,
+  "Élixir de Ruche": 10,
+  "Organique Pur Olive": 14
+};
   
 };
 

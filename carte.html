@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panier | Éclat de Coco</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f8f3ee;
+  color:#111;
+}
+
+header{
+  background:white;
+  padding:25px;
+  text-align:center;
+}
+
+.cart{
+  max-width:700px;
+  margin:30px auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+}
+
+.item{
+  border-bottom:1px solid #ddd;
+  padding:15px 0;
+}
+
+.item h3{
+  margin:0;
+}
+
+.total{
+  font-size:1.4rem;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  background:black;
+  color:white;
+  border-radius:30px;
+  font-size:1rem;
+  margin-top:15px;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:20px;
+  color:black;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Votre Panier</h1>
+</header>
+
+<div class="cart">
+
+<div id="cartItems"></div>
+
+<p class="total" id="total">Total : 0 FCFA</p>
+
+<h2>Informations client</h2>
+
+<input type="text" id="name" placeholder="Nom complet">
+<input type="tel" id="phone" placeholder="Numéro de téléphone">
+<textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+<p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
+<p>Paiement à la livraison.</p>
+
+<button onclick="confirmOrder()">Confirmer la commande</button>
+
+<a href="shop.html" class="back">← Retour à la boutique</a>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+  const cartItems = document.getElementById("cartItems");
+  const totalEl = document.getElementById("total");
+
+  cartItems.innerHTML = "";
+
+  let total = 0;
+
+  if(cart.length === 0){
+    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
+  }
+
+  cart.forEach((item, index) => {
+    total += item.price * item.quantity;
+
+    cartItems.innerHTML += `
+      <div class="item">
+        <h3>${item.name}</h3>
+        <p>Prix : ${item.price.toLocaleString()} FCFA</p>
+        <p>Quantité : ${item.quantity}</p>
+        <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
+        <button onclick="removeItem(${index})">Retirer</button>
+      </div>
+    `;
+  });
+
+  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
+}
+
+function removeItem(index){
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function confirmOrder(){
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("Veuillez remplir votre nom, téléphone et adresse.");
+    return;
+  }
+
+  alert("Commande confirmée. Nous vous contacterons pour la livraison.");
+  localStorage.removeItem("cart");
+  window.location.href = "shop.html";
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

@@ -81,16 +81,21 @@ body{
 
 /* HERO */
 .hero{
-  height:360px;
+  height:500px;
   background:
-    linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.30)),
-    url("landscape-photo.jpg") center center/cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    url("landscape-photo.jpg") center 38%/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
-
+@media(max-width:650px){
+  .hero{
+    height:380px;
+    background-position:center 40%;
+  }
+}
 .hero-content{
   max-width:760px;
   color:white;

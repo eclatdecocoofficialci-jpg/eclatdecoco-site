@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique | Éclat de Coco</title>
 
-  <title>Boutique | Éclat de Coco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -177,6 +177,153 @@
           </div>
         </div>
       </div>
+<div class="product-card product" data-category="savons">
+
+  <img src="images/calindorange.JPG" alt="Savon Câlin d’Orange">
+
+  <h3>Câlin d’Orange</h3>
+
+  <p class="description">
+    Un savon lumineux et réconfortant aux notes d’agrumes,
+    à base d’huile de coco pure, de beurre de karité
+    et d’extrait naturel d’orange délicatement intégré.
+    Sa mousse douce enveloppe la peau d’un parfum frais,
+    gourmand et ensoleillé, pour une sensation de bien-être
+    comme un véritable câlin fruité.
+  </p>
+
+  <div class="product-info">
+
+    <span class="price">3000 FCFA</span>
+
+    <span class="stock" id="stock-Câlin d’Orange">
+      Stock : 6
+    </span>
+
+  </div>
+
+  <div class="out-stock"
+  id="out-Câlin d’Orange"
+  style="display:none;">
+    Rupture de stock
+  </div>
+
+  <div class="qty-box">
+
+    <button
+    id="minus-Câlin d’Orange"
+    onclick="changeQty('Câlin d’Orange',3000,-1)">
+      −
+    </button>
+
+    <span id="qty-Câlin d’Orange">0</span>
+
+    <button
+    id="plus-Câlin d’Orange"
+    onclick="changeQty('Câlin d’Orange',3000,1)">
+      +
+    </button>
+
+  </div>
+<div class="product-card product" data-category="savons">
+
+  <img src="images/elixirderuche.JPG" alt="Savon Élixir de Ruche">
+
+  <h3>Élixir de Ruche</h3>
+
+  <p class="description">
+    Un savon riche et nourrissant inspiré des trésors de la ruche,
+    formulé à base d’huile de coco, de miel d’acacia pur
+    et d’extraits naturels de cire et de pépins de ruche.
+    Sa texture onctueuse enveloppe la peau d’un voile doux,
+    hydratant et délicatement sucré pour un soin profondément réconfortant.
+  </p>
+
+  <div class="product-info">
+
+    <span class="price">2000 FCFA</span>
+
+    <span class="stock" id="stock-Élixir de Ruche">
+      Stock : 10
+    </span>
+
+  </div>
+
+  <div class="out-stock"
+  id="out-Élixir de Ruche"
+  style="display:none;">
+    Rupture de stock
+  </div>
+
+  <div class="qty-box">
+
+    <button
+    id="minus-Élixir de Ruche"
+    onclick="changeQty('Élixir de Ruche',2000,-1)">
+      −
+    </button>
+
+    <span id="qty-Élixir de Ruche">0</span>
+
+    <button
+    id="plus-Élixir de Ruche"
+    onclick="changeQty('Élixir de Ruche',2000,1)">
+      +
+    </button>
+
+  </div>
+<div class="product-card product" data-category="savons">
+
+  <img src="images/olivekarite.JPG" alt="Savon Organique Pur Olive">
+
+  <h3>Organique Pur Olive</h3>
+
+  <p class="description">
+    Un savon organique pur à base d’huile d’olive pressée à froid,
+    enrichi en beurre de karité et en huile de coco naturelle.
+    Sa formule douce nettoie la peau en profondeur sans l’assécher,
+    tout en apportant nutrition, souplesse et éclat naturel.
+    Un soin authentique inspiré de la pureté des ingrédients naturels.
+  </p>
+
+  <div class="product-info">
+
+    <span class="price">3000 FCFA</span>
+
+    <span class="stock" id="stock-Organique Pur Olive">
+      Stock : 0
+    </span>
+
+  </div>
+
+  <div class="out-stock"
+  id="out-Organique Pur Olive"
+  style="display:block;">
+    Rupture de stock
+  </div>
+
+  <div class="qty-box">
+
+    <button
+    id="minus-Organique Pur Olive"
+    onclick="changeQty('Organique Pur Olive',3000,-1)"
+    disabled>
+      −
+    </button>
+
+    <span id="qty-Organique Pur Olive">0</span>
+
+    <button
+    id="plus-Organique Pur Olive"
+    onclick="changeQty('Organique Pur Olive',3000,1)"
+    disabled>
+      +
+    </button>
+
+  </div>
+
+</div>
+
 
     </div>
   </section>

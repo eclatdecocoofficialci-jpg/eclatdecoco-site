@@ -20,11 +20,10 @@
   --dark:#2d1f16;
   --soft:#eadfd6;
   --text:#2d1f16;
+  --danger:#b3261e;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
@@ -45,7 +44,6 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  overflow:hidden;
 }
 
 .hero::before{
@@ -84,6 +82,107 @@ body{
   color:#f8f3ee;
 }
 
+/* TOP BAR */
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 35px;
+  background:white;
+  border-bottom:1px solid var(--soft);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.menu-btn{
+  border:none;
+  background:transparent;
+  font-size:1rem;
+  color:var(--dark);
+  cursor:pointer;
+  letter-spacing:1px;
+}
+
+.menu-btn:hover{
+  color:var(--coffee);
+}
+
+.page-title{
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:0.9rem;
+  color:#5f4633;
+}
+
+/* SIDE MENU */
+
+.side-menu{
+  position:fixed;
+  top:0;
+  left:-330px;
+  width:310px;
+  height:100%;
+  background:#fffaf6;
+  z-index:100;
+  padding:30px 25px;
+  box-shadow:10px 0 30px rgba(0,0,0,0.12);
+  transition:0.35s ease;
+  overflow-y:auto;
+}
+
+.side-menu.active{
+  left:0;
+}
+
+.close-menu{
+  border:none;
+  background:var(--coffee);
+  color:white;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  float:right;
+  cursor:pointer;
+}
+
+.side-menu h2{
+  margin-top:60px;
+  color:var(--coffee);
+  font-size:1.4rem;
+  letter-spacing:1px;
+}
+
+.about-text{
+  font-size:0.92rem;
+  line-height:1.8;
+  color:#5f4633;
+  border-bottom:1px solid var(--soft);
+  padding-bottom:20px;
+  margin-bottom:20px;
+}
+
+.menu-list button{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:white;
+  color:#5f4633;
+  padding:14px 15px;
+  margin-bottom:8px;
+  border-radius:20px;
+  cursor:pointer;
+  font-family:'Questrial', sans-serif;
+  transition:0.3s;
+}
+
+.menu-list button:hover,
+.menu-list button.active{
+  background:var(--coffee);
+  color:white;
+}
+
 /* WELCOME */
 
 .welcome-banner{
@@ -106,33 +205,6 @@ body{
   font-size:1rem;
   line-height:1.8;
   color:#5f4633;
-}
-
-/* CATEGORIES */
-
-.categories{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-  padding:25px;
-  background:white;
-}
-
-.categories a{
-  color:#5f4633;
-  text-decoration:none;
-  border:1px solid var(--soft);
-  padding:12px 20px;
-  border-radius:40px;
-  background:#fffaf6;
-  transition:0.3s;
-  font-size:0.9rem;
-}
-
-.categories a:hover{
-  background:var(--coffee);
-  color:white;
 }
 
 /* LAYOUT */
@@ -203,6 +275,17 @@ body{
   font-size:0.9rem;
 }
 
+.out-stock{
+  margin-top:12px;
+  display:inline-block;
+  background:var(--danger);
+  color:white;
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:0.85rem;
+  letter-spacing:0.5px;
+}
+
 /* QUANTITY */
 
 .qty-box{
@@ -229,6 +312,11 @@ body{
   background:var(--coffee-light);
 }
 
+.qty-box button:disabled{
+  background:#d7c5b7;
+  cursor:not-allowed;
+}
+
 .qty-box span{
   font-size:1.2rem;
   min-width:20px;
@@ -243,7 +331,7 @@ body{
   padding:25px;
   box-shadow:0 10px 30px rgba(80,50,30,0.12);
   position:sticky;
-  top:20px;
+  top:90px;
 }
 
 .cart-title{
@@ -286,7 +374,6 @@ body{
   cursor:pointer;
   font-size:1rem;
   font-weight:bold;
-  transition:0.3s;
 }
 
 .remove-btn:hover{
@@ -428,6 +515,10 @@ footer{
   .shop-layout{
     padding:22px;
   }
+
+  .top-bar{
+    padding:18px 22px;
+  }
 }
 </style>
 </head>
@@ -448,6 +539,36 @@ footer{
   </div>
 </header>
 
+<div class="top-bar">
+  <button class="menu-btn" onclick="toggleMenu()">☰ Catégories</button>
+  <div class="page-title">Boutique officielle</div>
+</div>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+
+  <h2>À propos de nous</h2>
+
+  <p class="about-text">
+    Éclat de Coco est une marque de soins naturels inspirée des traditions africaines
+    et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
+    pour offrir une expérience douce, sensorielle et élégante à travers des soins
+    naturels formulés avec passion.
+  </p>
+
+  <div class="menu-list">
+    <button class="active" onclick="filterProducts('all', this)">Toutes les collections</button>
+    <button onclick="filterProducts('savons', this)">Savons artisanaux</button>
+    <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
+    <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
+    <button onclick="filterProducts('masques', this)">Masques cheveux</button>
+    <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
+    <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
+    <button onclick="filterProducts('creme', this)">Crème hydratante</button>
+    <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
+  </div>
+</div>
+
 <div class="welcome-banner">
   <h2>Bienvenue dans l’univers Éclat de Coco</h2>
 
@@ -458,22 +579,11 @@ footer{
   </p>
 </div>
 
-<nav class="categories">
-  <a href="#">Savons artisanaux</a>
-  <a href="#">Lotions naturelles</a>
-  <a href="#">Beurres corporels</a>
-  <a href="#">Masques cheveux</a>
-  <a href="#">Sérums cheveux</a>
-  <a href="#">Sérums visage</a>
-  <a href="#">Crème hydratante</a>
-  <a href="#">Personnaliser</a>
-</nav>
-
 <div class="shop-layout">
 
 <section class="products">
 
-  <div class="card">
+  <div class="card product" data-category="savons">
     <img src="rose-vanille.jpg" alt="Rose & Vanille">
 
     <div class="card-content">
@@ -485,17 +595,18 @@ footer{
       </p>
 
       <p class="price">3 000 FCFA</p>
-      <p class="stock">Stock : 12</p>
+      <p class="stock" id="stock-Rose & Vanille">Stock : 12</p>
+      <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
 
       <div class="qty-box">
-        <button onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
+        <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
         <span id="qty-Rose & Vanille">0</span>
-        <button onclick="changeQty('Rose & Vanille',3000,1)">+</button>
+        <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
       </div>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card product" data-category="savons">
     <img src="veloursdecafe.PNG" alt="Velours de Café">
 
     <div class="card-content">
@@ -507,12 +618,13 @@ footer{
       </p>
 
       <p class="price">3 000 FCFA</p>
-      <p class="stock">Stock : 14</p>
+      <p class="stock" id="stock-Velours de Café">Stock : 14</p>
+      <div class="out-stock" id="out-Velours de Café" style="display:none;">Rupture de stock</div>
 
       <div class="qty-box">
-        <button onclick="changeQty('Velours de Café',3000,-1)">−</button>
+        <button id="minus-Velours de Café" onclick="changeQty('Velours de Café',3000,-1)">−</button>
         <span id="qty-Velours de Café">0</span>
-        <button onclick="changeQty('Velours de Café',3000,1)">+</button>
+        <button id="plus-Velours de Café" onclick="changeQty('Velours de Café',3000,1)">+</button>
       </div>
     </div>
   </div>
@@ -547,10 +659,7 @@ footer{
 </aside>
 
 </div>
-
-<div class="thank-you">
-  <h2>Merci pour votre achat ✨</h2>
-
+<div>
   <p>
     Merci de faire partie de l’univers Éclat de Coco.
     Chaque produit est conçu avec amour,
@@ -568,8 +677,45 @@ emailjs.init("uXzUSZQODQlmyuGgb");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
+const stock = {
+  "Rose & Vanille":12,
+  "Velours de Café":14
+};
+
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+
+function filterProducts(category, btn){
+  const products = document.querySelectorAll(".product");
+
+  products.forEach(product => {
+    if(category === "all" || product.dataset.category === category){
+      product.style.display = "block";
+    }else{
+      product.style.display = "none";
+    }
+  });
+
+  document.querySelectorAll(".menu-list button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  toggleMenu();
+}
+
 function changeQty(name, price, change){
   let item = cart.find(product => product.name === name);
+  let currentQty = item ? item.quantity : 0;
+
+  if(change > 0 && currentQty >= stock[name]){
+    alert("Ce produit est en rupture de stock.");
+    return;
+  }
 
   if(item){
     item.quantity += change;
@@ -630,6 +776,33 @@ function renderCart(){
         <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
       </div>
     `;
+  });
+
+  Object.keys(stock).forEach(product => {
+    const item = cart.find(i => i.name === product);
+    const qty = item ? item.quantity : 0;
+    const remain = stock[product] - qty;
+
+    const stockEl = document.getElementById("stock-" + product);
+    const outEl = document.getElementById("out-" + product);
+    const plusBtn = document.getElementById("plus-" + product);
+    const minusBtn = document.getElementById("minus-" + product);
+
+    if(stockEl){
+      stockEl.innerText = "Stock : " + Math.max(remain, 0);
+    }
+
+    if(outEl){
+      outEl.style.display = remain <= 0 ? "inline-block" : "none";
+    }
+
+    if(plusBtn){
+      plusBtn.disabled = remain <= 0;
+    }
+
+    if(minusBtn){
+      minusBtn.disabled = qty <= 0;
+    }
   });
 
   totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";

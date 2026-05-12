@@ -1,875 +1,191 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boutique | Éclat de Coco</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <title>Boutique | Éclat de Coco</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --cream:#f8f3ee;
-  --white:#ffffff;
-  --coffee:#8b5e3c;
-  --coffee-light:#c49a6c;
-  --dark:#2d1f16;
-  --soft:#eadfd6;
-  --danger:#b3261e;
-}
+  <link rel="stylesheet" href="style.css">
 
-*{box-sizing:border-box;}
-
-body{
-  margin:0;
-  font-family:'Questrial', sans-serif;
-  color:var(--dark);
-  background:
-    linear-gradient(rgba(248,243,238,0.70), rgba(248,243,238,0.82)),
-    url("coco-bg.jpg") center/cover fixed no-repeat;
-}
-
-.top-bar{
-  height:82px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 36px;
-  background:rgba(255,250,246,0.88);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(234,223,214,0.8);
-  position:sticky;
-  top:0;
-  z-index:50;
-}
-
-.menu-btn{
-  border:none;
-  background:transparent;
-  font-size:1rem;
-  color:var(--dark);
-  cursor:pointer;
-  letter-spacing:1px;
-}
-
-.page-title{
-  letter-spacing:7px;
-  text-transform:uppercase;
-  font-size:0.9rem;
-  color:#5f4633;
-}
-
-.cart-icon-btn{
-  position:relative;
-  border:none;
-  background:#fffaf6;
-  color:var(--coffee);
-  border:1px solid var(--soft);
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.cart-icon-btn span{
-  position:absolute;
-  top:-6px;
-  right:-6px;
-  background:var(--coffee);
-  color:white;
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  font-size:0.75rem;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.hero{
-  min-height:520px;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  text-align:center;
-  padding:135px 20px 0;
-}
-
-.hero-content{
-  max-width:850px;
-  color:#1f140d;
-  text-shadow:none;
-}
-
-.brand-name{
-  font-size:4.4rem;
-  font-weight:400;
-  margin:0;
-  letter-spacing:2px;
-}
-
-.brand-sub{
-  margin-top:18px;
-  letter-spacing:8px;
-  text-transform:uppercase;
-  font-size:0.95rem;
-  color:#4b3425;
-}
-
-.hero-line{
-  width:80px;
-  height:1px;
-  background:#2d1f16;
-  margin:22px auto;
-}
-
-.hero-text{
-  max-width:760px;
-  margin:auto;
-  line-height:1.9;
-  font-size:1.05rem;
-  color:#2d1f16;
-}
-
-.drawer-bg{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.35);
-  z-index:100;
-  opacity:0;
-  visibility:hidden;
-  transition:0.3s;
-}
-
-.drawer-bg.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.side-menu,
-.cart-drawer{
-  position:fixed;
-  top:0;
-  height:100vh;
-  width:340px;
-  max-width:90%;
-  background:rgba(255,250,246,0.96);
-  backdrop-filter:blur(14px);
-  z-index:150;
-  padding:28px;
-  overflow-y:auto;
-  transition:0.35s ease;
-  box-shadow:0 0 35px rgba(0,0,0,0.18);
-}
-
-.side-menu{
-  left:-360px;
-}
-
-.side-menu.active{
-  left:0;
-}
-
-.cart-drawer{
-  right:-440px;
-  width:420px;
-}
-
-.cart-drawer.active{
-  right:0;
-}
-
-.drawer-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--soft);
-  padding-bottom:15px;
-  margin-bottom:20px;
-}
-
-.drawer-header h2{
-  margin:0;
-  font-weight:400;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-size:1rem;
-  color:var(--dark);
-}
-
-.close-btn{
-  border:none;
-  background:transparent;
-  font-size:1.5rem;
-  color:var(--dark);
-  cursor:pointer;
-}
-
-.about-title{
-  color:var(--coffee);
-  font-size:1.1rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-top:25px;
-}
-
-.about-text{
-  font-size:0.92rem;
-  line-height:1.8;
-  color:#5f4633;
-  border-bottom:1px solid var(--soft);
-  padding-bottom:20px;
-  margin-bottom:20px;
-}
-
-.menu-list button{
-  width:100%;
-  border:none;
-  background:transparent;
-  color:#5f4633;
-  padding:14px 12px;
-  text-align:left;
-  border-bottom:1px solid rgba(234,223,214,0.8);
-  font-family:'Questrial', sans-serif;
-  cursor:pointer;
-}
-
-.menu-list button.active,
-.menu-list button:hover{
-  background:#ead7c5;
-  border-radius:14px;
-  color:var(--dark);
-}
-
-.collection-title{
-  text-align:center;
-  color:#2d1f16;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  font-size:1rem;
-  margin:0 0 18px;
-}
-
-.products-area{
-  margin-top:-120px;
-  padding:0 6% 70px;
-  position:relative;
-  z-index:3;
-}
-
-.products{
-  max-width:1050px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
-}
-
-.card{
-  background:rgba(255,250,246,0.88);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(234,223,214,0.65);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 12px 35px rgba(80,50,30,0.16);
-}
-
-.card img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  background:#f3ebe4;
-}
-
-.card-content{
-  padding:22px;
-  text-align:center;
-}
-
-.card-content h2{
-  font-size:1.35rem;
-  font-weight:400;
-  margin:0 0 12px;
-  color:#3d2a1e;
-}
-
-.card-content p{
-  font-size:0.9rem;
-  line-height:1.7;
-  color:#5f4633;
-}
-
-.price{
-  color:var(--coffee);
-  font-size:1.15rem;
-  margin-top:15px;
-}
-
-.stock{
-  color:#7b6b60;
-  font-size:0.85rem;
-}
-
-.out-stock{
-  margin-top:10px;
-  display:inline-block;
-  background:var(--danger);
-  color:white;
-  padding:8px 14px;
-  border-radius:30px;
-  font-size:0.8rem;
-}
-
-.qty-box{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:18px;
-  margin-top:15px;
-}
-
-.qty-box button{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:50%;
-  background:var(--coffee);
-  color:white;
-  font-size:1.2rem;
-  cursor:pointer;
-}
-
-.qty-box button:hover{
-  background:var(--coffee-light);
-}
-
-.qty-box button:disabled{
-  background:#d7c5b7;
-  cursor:not-allowed;
-}
-
-.qty-box span{
-  min-width:20px;
-}
-
-.cart-item{
-  display:grid;
-  grid-template-columns:1fr 34px;
-  gap:10px;
-  border-bottom:1px solid var(--soft);
-  padding:15px 0;
-}
-
-.cart-item h4{
-  margin:0;
-  font-weight:400;
-}
-
-.cart-item p{
-  margin:6px 0;
-  color:#5f4633;
-  font-size:0.9rem;
-}
-
-.remove-btn{
-  width:30px;
-  height:30px;
-  border:none;
-  background:#f3e6dc;
-  color:var(--coffee);
-  border-radius:50%;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.total{
-  color:var(--coffee);
-  font-size:1.35rem;
-  margin-top:25px;
-  padding-top:15px;
-  border-top:1px solid var(--soft);
-}
-
-input, textarea{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border:1px solid #d8c7b7;
-  border-radius:14px;
-  font-family:'Questrial', sans-serif;
-  background:#fffdfb;
-}
-
-textarea{
-  min-height:100px;
-  resize:none;
-}
-
-.note{
-  background:white;
-  border:1px solid var(--soft);
-  padding:13px;
-  border-radius:18px;
-  color:#5f4633;
-  font-size:0.9rem;
-}
-
-.cart-thankyou{
-  margin-top:28px;
-  padding-top:22px;
-  border-top:1px solid var(--soft);
-  text-align:center;
-}
-
-.cart-thankyou h3{
-  color:var(--coffee);
-  font-size:1.2rem;
-  font-weight:400;
-  margin-bottom:12px;
-  letter-spacing:1px;
-}
-
-.cart-thankyou p{
-  font-size:0.88rem;
-  line-height:1.8;
-  color:#5f4633;
-}
-
-.confirm-btn{
-  width:100%;
-  padding:16px;
-  border:none;
-  background:var(--coffee);
-  color:white;
-  border-radius:40px;
-  margin-top:15px;
-  cursor:pointer;
-  letter-spacing:1px;
-}
-
-footer{
-  padding:28px;
-  text-align:center;
-  background:rgba(45,31,22,0.92);
-  color:white;
-}
-
-@media(max-width:900px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:650px){
-  .top-bar{
-    padding:14px 18px;
-  }
-
-  .page-title{
-    font-size:0.7rem;
-    letter-spacing:3px;
-  }
-
-  .hero{
-    min-height:450px;
-    padding:115px 20px 0;
-  }
-
-  .brand-name{
-    font-size:2.8rem;
-  }
-
-  .brand-sub{
-    font-size:0.72rem;
-    letter-spacing:4px;
-  }
-
-  .hero-text{
-    font-size:0.9rem;
-  }
-
-  .products-area{
-    margin-top:-85px;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-}
-</style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
 
-<div class="drawer-bg" id="drawerBg" onclick="closeDrawers()"></div>
+  <div class="drawer-bg" id="drawerBg" onclick="closeDrawers()"></div>
 
-<header class="top-bar">
-  <button class="menu-btn" onclick="openMenu()">☰ Catégories</button>
+  <header class="top-bar">
+    <button class="menu-btn" onclick="openMenu()">☰ Catégories</button>
 
-  <div class="page-title">Boutique officielle</div>
+    <div class="page-title">Boutique officielle</div>
 
-  <button class="cart-icon-btn" onclick="openCart()">
-    <svg xmlns="http://www.w3.org/2000/svg"
-      width="22" height="22" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="1.8"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 7h12l-1 14H7L6 7z"></path>
-      <path d="M9 7a3 3 0 0 1 6 0"></path>
-    </svg>
-    <span id="cartCount">0</span>
-  </button>
-</header>
+    <button class="cart-icon-btn" onclick="openCart()">
+      <svg xmlns="http://www.w3.org/2000/svg"
+        width="22" height="22" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 7h12l-1 14H7L6 7z"></path>
+        <path d="M9 7a3 3 0 0 1 6 0"></path>
+      </svg>
 
-<aside class="side-menu" id="sideMenu">
-  <div class="drawer-header">
-    <h2>Catégories</h2>
-    <button class="close-btn" onclick="closeDrawers()">×</button>
-  </div>
+      <span id="cartCount">0</span>
+    </button>
+  </header>
 
-  <div class="menu-list">
-    <button class="active" onclick="filterProducts('all', this)">Toutes les collections</button>
-    <button onclick="filterProducts('savons', this)">Savons artisanaux</button>
-    <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
-    <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
-    <button onclick="filterProducts('masques', this)">Masques cheveux</button>
-    <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
-    <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
-    <button onclick="filterProducts('creme', this)">Crème hydratante</button>
-    <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
-  </div>
-
-  <h3 class="about-title">À propos de nous</h3>
-  <p class="about-text">
-    Éclat de Coco est une marque de soins naturels inspirée des traditions africaines
-    et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
-    pour offrir une expérience douce, sensorielle et élégante.
-  </p>
-</aside>
-
-<aside class="cart-drawer" id="cartDrawer">
-  <div class="drawer-header">
-    <h2>Votre Panier</h2>
-    <button class="close-btn" onclick="closeDrawers()">×</button>
-  </div>
-
-  <div id="cartItems">
-    <p>Votre panier est vide.</p>
-  </div>
-
-  <p class="total" id="total">Total : 0 FCFA</p>
-
-  <h3>Informations client</h3>
-
-  <input type="text" id="name" placeholder="Nom complet">
-  <input type="tel" id="phone" placeholder="Numéro de téléphone">
-  <textarea id="address" placeholder="Adresse de livraison"></textarea>
-
-  <div class="note">
-    <p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
-    <p>Paiement à la livraison.</p>
-  </div>
-
-  <div class="cart-thankyou">
-    <h3>Merci pour votre achat ✨</h3>
-    <p>
-      Merci de faire partie de l’univers Éclat de Coco.
-      Chaque commande est préparée avec soin,
-      élégance et ingrédients naturels soigneusement sélectionnés.
-    </p>
-  </div>
-
-  <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
-</aside>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="brand-name">Éclat de Coco</h1>
-    <p class="brand-sub">100% Natural Products</p>
-    <div class="hero-line"></div>
-    <p class="hero-text">
-      Soins naturels inspirés des traditions africaines,
-      pensés pour révéler l’éclat authentique de votre peau
-      avec élégance, douceur et luxe.
-    </p>
-  </div>
-</section>
-
-<section class="products-area">
-  <h2 class="collection-title">Nos Collections</h2>
-
-  
-
-    <div class="product-card">
-
-  <img src="images/rose-vanille.JPG" alt="Savon Rose & Vanille">
-
-  <h3>Rose & Vanille</h3>
-
-  <p class="description">
-    Un savon floral et gourmand à base de beurre de karité,
-    d’huile de coco, d’huile de rose fabriquée à la main
-    et d’extraits de fleurs cultivées dans nos jardins.
-    Une mousse douce au parfum élégant de rose et de vanille.
-  </p>
-
-  <div class="product-info">
-    <span class="price">3000 FCFA</span>
-    <span class="stock">Stock : 21</span>
-  </div>
-
-  <button>Acheter</button>
-
-</div>
-        <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
-          <span id="qty-Rose & Vanille">0</span>
-          <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
-        </div>
-      </div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="drawer-header">
+      <h2>Catégories</h2>
+      <button class="close-btn" onclick="closeDrawers()">×</button>
     </div>
 
-    <div class="product-card product" data-category="savons">
+    <div class="menu-list">
+      <button class="active" onclick="filterProducts('all', this)">Toutes les collections</button>
+      <button onclick="filterProducts('savons', this)">Savons artisanaux</button>
+      <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
+      <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
+      <button onclick="filterProducts('masques', this)">Masques cheveux</button>
+      <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
+      <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
+      <button onclick="filterProducts('creme', this)">Crème hydratante</button>
+      <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
+    </div>
 
-  <img src="images/douceurdecoco.JPG" alt="Savon Douceur de Coco">
+    <h3 class="about-title">À propos de nous</h3>
 
-  <h3>Douceur de Coco</h3>
+    <p class="about-text">
+      Éclat de Coco est une marque de soins naturels inspirée des traditions africaines
+      et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
+      pour offrir une expérience douce, sensorielle et élégante.
+    </p>
+  </aside>
 
-  <p class="description">
-    Un savon crémeux et délicat à base d’huile de coco pure,
-    d’extrait de coco râpé et de beurre de karité.
-    Il nettoie la peau en douceur tout en laissant
-    une sensation gourmande, naturelle et réconfortante.
-  </p>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h2>Votre Panier</h2>
+      <button class="close-btn" onclick="closeDrawers()">×</button>
+    </div>
 
-  <div class="product-info">
+    <div id="cartItems">
+      <p>Votre panier est vide.</p>
+    </div>
 
-    <span class="price">3000 FCFA</span>
+    <p class="total" id="total">Total : 0 FCFA</p>
 
-    <span class="stock" id="stock-Douceur de Coco">
-      Stock : 8
-    </span>
+    <h3>Informations client</h3>
 
-  </div>
+    <input type="text" id="name" placeholder="Nom complet">
+    <input type="tel" id="phone" placeholder="Numéro de téléphone">
+    <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
-  <div class="out-stock"
-  id="out-Douceur de Coco"
-  style="display:none;">
-    Rupture de stock
-  </div>
+    <div class="note">
+      <p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
+      <p>Paiement à la livraison.</p>
+    </div>
 
-  <div class="qty-box">
+    <div class="cart-thankyou">
+      <h3>Merci pour votre achat ✨</h3>
+      <p>
+        Merci de faire partie de l’univers Éclat de Coco.
+        Chaque commande est préparée avec soin,
+        élégance et ingrédients naturels soigneusement sélectionnés.
+      </p>
+    </div>
 
-    <button
-    id="minus-Douceur de Coco"
-    onclick="changeQty('Douceur de Coco',3000,-1)">
-      −
-    </button>
+    <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
+  </aside>
 
-    <span id="qty-Douceur de Coco">0</span>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="brand-name">Éclat de Coco</h1>
+      <p class="brand-sub">100% Natural Products</p>
+      <div class="hero-line"></div>
 
-    <button
-    id="plus-Douceur de Coco"
-    onclick="changeQty('Douceur de Coco',3000,1)">
-      +
-    </button>
+      <p class="hero-text">
+        Soins naturels inspirés des traditions africaines,
+        pensés pour révéler l’éclat authentique de votre peau
+        avec élégance, douceur et luxe.
+      </p>
+    </div>
+  </section>
 
-  </div>
+  <section class="products-area">
+    <h2 class="collection-title">Nos Collections</h2>
 
-</div>
-</section>
+    <div class="products">
 
-<footer>
-  © 2025 Éclat de Coco Official
-</footer>
+      <div class="product-card product" data-category="savons">
+        <img src="images/rose-vanille.JPG" alt="Savon Rose & Vanille">
 
-<script>
-emailjs.init("uXzUSZQODQlmyuGgb");
+        <div class="product-content">
+          <h3>Rose & Vanille</h3>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let total = 0;
+          <p class="description">
+            Un savon floral et gourmand à base de beurre de karité,
+            d’huile de coco, d’huile de rose fabriquée à la main
+            et d’extraits de fleurs cultivées dans nos jardins.
+            Une mousse douce au parfum élégant de rose et de vanille.
+          </p>
 
-const stock = {
-  "Rose & Vanille":12,
-  "Velours de Café":14
-};
+          <div class="product-info">
+            <span class="price">3000 FCFA</span>
+            <span class="stock" id="stock-Rose & Vanille">Stock : 21</span>
+          </div>
 
-function openMenu(){
-  closeDrawers();
-  document.getElementById("sideMenu").classList.add("active");
-  document.getElementById("drawerBg").classList.add("active");
-}
+          <div class="out-stock" id="out-Rose & Vanille" style="display:none;">
+            Rupture de stock
+          </div>
 
-function openCart(){
-  closeDrawers();
-  document.getElementById("cartDrawer").classList.add("active");
-  document.getElementById("drawerBg").classList.add("active");
-}
-
-function closeDrawers(){
-  document.getElementById("sideMenu").classList.remove("active");
-  document.getElementById("cartDrawer").classList.remove("active");
-  document.getElementById("drawerBg").classList.remove("active");
-}
-
-function updateCartCount(){
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById("cartCount").innerText = count;
-}
-
-function filterProducts(category, btn){
-  const products = document.querySelectorAll(".product");
-
-  products.forEach(product => {
-    product.style.display =
-      category === "all" || product.dataset.category === category
-      ? "block"
-      : "none";
-  });
-
-  document.querySelectorAll(".menu-list button").forEach(button => {
-    button.classList.remove("active");
-  });
-
-  if(btn){ btn.classList.add("active"); }
-
-  closeDrawers();
-}
-
-function changeQty(name, price, change){
-  let item = cart.find(product => product.name === name);
-  let currentQty = item ? item.quantity : 0;
-
-  if(change > 0 && currentQty >= stock[name]){
-    alert("Ce produit est en rupture de stock.");
-    return;
-  }
-
-  if(item){
-    item.quantity += change;
-    if(item.quantity <= 0){
-      cart = cart.filter(product => product.name !== name);
-    }
-  } else if(change > 0){
-    cart.push({name:name, price:price, quantity:1});
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-
-function removeItem(name){
-  cart = cart.filter(item => item.name !== name);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-
-function renderCart(){
-  const cartItems = document.getElementById("cartItems");
-  const totalEl = document.getElementById("total");
-
-  cartItems.innerHTML = "";
-  total = 0;
-
-  document.querySelectorAll(".qty-box span").forEach(span=>{
-    span.innerText = "0";
-  });
-
-  if(cart.length === 0){
-    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
-  }
-
-  cart.forEach(item=>{
-    total += item.price * item.quantity;
-
-    let qtySpan = document.getElementById("qty-" + item.name);
-    if(qtySpan){ qtySpan.innerText = item.quantity; }
-
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <div>
-          <h4>${item.name}</h4>
-          <p>Quantité : ${item.quantity}</p>
-          <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
+          <div class="qty-box">
+            <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
+            <span id="qty-Rose & Vanille">0</span>
+            <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
+          </div>
         </div>
-        <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
       </div>
-    `;
-  });
 
-  Object.keys(stock).forEach(product => {
-    const item = cart.find(i => i.name === product);
-    const qty = item ? item.quantity : 0;
-    const remain = stock[product] - qty;
+      <div class="product-card product" data-category="savons">
+        <img src="images/douceurdecoco.JPG" alt="Savon Douceur de Coco">
 
-    document.getElementById("stock-" + product).innerText =
-      "Stock : " + Math.max(remain, 0);
+        <div class="product-content">
+          <h3>Douceur de Coco</h3>
 
-    document.getElementById("out-" + product).style.display =
-      remain <= 0 ? "inline-block" : "none";
+          <p class="description">
+            Un savon crémeux et délicat à base d’huile de coco pure,
+            d’extrait de coco râpé et de beurre de karité.
+            Il nettoie la peau en douceur tout en laissant
+            une sensation gourmande, naturelle et réconfortante.
+          </p>
 
-    document.getElementById("plus-" + product).disabled = remain <= 0;
-    document.getElementById("minus-" + product).disabled = qty <= 0;
-  });
+          <div class="product-info">
+            <span class="price">3000 FCFA</span>
+            <span class="stock" id="stock-Douceur de Coco">Stock : 8</span>
+          </div>
 
-  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
-  updateCartCount();
-}
+          <div class="out-stock" id="out-Douceur de Coco" style="display:none;">
+            Rupture de stock
+          </div>
 
-function confirmOrder(){
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
+          <div class="qty-box">
+            <button id="minus-Douceur de Coco" onclick="changeQty('Douceur de Coco',3000,-1)">−</button>
+            <span id="qty-Douceur de Coco">0</span>
+            <button id="plus-Douceur de Coco" onclick="changeQty('Douceur de Coco',3000,1)">+</button>
+          </div>
+        </div>
+      </div>
 
-  if(cart.length === 0){
-    alert("Votre panier est vide.");
-    return;
-  }
+    </div>
+  </section>
 
-  if(!name || !phone || !address){
-    alert("Veuillez remplir toutes les informations.");
-    return;
-  }
+  <footer>
+    © 2025 Éclat de Coco Official
+  </footer>
 
-  const orderDetails = cart.map(item => {
-    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
-  }).join("\n");
-
-  const templateParams = {
-    email:"sarahajamii@icloud.com",
-    customer_name:name,
-    customer_phone:phone,
-    customer_address:address,
-    order_details:orderDetails,
-    order_total:total.toLocaleString() + " FCFA",
-    delivery_note:"Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
-    order_id:"EDC-" + Date.now()
-  };
-
-  emailjs.send("service_buy8fox","template_97nbk68",templateParams)
-  .then(function(){
-    alert("Commande confirmée. Nous vous contacterons rapidement.");
-    localStorage.removeItem("cart");
-    cart = [];
-    renderCart();
-    closeDrawers();
-  })
-  .catch(function(error){
-    alert("Erreur EmailJS : " + JSON.stringify(error));
-    console.log("Erreur EmailJS :", error);
-  });
-}
-
-renderCart();
-</script>
+  <script src="script.js"></script>
 
 </body>
 </html>

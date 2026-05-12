@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panier | Éclat de Coco</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
 body{
   margin:0;
@@ -48,6 +50,7 @@ input, textarea{
   margin:10px 0;
   border:1px solid #ccc;
   border-radius:10px;
+  box-sizing:border-box;
 }
 
 button{
@@ -59,6 +62,7 @@ button{
   border-radius:30px;
   font-size:1rem;
   margin-top:15px;
+  cursor:pointer;
 }
 
 .back{
@@ -98,15 +102,17 @@ button{
 </div>
 
 <script>
+emailjs.init("uXzUSZQODQlmyuGgb");
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
 
 function renderCart(){
   const cartItems = document.getElementById("cartItems");
   const totalEl = document.getElementById("total");
 
   cartItems.innerHTML = "";
-
-  let total = 0;
+  total = 0;
 
   if(cart.length === 0){
     cartItems.innerHTML = "<p>Votre panier est vide.</p>";
@@ -136,18 +142,45 @@ function removeItem(index){
 }
 
 function confirmOrder(){
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+
+  if(cart.length === 0){
+    alert("Votre panier est vide.");
+    return;
+  }
 
   if(!name || !phone || !address){
     alert("Veuillez remplir votre nom, téléphone et adresse.");
     return;
   }
 
-  alert("Commande confirmée. Nous vous contacterons pour la livraison.");
-  localStorage.removeItem("cart");
-  window.location.href = "shop.html";
+  const orderDetails = cart.map(item => {
+    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
+  }).join("\n");
+
+  const templateParams = {
+    email: "sarahajamii@icloud.com",
+    customer_name: name,
+    customer_phone: phone,
+    customer_address: address,
+    order_details: orderDetails,
+    order_total: total.toLocaleString() + " FCFA",
+    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
+    order_id: "EDC-" + Date.now()
+  };
+
+  emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
+    .then(function(){
+      alert("Commande confirmée. Nous vous contacterons pour la livraison.");
+      localStorage.removeItem("cart");
+      window.location.href = "shop.html";
+    })
+    .catch(function(error){
+      alert("Erreur : la commande n'a pas été envoyée. Veuillez réessayer.");
+      console.log(error);
+    });
 }
 
 renderCart();

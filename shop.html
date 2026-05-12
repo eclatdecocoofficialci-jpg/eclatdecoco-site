@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -28,7 +28,7 @@
 
 body{
   margin:0;
-  font-family:'Montserrat', sans-serif;
+  font-family:'Questrial', sans-serif;
   background:var(--cream);
   color:var(--text);
 }
@@ -52,7 +52,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.38);
+  background:rgba(0,0,0,0.42);
 }
 
 .hero-content{
@@ -62,26 +62,26 @@ body{
   padding:20px;
 }
 
-.logo{
-  width:180px;
-  max-width:80%;
-  margin-bottom:12px;
-  background:rgba(255,255,255,0.82);
-  padding:14px;
-  border-radius:22px;
-}
-
 .brand-name{
-  font-family:'Great Vibes', cursive;
-  font-size:4.7rem;
+  font-size:4.2rem;
   font-weight:400;
-  margin:5px 0;
+  margin:0;
+  letter-spacing:2px;
 }
 
 .brand-sub{
+  margin-top:18px;
   letter-spacing:7px;
   text-transform:uppercase;
   font-size:0.95rem;
+}
+
+.hero-text{
+  max-width:720px;
+  margin:25px auto 0;
+  line-height:1.8;
+  font-size:1rem;
+  color:#f8f3ee;
 }
 
 /* WELCOME */
@@ -93,11 +93,11 @@ body{
 }
 
 .welcome-banner h2{
-  font-family:'Great Vibes', cursive;
-  font-size:3.6rem;
+  font-size:2.5rem;
   font-weight:400;
   color:var(--coffee);
   margin:0 0 15px;
+  letter-spacing:1px;
 }
 
 .welcome-banner p{
@@ -128,7 +128,6 @@ body{
   background:#fffaf6;
   transition:0.3s;
   font-size:0.9rem;
-  font-weight:500;
 }
 
 .categories a:hover{
@@ -180,11 +179,11 @@ body{
 }
 
 .card-content h2{
-  font-family:'Great Vibes', cursive;
-  font-size:2.5rem;
+  font-size:1.45rem;
   font-weight:400;
   color:#4b3425;
   margin:10px 0;
+  letter-spacing:1px;
 }
 
 .card-content p{
@@ -194,8 +193,7 @@ body{
 }
 
 .price{
-  font-size:1.25rem;
-  font-weight:600;
+  font-size:1.2rem;
   color:var(--coffee);
   margin-top:18px;
 }
@@ -233,7 +231,6 @@ body{
 
 .qty-box span{
   font-size:1.2rem;
-  font-weight:600;
   min-width:20px;
   text-align:center;
 }
@@ -250,11 +247,11 @@ body{
 }
 
 .cart-title{
-  font-family:'Great Vibes', cursive;
-  font-size:2.8rem;
+  font-size:1.7rem;
   font-weight:400;
   color:#6b4a34;
   margin:0 0 18px;
+  letter-spacing:1px;
 }
 
 .cart-item{
@@ -269,7 +266,8 @@ body{
 .cart-item h4{
   margin:0;
   font-size:1rem;
-  font-weight:600;
+  font-weight:400;
+  letter-spacing:1px;
 }
 
 .cart-item p{
@@ -297,8 +295,7 @@ body{
 }
 
 .total{
-  font-size:1.4rem;
-  font-weight:600;
+  font-size:1.35rem;
   margin-top:25px;
   color:#6b4a34;
   padding-top:15px;
@@ -315,7 +312,7 @@ textarea{
   border:1px solid #d8c7b7;
   border-radius:14px;
   box-sizing:border-box;
-  font-family:'Montserrat', sans-serif;
+  font-family:'Questrial', sans-serif;
   font-size:0.9rem;
   background:#fffdfb;
 }
@@ -347,8 +344,8 @@ textarea{
   cursor:pointer;
   margin-top:15px;
   transition:0.3s;
-  font-family:'Montserrat', sans-serif;
-  font-weight:600;
+  font-family:'Questrial', sans-serif;
+  letter-spacing:1px;
 }
 
 .confirm-btn:hover{
@@ -364,11 +361,11 @@ textarea{
 }
 
 .thank-you h2{
-  font-family:'Great Vibes', cursive;
-  font-size:3.6rem;
+  font-size:2.3rem;
   font-weight:400;
   color:var(--coffee);
   margin-bottom:18px;
+  letter-spacing:1px;
 }
 
 .thank-you p{
@@ -411,12 +408,8 @@ footer{
     height:430px;
   }
 
-  .logo{
-    width:145px;
-  }
-
   .brand-name{
-    font-size:3.2rem;
+    font-size:3rem;
   }
 
   .brand-sub{
@@ -425,7 +418,7 @@ footer{
   }
 
   .welcome-banner h2{
-    font-size:2.7rem;
+    font-size:2rem;
   }
 
   .products{
@@ -443,11 +436,15 @@ footer{
 
 <header class="hero">
   <div class="hero-content">
-    <img src="logo.png" alt="Éclat de Coco" class="logo">
-
     <h1 class="brand-name">Éclat de Coco</h1>
 
     <p class="brand-sub">100% Natural Products</p>
+
+    <p class="hero-text">
+      Soins naturels inspirés des traditions africaines,
+      pensés pour révéler l’éclat authentique de votre peau
+      avec élégance, douceur et luxe.
+    </p>
   </div>
 </header>
 
@@ -676,8 +673,8 @@ function confirmOrder(){
     renderCart();
   })
   .catch(function(error){
-    alert("Erreur : la commande n'a pas été envoyée.");
-    console.log(error);
+    alert("Erreur EmailJS : " + JSON.stringify(error));
+    console.log("Erreur EmailJS :", error);
   });
 }
 

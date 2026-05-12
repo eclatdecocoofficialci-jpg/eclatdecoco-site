@@ -5,33 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boutique | Éclat de Coco</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
+:root{
+  --cream:#f8f3ee;
+  --white:#ffffff;
+  --coffee:#8b5e3c;
+  --coffee-light:#c49a6c;
+  --dark:#2d1f16;
+  --soft:#eadfd6;
+  --text:#2d1f16;
+}
+
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  font-family:'Cormorant Garamond', serif;
-  background:#f8f3ee;
-  color:#2d1f16;
+  font-family:'Montserrat', sans-serif;
+  background:var(--cream);
+  color:var(--text);
 }
 
-/* HEADER */
+/* HERO */
 
-header{
-  padding:35px 20px;
+.hero{
+  position:relative;
+  height:520px;
+  background-image:url("coco-bg.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  background:white;
-  box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  overflow:hidden;
 }
 
-header h1{
-  font-size:3.2rem;
-  margin:0;
-  color:#6b4a34;
-  letter-spacing:1px;
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.38);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  color:white;
+  padding:20px;
+}
+
+.logo{
+  width:180px;
+  max-width:80%;
+  margin-bottom:12px;
+  background:rgba(255,255,255,0.82);
+  padding:14px;
+  border-radius:22px;
+}
+
+.brand-name{
+  font-family:'Great Vibes', cursive;
+  font-size:4.7rem;
+  font-weight:400;
+  margin:5px 0;
+}
+
+.brand-sub{
+  letter-spacing:7px;
+  text-transform:uppercase;
+  font-size:0.95rem;
 }
 
 /* WELCOME */
@@ -43,15 +93,17 @@ header h1{
 }
 
 .welcome-banner h2{
-  font-size:3rem;
-  color:#8b5e3c;
-  margin-bottom:15px;
+  font-family:'Great Vibes', cursive;
+  font-size:3.6rem;
+  font-weight:400;
+  color:var(--coffee);
+  margin:0 0 15px;
 }
 
 .welcome-banner p{
   max-width:780px;
   margin:auto;
-  font-size:1.2rem;
+  font-size:1rem;
   line-height:1.8;
   color:#5f4633;
 }
@@ -70,16 +122,17 @@ header h1{
 .categories a{
   color:#5f4633;
   text-decoration:none;
-  border:1px solid #d9c7b8;
+  border:1px solid var(--soft);
   padding:12px 20px;
   border-radius:40px;
   background:#fffaf6;
   transition:0.3s;
-  font-weight:600;
+  font-size:0.9rem;
+  font-weight:500;
 }
 
 .categories a:hover{
-  background:#c49a6c;
+  background:var(--coffee);
   color:white;
 }
 
@@ -103,10 +156,10 @@ header h1{
 
 .card{
   background:white;
-  border-radius:24px;
+  border-radius:26px;
   overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:0.3s;
+  box-shadow:0 10px 30px rgba(80,50,30,0.10);
+  transition:0.3s ease;
 }
 
 .card:hover{
@@ -116,8 +169,9 @@ header h1{
 .card img{
   width:100%;
   aspect-ratio:1/1;
-  object-fit:cover;
+  object-fit:contain;
   background:#f3ebe4;
+  padding:12px;
 }
 
 .card-content{
@@ -126,27 +180,29 @@ header h1{
 }
 
 .card-content h2{
-  font-size:2rem;
-  margin-bottom:10px;
+  font-family:'Great Vibes', cursive;
+  font-size:2.5rem;
+  font-weight:400;
   color:#4b3425;
+  margin:10px 0;
 }
 
 .card-content p{
+  font-size:0.92rem;
   line-height:1.7;
-  font-size:1.05rem;
+  color:#5f4633;
 }
 
 .price{
-  font-size:1.5rem;
-  font-weight:bold;
+  font-size:1.25rem;
+  font-weight:600;
+  color:var(--coffee);
   margin-top:18px;
-  color:#7a4d2f;
 }
 
 .stock{
   color:#7b6b60;
-  margin-top:5px;
-  margin-bottom:20px;
+  font-size:0.9rem;
 }
 
 /* QUANTITY */
@@ -163,7 +219,7 @@ header h1{
   width:42px;
   height:42px;
   border:none;
-  background:#8b5e3c;
+  background:var(--coffee);
   color:white;
   border-radius:50%;
   font-size:1.3rem;
@@ -172,12 +228,12 @@ header h1{
 }
 
 .qty-box button:hover{
-  background:#c49a6c;
+  background:var(--coffee-light);
 }
 
 .qty-box span{
-  font-size:1.5rem;
-  font-weight:bold;
+  font-size:1.2rem;
+  font-weight:600;
   min-width:20px;
   text-align:center;
 }
@@ -186,52 +242,67 @@ header h1{
 
 .cart-box{
   background:white;
-  border-radius:25px;
+  border-radius:26px;
   padding:25px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  box-shadow:0 10px 30px rgba(80,50,30,0.12);
   position:sticky;
   top:20px;
 }
 
 .cart-title{
-  font-size:2rem;
-  margin-bottom:20px;
+  font-family:'Great Vibes', cursive;
+  font-size:2.8rem;
+  font-weight:400;
   color:#6b4a34;
+  margin:0 0 18px;
 }
 
 .cart-item{
-  border-bottom:1px solid #e8ddd4;
+  display:grid;
+  grid-template-columns:1fr 34px;
+  gap:10px;
+  align-items:start;
+  border-bottom:1px solid var(--soft);
   padding:15px 0;
 }
 
 .cart-item h4{
   margin:0;
-  font-size:1.3rem;
+  font-size:1rem;
+  font-weight:600;
 }
 
 .cart-item p{
   margin:6px 0;
+  font-size:0.9rem;
+  color:#5f4633;
 }
 
 .remove-btn{
+  width:30px;
+  height:30px;
   border:none;
-  background:#8b5e3c;
-  color:white;
-  padding:8px 18px;
-  border-radius:25px;
+  background:#f3e6dc;
+  color:var(--coffee);
+  border-radius:50%;
   cursor:pointer;
+  font-size:1rem;
+  font-weight:bold;
   transition:0.3s;
 }
 
 .remove-btn:hover{
-  background:#c49a6c;
+  background:var(--coffee);
+  color:white;
 }
 
 .total{
-  font-size:1.8rem;
-  font-weight:bold;
+  font-size:1.4rem;
+  font-weight:600;
   margin-top:25px;
   color:#6b4a34;
+  padding-top:15px;
+  border-top:1px solid var(--soft);
 }
 
 /* INPUTS */
@@ -244,8 +315,8 @@ textarea{
   border:1px solid #d8c7b7;
   border-radius:14px;
   box-sizing:border-box;
-  font-family:inherit;
-  font-size:1rem;
+  font-family:'Montserrat', sans-serif;
+  font-size:0.9rem;
   background:#fffdfb;
 }
 
@@ -254,25 +325,34 @@ textarea{
   resize:none;
 }
 
+.note{
+  background:#fffaf6;
+  border:1px solid var(--soft);
+  padding:13px;
+  border-radius:18px;
+  font-size:0.9rem;
+  color:#5f4633;
+}
+
 /* BUTTON */
 
 .confirm-btn{
   width:100%;
   padding:16px;
   border:none;
-  background:#8b5e3c;
+  background:var(--coffee);
   color:white;
   border-radius:40px;
-  font-size:1.1rem;
+  font-size:1rem;
   cursor:pointer;
   margin-top:15px;
   transition:0.3s;
-  font-family:inherit;
+  font-family:'Montserrat', sans-serif;
   font-weight:600;
 }
 
 .confirm-btn:hover{
-  background:#c49a6c;
+  background:var(--coffee-light);
 }
 
 /* THANK YOU */
@@ -284,15 +364,17 @@ textarea{
 }
 
 .thank-you h2{
-  font-size:3rem;
-  color:#8b5e3c;
+  font-family:'Great Vibes', cursive;
+  font-size:3.6rem;
+  font-weight:400;
+  color:var(--coffee);
   margin-bottom:18px;
 }
 
 .thank-you p{
   max-width:750px;
   margin:auto;
-  font-size:1.15rem;
+  font-size:1rem;
   line-height:1.9;
   color:#5f4633;
 }
@@ -302,15 +384,14 @@ textarea{
 footer{
   padding:30px;
   text-align:center;
-  background:#2d1f16;
+  background:var(--dark);
   color:white;
-  font-size:1rem;
+  font-size:0.9rem;
 }
 
 /* MOBILE */
 
 @media(max-width:1000px){
-
   .shop-layout{
     grid-template-columns:1fr;
   }
@@ -326,27 +407,48 @@ footer{
 }
 
 @media(max-width:650px){
+  .hero{
+    height:430px;
+  }
+
+  .logo{
+    width:145px;
+  }
+
+  .brand-name{
+    font-size:3.2rem;
+  }
+
+  .brand-sub{
+    font-size:0.75rem;
+    letter-spacing:4px;
+  }
+
+  .welcome-banner h2{
+    font-size:2.7rem;
+  }
 
   .products{
     grid-template-columns:1fr;
   }
 
-  header h1{
-    font-size:2.4rem;
-  }
-
-  .welcome-banner h2{
-    font-size:2.3rem;
+  .shop-layout{
+    padding:22px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Notre Collection</h1>
+<header class="hero">
+  <div class="hero-content">
+    <img src="logo.png" alt="Éclat de Coco" class="logo">
+
+    <h1 class="brand-name">Éclat de Coco</h1>
+
+    <p class="brand-sub">100% Natural Products</p>
+  </div>
 </header>
 
 <div class="welcome-banner">
@@ -374,14 +476,10 @@ footer{
 
 <section class="products">
 
-  <!-- PRODUCT 1 -->
-
   <div class="card">
-
     <img src="rose-vanille.jpg" alt="Rose & Vanille">
 
     <div class="card-content">
-
       <h2>Rose & Vanille</h2>
 
       <p>
@@ -390,28 +488,20 @@ footer{
       </p>
 
       <p class="price">3 000 FCFA</p>
-
       <p class="stock">Stock : 12</p>
 
       <div class="qty-box">
         <button onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
-
         <span id="qty-Rose & Vanille">0</span>
-
         <button onclick="changeQty('Rose & Vanille',3000,1)">+</button>
       </div>
-
     </div>
   </div>
 
-  <!-- PRODUCT 2 -->
-
   <div class="card">
-
     <img src="veloursdecafe.PNG" alt="Velours de Café">
 
     <div class="card-content">
-
       <h2>Velours de Café</h2>
 
       <p>
@@ -420,51 +510,38 @@ footer{
       </p>
 
       <p class="price">3 000 FCFA</p>
-
       <p class="stock">Stock : 14</p>
 
       <div class="qty-box">
         <button onclick="changeQty('Velours de Café',3000,-1)">−</button>
-
         <span id="qty-Velours de Café">0</span>
-
         <button onclick="changeQty('Velours de Café',3000,1)">+</button>
       </div>
-
     </div>
   </div>
 
 </section>
 
-<!-- CART -->
-
 <aside class="cart-box">
 
-  <h2 class="cart-title">🛒 Votre Panier</h2>
+  <h2 class="cart-title">Votre Panier</h2>
 
   <div id="cartItems">
     <p>Votre panier est vide.</p>
   </div>
 
-  <p class="total" id="total">
-    Total : 0 FCFA
-  </p>
+  <p class="total" id="total">Total : 0 FCFA</p>
 
   <h3>Informations client</h3>
 
   <input type="text" id="name" placeholder="Nom complet">
-
   <input type="tel" id="phone" placeholder="Numéro de téléphone">
-
   <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
-  <p>
-    Livraison : à partir de 2 000 FCFA selon votre commune.
-  </p>
-
-  <p>
-    Paiement à la livraison.
-  </p>
+  <div class="note">
+    <p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
+    <p>Paiement à la livraison.</p>
+  </div>
 
   <button class="confirm-btn" onclick="confirmOrder()">
     Confirmer la commande
@@ -475,7 +552,6 @@ footer{
 </div>
 
 <div class="thank-you">
-
   <h2>Merci pour votre achat ✨</h2>
 
   <p>
@@ -483,7 +559,6 @@ footer{
     Chaque produit est conçu avec amour,
     élégance et ingrédients naturels soigneusement sélectionnés.
   </p>
-
 </div>
 
 <footer>
@@ -491,63 +566,43 @@ footer{
 </footer>
 
 <script>
-
 emailjs.init("uXzUSZQODQlmyuGgb");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
 let total = 0;
 
-/* CHANGE QUANTITY */
-
 function changeQty(name, price, change){
-
   let item = cart.find(product => product.name === name);
 
   if(item){
-
     item.quantity += change;
 
     if(item.quantity <= 0){
       cart = cart.filter(product => product.name !== name);
     }
-
   } else if(change > 0){
-
     cart.push({
       name:name,
       price:price,
       quantity:1
     });
-
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-
   renderCart();
 }
-
-/* REMOVE ITEM */
 
 function removeItem(name){
-
   cart = cart.filter(item => item.name !== name);
-
   localStorage.setItem("cart", JSON.stringify(cart));
-
   renderCart();
 }
 
-/* RENDER CART */
-
 function renderCart(){
-
   const cartItems = document.getElementById("cartItems");
-
   const totalEl = document.getElementById("total");
 
   cartItems.innerHTML = "";
-
   total = 0;
 
   document.querySelectorAll(".qty-box span").forEach(span=>{
@@ -555,12 +610,10 @@ function renderCart(){
   });
 
   if(cart.length === 0){
-
     cartItems.innerHTML = "<p>Votre panier est vide.</p>";
   }
 
   cart.forEach(item=>{
-
     total += item.price * item.quantity;
 
     let qtySpan = document.getElementById("qty-" + item.name);
@@ -571,118 +624,64 @@ function renderCart(){
 
     cartItems.innerHTML += `
       <div class="cart-item">
+        <div>
+          <h4>${item.name}</h4>
+          <p>Quantité : ${item.quantity}</p>
+          <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
+        </div>
 
-        <h4>${item.name}</h4>
-
-        <p>Quantité : ${item.quantity}</p>
-
-        <p>
-          Sous-total :
-          ${(item.price * item.quantity).toLocaleString()} FCFA
-        </p>
-
-        <button class="remove-btn"
-        onclick="removeItem('${item.name}')">
-          Retirer
-        </button>
-
+        <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
       </div>
     `;
   });
 
-  totalEl.innerText =
-  "Total : " + total.toLocaleString() + " FCFA";
+  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
 }
 
-/* CONFIRM ORDER */
-
 function confirmOrder(){
-
-  const name =
-  document.getElementById("name").value.trim();
-
-  const phone =
-  document.getElementById("phone").value.trim();
-
-  const address =
-  document.getElementById("address").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
 
   if(cart.length === 0){
-
     alert("Votre panier est vide.");
-
     return;
   }
 
   if(!name || !phone || !address){
-
     alert("Veuillez remplir toutes les informations.");
-
     return;
   }
 
   const orderDetails = cart.map(item => {
-
-    return `
-${item.name}
-x${item.quantity}
-=
-${(item.price * item.quantity).toLocaleString()} FCFA`;
-
+    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
   }).join("\n");
 
   const templateParams = {
-
     email:"sarahajamii@icloud.com",
-
     customer_name:name,
-
     customer_phone:phone,
-
     customer_address:address,
-
     order_details:orderDetails,
-
     order_total:total.toLocaleString() + " FCFA",
-
-    delivery_note:
-    "Livraison à partir de 2 000 FCFA selon la commune.",
-
+    delivery_note:"Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
     order_id:"EDC-" + Date.now()
   };
 
-  emailjs.send(
-    "service_buy8fox",
-    "template_97nbk68",
-    templateParams
-  )
-
+  emailjs.send("service_buy8fox","template_97nbk68",templateParams)
   .then(function(){
-
-    alert(
-      "Commande confirmée. Nous vous contacterons rapidement."
-    );
-
+    alert("Commande confirmée. Nous vous contacterons rapidement.");
     localStorage.removeItem("cart");
-
     cart = [];
-
     renderCart();
-
   })
-
   .catch(function(error){
-
-    alert(
-      "Erreur : la commande n'a pas été envoyée."
-    );
-
+    alert("Erreur : la commande n'a pas été envoyée.");
     console.log(error);
   });
 }
 
 renderCart();
-
 </script>
 
 </body>

@@ -136,7 +136,45 @@ function renderCart(){
 }
 
 function confirmOrder(){
-  alert("Commande confirmée.");
-}
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
 
-renderCart();
+  if(cart.length === 0){
+    alert("Votre panier est vide.");
+    return;
+  }
+
+  if(!name || !phone || !address){
+    alert("Veuillez remplir toutes les informations.");
+    return;
+  }
+
+  const orderDetails = cart.map(item => {
+    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
+  }).join("\n");
+
+  const templateParams = {
+    email: "sarahajamii@icloud.com",
+    customer_name: name,
+    customer_phone: phone,
+    customer_address: address,
+    order_details: orderDetails,
+    order_total: total.toLocaleString() + " FCFA",
+    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
+    order_id: "EDC-" + Date.now()
+  };
+
+  emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
+  .then(function(){
+    alert("Commande confirmée. Nous vous contacterons rapidement.");
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCart();
+    closeDrawers();
+  })
+  .catch(function(error){
+    alert("Erreur EmailJS. Vérifie la console.");
+    console.log("Erreur EmailJS :", error);
+  });
+}

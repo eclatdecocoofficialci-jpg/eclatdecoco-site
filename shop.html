@@ -33,8 +33,6 @@ body{
     url("coco-bg.jpg") center/cover fixed no-repeat;
 }
 
-/* TOP NAV */
-
 .top-bar{
   height:82px;
   display:flex;
@@ -95,8 +93,6 @@ body{
   justify-content:center;
 }
 
-/* HERO */
-
 .hero{
   min-height:520px;
   display:flex;
@@ -141,8 +137,6 @@ body{
   font-size:1.05rem;
   color:#2d1f16;
 }
-
-/* DRAWERS */
 
 .drawer-bg{
   position:fixed;
@@ -218,8 +212,6 @@ body{
   cursor:pointer;
 }
 
-/* MENU */
-
 .about-title{
   color:var(--coffee);
   font-size:1.1rem;
@@ -255,8 +247,6 @@ body{
   border-radius:14px;
   color:var(--dark);
 }
-
-/* PRODUCTS */
 
 .collection-title{
   text-align:center;
@@ -369,8 +359,6 @@ body{
   min-width:20px;
 }
 
-/* CART */
-
 .cart-item{
   display:grid;
   grid-template-columns:1fr 34px;
@@ -433,6 +421,27 @@ textarea{
   font-size:0.9rem;
 }
 
+.cart-thankyou{
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid var(--soft);
+  text-align:center;
+}
+
+.cart-thankyou h3{
+  color:var(--coffee);
+  font-size:1.2rem;
+  font-weight:400;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+
+.cart-thankyou p{
+  font-size:0.88rem;
+  line-height:1.8;
+  color:#5f4633;
+}
+
 .confirm-btn{
   width:100%;
   padding:16px;
@@ -445,35 +454,12 @@ textarea{
   letter-spacing:1px;
 }
 
-/* FOOTER */
-
-.thank-you{
-  background:rgba(255,250,246,0.88);
-  text-align:center;
-  padding:45px 25px;
-}
-
-.thank-you h2{
-  color:var(--coffee);
-  font-weight:400;
-  font-size:2rem;
-}
-
-.thank-you p{
-  max-width:750px;
-  margin:auto;
-  line-height:1.8;
-  color:#5f4633;
-}
-
 footer{
   padding:28px;
   text-align:center;
   background:rgba(45,31,22,0.92);
   color:white;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
   .products{
@@ -590,6 +576,15 @@ footer{
     <p>Paiement à la livraison.</p>
   </div>
 
+  <div class="cart-thankyou">
+    <h3>Merci pour votre achat ✨</h3>
+    <p>
+      Merci de faire partie de l’univers Éclat de Coco.
+      Chaque commande est préparée avec soin,
+      élégance et ingrédients naturels soigneusement sélectionnés.
+    </p>
+  </div>
+
   <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
 </aside>
 
@@ -647,14 +642,6 @@ footer{
 
   </div>
 </section>
-
-<div class="thank-you">
-  <h2>Merci pour votre achat ✨</h2>
-  <p>
-    Merci de faire partie de l’univers Éclat de Coco.
-    Chaque produit est conçu avec amour, élégance et ingrédients naturels soigneusement sélectionnés.
-  </p>
-</div>
 
 <footer>
   © 2025 Éclat de Coco Official

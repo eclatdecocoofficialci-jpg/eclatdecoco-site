@@ -173,8 +173,8 @@ function confirmOrder(){
     renderCart();
     closeDrawers();
   })
-  .catch(function(error){
-    alert("Erreur EmailJS. Vérifie la console.");
-    console.log("Erreur EmailJS :", error);
-  });
+.catch(function(error){
+  alert("Erreur EmailJS : " + JSON.stringify(error));
+  console.log("Erreur EmailJS :", error);
+});
 }

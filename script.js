@@ -1,3 +1,4 @@
+console.log(templateParams);
 emailjs.init("uXzUSZQODQlmyuGgb");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];

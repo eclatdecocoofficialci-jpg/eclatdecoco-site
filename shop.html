@@ -109,11 +109,53 @@ body{
   color:var(--coffee);
 }
 
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
 .page-title{
   letter-spacing:3px;
   text-transform:uppercase;
   font-size:0.85rem;
   color:#5f4633;
+}
+
+.cart-icon-btn{
+  position:relative;
+  border:none;
+  background:#fffaf6;
+  color:var(--coffee);
+  border:1px solid var(--soft);
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s;
+}
+
+.cart-icon-btn:hover{
+  background:#f3e6da;
+  transform:translateY(-2px);
+}
+
+.cart-icon-btn span{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:var(--coffee);
+  color:white;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  font-size:0.75rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* SIDE MENU */
@@ -524,6 +566,15 @@ footer{
   .top-bar{
     padding:16px 22px;
   }
+
+  .nav-right{
+    gap:12px;
+  }
+
+  .page-title{
+    font-size:0.7rem;
+    letter-spacing:2px;
+  }
 }
 </style>
 </head>
@@ -546,7 +597,27 @@ footer{
 
 <div class="top-bar">
   <button class="menu-btn" onclick="toggleMenu()">☰ Catégories</button>
-  <div class="page-title">Boutique officielle</div>
+
+  <div class="nav-right">
+    <div class="page-title">Boutique officielle</div>
+
+    <button class="cart-icon-btn" onclick="goToCart()">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="22"
+           height="22"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="1.8"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <path d="M6 7h12l-1 14H7L6 7z"></path>
+        <path d="M9 7a3 3 0 0 1 6 0"></path>
+      </svg>
+
+      <span id="cartCount">0</span>
+    </button>
+  </div>
 </div>
 
 <div class="side-menu" id="sideMenu">
@@ -636,7 +707,7 @@ footer{
 
 </section>
 
-<aside class="cart-box">
+<aside class="cart-box" id="cartSection">
 
   <h2 class="cart-title">Votre Panier</h2>
 
@@ -692,6 +763,21 @@ const stock = {
 
 function toggleMenu(){
   document.getElementById("sideMenu").classList.toggle("active");
+}
+
+function goToCart(){
+  document.getElementById("cartSection").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function updateCartCount(){
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const countEl = document.getElementById("cartCount");
+
+  if(countEl){
+    countEl.innerText = count;
+  }
 }
 
 function filterProducts(category, btn){
@@ -814,6 +900,8 @@ function renderCart(){
   });
 
   totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
+
+  updateCartCount();
 }
 
 function confirmOrder(){

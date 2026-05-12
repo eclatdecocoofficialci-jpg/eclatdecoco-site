@@ -177,10 +177,10 @@ function confirmOrder(){
       localStorage.removeItem("cart");
       window.location.href = "shop.html";
     })
-    .catch(function(error){
-      alert("Erreur : la commande n'a pas été envoyée. Veuillez réessayer.");
-      console.log(error);
-    });
+  .catch(function(error){
+  alert("Erreur EmailJS : " + JSON.stringify(error));
+  console.log("EmailJS error:", error);
+});
 }
 
 renderCart();

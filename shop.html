@@ -637,24 +637,54 @@ footer{
       </div>
     </div>
 
-    <div class="card product" data-category="savons">
-      <img src="veloursdecafe.PNG" alt="Velours de Café">
-      <div class="card-content">
-        <h2>Velours de Café</h2>
-        <p>Savon exfoliant enrichi en café naturel, idéal pour purifier et révéler l’éclat de la peau.</p>
-        <p class="price">3 000 FCFA</p>
-        <p class="stock" id="stock-Velours de Café">Stock : 14</p>
-        <div class="out-stock" id="out-Velours de Café" style="display:none;">Rupture de stock</div>
+    <div class="product-card product" data-category="savons">
 
-        <div class="qty-box">
-          <button id="minus-Velours de Café" onclick="changeQty('Velours de Café',3000,-1)">−</button>
-          <span id="qty-Velours de Café">0</span>
-          <button id="plus-Velours de Café" onclick="changeQty('Velours de Café',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
+  <img src="images/douceurdecoco.JPG" alt="Savon Douceur de Coco">
+
+  <h3>Douceur de Coco</h3>
+
+  <p class="description">
+    Un savon crémeux et délicat à base d’huile de coco pure,
+    d’extrait de coco râpé et de beurre de karité.
+    Il nettoie la peau en douceur tout en laissant
+    une sensation gourmande, naturelle et réconfortante.
+  </p>
+
+  <div class="product-info">
+
+    <span class="price">3000 FCFA</span>
+
+    <span class="stock" id="stock-Douceur de Coco">
+      Stock : 8
+    </span>
 
   </div>
+
+  <div class="out-stock"
+  id="out-Douceur de Coco"
+  style="display:none;">
+    Rupture de stock
+  </div>
+
+  <div class="qty-box">
+
+    <button
+    id="minus-Douceur de Coco"
+    onclick="changeQty('Douceur de Coco',3000,-1)">
+      −
+    </button>
+
+    <span id="qty-Douceur de Coco">0</span>
+
+    <button
+    id="plus-Douceur de Coco"
+    onclick="changeQty('Douceur de Coco',3000,1)">
+      +
+    </button>
+
+  </div>
+
+</div>
 </section>
 
 <footer>

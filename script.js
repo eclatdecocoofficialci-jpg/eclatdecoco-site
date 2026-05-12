@@ -158,12 +158,49 @@ function renderCart(){
   updateCartCount();
 }
 
-function confirmOrder(){
-  alert("Commande confirmée. Nous vous contacterons rapidement.");
-  localStorage.removeItem("cart");
-  cart = [];
-  renderCart();
-  closeDrawers();
-}
+(function(){
+  emailjs.init("TON_PUBLIC_KEY"); // ⚠️ à remplacer
+})();
 
-renderCart();
+function confirmOrder(){
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("Veuillez remplir toutes les informations");
+    return;
+  }
+
+  if(cart.length === 0){
+    alert("Votre panier est vide");
+    return;
+  }
+
+  let orderText = "";
+  let total = 0;
+
+  cart.forEach(item=>{
+    orderText += `${item.name} x${item.qty} = ${item.price * item.qty} FCFA\n`;
+    total += item.price * item.qty;
+  });
+
+  let templateParams = {
+    name: name,
+    phone: phone,
+    address: address,
+    order: orderText,
+    total: total + " FCFA"
+  };
+
+  emailjs.send("TON_SERVICE_ID","TON_TEMPLATE_ID",templateParams)
+  .then(function(response){
+      alert("Commande envoyée avec succès ✨");
+      cart = [];
+      updateCart();
+  }, function(error){
+      alert("Erreur lors de l'envoi ❌");
+      console.log(error);
+  });
+}

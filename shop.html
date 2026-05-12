@@ -29,7 +29,7 @@ body{
   font-family:'Questrial', sans-serif;
   color:var(--dark);
   background:
-    linear-gradient(rgba(248,243,238,0.70), rgba(248,243,238,0.80)),
+    linear-gradient(rgba(248,243,238,0.70), rgba(248,243,238,0.82)),
     url("coco-bg.jpg") center/cover fixed no-repeat;
 }
 
@@ -98,18 +98,18 @@ body{
 /* HERO */
 
 .hero{
-  min-height:420px;
+  min-height:520px;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   text-align:center;
-  padding:70px 20px 40px;
+  padding:135px 20px 0;
 }
 
 .hero-content{
   max-width:850px;
-  color:white;
-  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+  color:#1f140d;
+  text-shadow:none;
 }
 
 .brand-name{
@@ -124,12 +124,13 @@ body{
   letter-spacing:8px;
   text-transform:uppercase;
   font-size:0.95rem;
+  color:#4b3425;
 }
 
 .hero-line{
   width:80px;
   height:1px;
-  background:white;
+  background:#2d1f16;
   margin:22px auto;
 }
 
@@ -138,6 +139,7 @@ body{
   margin:auto;
   line-height:1.9;
   font-size:1.05rem;
+  color:#2d1f16;
 }
 
 /* DRAWERS */
@@ -258,16 +260,18 @@ body{
 
 .collection-title{
   text-align:center;
-  color:white;
+  color:#2d1f16;
   letter-spacing:5px;
   text-transform:uppercase;
   font-size:1rem;
-  margin:0 0 28px;
-  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+  margin:0 0 18px;
 }
 
 .products-area{
-  padding:20px 6% 70px;
+  margin-top:-120px;
+  padding:0 6% 70px;
+  position:relative;
+  z-index:3;
 }
 
 .products{
@@ -488,7 +492,8 @@ footer{
   }
 
   .hero{
-    min-height:360px;
+    min-height:450px;
+    padding:115px 20px 0;
   }
 
   .brand-name{
@@ -498,6 +503,14 @@ footer{
   .brand-sub{
     font-size:0.72rem;
     letter-spacing:4px;
+  }
+
+  .hero-text{
+    font-size:0.9rem;
+  }
+
+  .products-area{
+    margin-top:-85px;
   }
 
   .products{

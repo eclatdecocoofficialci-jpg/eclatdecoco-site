@@ -36,10 +36,10 @@ body{
 
 .hero{
   position:relative;
-  height:520px;
+  height:360px;
   background-image:url("coco-bg.jpg");
   background-size:cover;
-  background-position:center;
+  background-position:center 35%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -61,24 +61,24 @@ body{
 }
 
 .brand-name{
-  font-size:4.2rem;
+  font-size:3.6rem;
   font-weight:400;
   margin:0;
   letter-spacing:2px;
 }
 
 .brand-sub{
-  margin-top:18px;
+  margin-top:15px;
   letter-spacing:7px;
   text-transform:uppercase;
-  font-size:0.95rem;
+  font-size:0.9rem;
 }
 
 .hero-text{
   max-width:720px;
-  margin:25px auto 0;
-  line-height:1.8;
-  font-size:1rem;
+  margin:22px auto 0;
+  line-height:1.7;
+  font-size:0.95rem;
   color:#f8f3ee;
 }
 
@@ -88,7 +88,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 35px;
+  padding:18px 35px;
   background:white;
   border-bottom:1px solid var(--soft);
   position:sticky;
@@ -112,7 +112,7 @@ body{
 .page-title{
   letter-spacing:3px;
   text-transform:uppercase;
-  font-size:0.9rem;
+  font-size:0.85rem;
   color:#5f4633;
 }
 
@@ -187,23 +187,23 @@ body{
 
 .welcome-banner{
   text-align:center;
-  padding:55px 25px;
+  padding:35px 25px;
   background:linear-gradient(to bottom,#ffffff,#f8f3ee);
 }
 
 .welcome-banner h2{
-  font-size:2.5rem;
+  font-size:2.1rem;
   font-weight:400;
   color:var(--coffee);
-  margin:0 0 15px;
+  margin:0 0 12px;
   letter-spacing:1px;
 }
 
 .welcome-banner p{
   max-width:780px;
   margin:auto;
-  font-size:1rem;
-  line-height:1.8;
+  font-size:0.95rem;
+  line-height:1.7;
   color:#5f4633;
 }
 
@@ -213,7 +213,7 @@ body{
   display:grid;
   grid-template-columns:1fr 390px;
   gap:28px;
-  padding:35px;
+  padding:30px 35px 35px;
   align-items:start;
 }
 
@@ -331,7 +331,7 @@ body{
   padding:25px;
   box-shadow:0 10px 30px rgba(80,50,30,0.12);
   position:sticky;
-  top:90px;
+  top:85px;
 }
 
 .cart-title{
@@ -443,12 +443,12 @@ textarea{
 
 .thank-you{
   text-align:center;
-  padding:70px 25px;
+  padding:50px 25px;
   background:white;
 }
 
 .thank-you h2{
-  font-size:2.3rem;
+  font-size:2.1rem;
   font-weight:400;
   color:var(--coffee);
   margin-bottom:18px;
@@ -492,20 +492,25 @@ footer{
 
 @media(max-width:650px){
   .hero{
-    height:430px;
+    height:300px;
   }
 
   .brand-name{
-    font-size:3rem;
+    font-size:2.7rem;
   }
 
   .brand-sub{
-    font-size:0.75rem;
+    font-size:0.7rem;
     letter-spacing:4px;
   }
 
+  .hero-text{
+    font-size:0.85rem;
+    margin-top:16px;
+  }
+
   .welcome-banner h2{
-    font-size:2rem;
+    font-size:1.7rem;
   }
 
   .products{
@@ -517,7 +522,7 @@ footer{
   }
 
   .top-bar{
-    padding:18px 22px;
+    padding:16px 22px;
   }
 }
 </style>
@@ -659,7 +664,10 @@ footer{
 </aside>
 
 </div>
-<div>
+
+<div class="thank-you">
+  <h2>Merci pour votre achat ✨</h2>
+
   <p>
     Merci de faire partie de l’univers Éclat de Coco.
     Chaque produit est conçu avec amour,

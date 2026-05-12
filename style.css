@@ -519,3 +519,9 @@ footer{
 .instagram-link:hover{
   color:#c8a06a;
 }
+.product-card img{
+  width:100%;
+  height:250px;        /* force même hauteur */
+  object-fit:cover;    /* coupe proprement */
+  border-radius:18px 18px 0 0;
+}

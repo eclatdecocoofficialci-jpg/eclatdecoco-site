@@ -5,27 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boutique | Éclat de Coco</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
+
 body{
   margin:0;
   font-family:'Cormorant Garamond', serif;
   background:#f8f3ee;
-  color:#111;
+  color:#2d1f16;
 }
 
+/* HEADER */
+
 header{
-  padding:30px;
+  padding:35px 20px;
   text-align:center;
   background:white;
+  box-shadow:0 2px 12px rgba(0,0,0,0.05);
 }
 
 header h1{
-  font-size:3rem;
+  font-size:3.2rem;
   margin:0;
+  color:#6b4a34;
+  letter-spacing:1px;
 }
+
+/* WELCOME */
+
+.welcome-banner{
+  text-align:center;
+  padding:55px 25px;
+  background:linear-gradient(to bottom,#ffffff,#f8f3ee);
+}
+
+.welcome-banner h2{
+  font-size:3rem;
+  color:#8b5e3c;
+  margin-bottom:15px;
+}
+
+.welcome-banner p{
+  max-width:780px;
+  margin:auto;
+  font-size:1.2rem;
+  line-height:1.8;
+  color:#5f4633;
+}
+
+/* CATEGORIES */
 
 .categories{
   display:flex;
@@ -37,150 +68,255 @@ header h1{
 }
 
 .categories a{
-  color:#111;
+  color:#5f4633;
   text-decoration:none;
-  border:1px solid #ddd;
-  padding:10px 18px;
-  border-radius:30px;
+  border:1px solid #d9c7b8;
+  padding:12px 20px;
+  border-radius:40px;
+  background:#fffaf6;
+  transition:0.3s;
+  font-weight:600;
 }
+
+.categories a:hover{
+  background:#c49a6c;
+  color:white;
+}
+
+/* LAYOUT */
 
 .shop-layout{
   display:grid;
-  grid-template-columns:1fr 360px;
-  gap:25px;
+  grid-template-columns:1fr 390px;
+  gap:28px;
   padding:35px;
+  align-items:start;
 }
+
+/* PRODUCTS */
 
 .products{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:25px;
+  gap:28px;
 }
 
 .card{
   background:white;
-  border-radius:22px;
+  border-radius:24px;
   overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
 }
 
 .card img{
   width:100%;
   aspect-ratio:1/1;
-  object-fit:contain;
-  background:#f8f3ee;
-  padding:10px;
+  object-fit:cover;
+  background:#f3ebe4;
 }
 
 .card-content{
-  padding:18px;
+  padding:22px;
   text-align:center;
 }
 
 .card-content h2{
-  font-size:1.7rem;
+  font-size:2rem;
+  margin-bottom:10px;
+  color:#4b3425;
+}
+
+.card-content p{
+  line-height:1.7;
+  font-size:1.05rem;
 }
 
 .price{
-  font-size:1.3rem;
+  font-size:1.5rem;
   font-weight:bold;
+  margin-top:18px;
+  color:#7a4d2f;
 }
 
 .stock{
-  color:#555;
+  color:#7b6b60;
+  margin-top:5px;
+  margin-bottom:20px;
 }
+
+/* QUANTITY */
 
 .qty-box{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:15px;
+  gap:18px;
   margin-top:15px;
 }
 
 .qty-box button{
-  width:35px;
-  height:35px;
+  width:42px;
+  height:42px;
   border:none;
-  background:black;
+  background:#8b5e3c;
   color:white;
   border-radius:50%;
-  font-size:1.2rem;
+  font-size:1.3rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.qty-box button:hover{
+  background:#c49a6c;
 }
 
 .qty-box span{
-  font-size:1.3rem;
+  font-size:1.5rem;
   font-weight:bold;
+  min-width:20px;
+  text-align:center;
 }
+
+/* CART */
 
 .cart-box{
   background:white;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
   position:sticky;
   top:20px;
-  height:fit-content;
+}
+
+.cart-title{
+  font-size:2rem;
+  margin-bottom:20px;
+  color:#6b4a34;
 }
 
 .cart-item{
-  border-bottom:1px solid #ddd;
-  padding:12px 0;
+  border-bottom:1px solid #e8ddd4;
+  padding:15px 0;
 }
 
 .cart-item h4{
   margin:0;
+  font-size:1.3rem;
+}
+
+.cart-item p{
+  margin:6px 0;
 }
 
 .remove-btn{
-  background:#111;
-  color:white;
   border:none;
-  padding:8px 15px;
-  border-radius:20px;
-  margin-top:8px;
+  background:#8b5e3c;
+  color:white;
+  padding:8px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.remove-btn:hover{
+  background:#c49a6c;
 }
 
 .total{
-  font-size:1.4rem;
+  font-size:1.8rem;
   font-weight:bold;
-  margin-top:20px;
+  margin-top:25px;
+  color:#6b4a34;
 }
 
-input, textarea{
+/* INPUTS */
+
+input,
+textarea{
   width:100%;
-  padding:12px;
-  margin:8px 0;
-  border:1px solid #ccc;
-  border-radius:10px;
+  padding:14px;
+  margin:10px 0;
+  border:1px solid #d8c7b7;
+  border-radius:14px;
   box-sizing:border-box;
+  font-family:inherit;
+  font-size:1rem;
+  background:#fffdfb;
 }
+
+textarea{
+  min-height:110px;
+  resize:none;
+}
+
+/* BUTTON */
 
 .confirm-btn{
   width:100%;
-  padding:14px;
+  padding:16px;
   border:none;
-  background:black;
+  background:#8b5e3c;
   color:white;
-  border-radius:30px;
-  font-size:1rem;
-  margin-top:12px;
+  border-radius:40px;
+  font-size:1.1rem;
+  cursor:pointer;
+  margin-top:15px;
+  transition:0.3s;
+  font-family:inherit;
+  font-weight:600;
 }
+
+.confirm-btn:hover{
+  background:#c49a6c;
+}
+
+/* THANK YOU */
+
+.thank-you{
+  text-align:center;
+  padding:70px 25px;
+  background:white;
+}
+
+.thank-you h2{
+  font-size:3rem;
+  color:#8b5e3c;
+  margin-bottom:18px;
+}
+
+.thank-you p{
+  max-width:750px;
+  margin:auto;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#5f4633;
+}
+
+/* FOOTER */
 
 footer{
   padding:30px;
   text-align:center;
-  background:#111;
+  background:#2d1f16;
   color:white;
+  font-size:1rem;
 }
 
-@media(max-width:900px){
+/* MOBILE */
+
+@media(max-width:1000px){
+
   .shop-layout{
     grid-template-columns:1fr;
   }
 
   .products{
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .cart-box{
@@ -189,11 +325,21 @@ footer{
   }
 }
 
-@media(max-width:500px){
+@media(max-width:650px){
+
   .products{
     grid-template-columns:1fr;
   }
+
+  header h1{
+    font-size:2.4rem;
+  }
+
+  .welcome-banner h2{
+    font-size:2.3rem;
+  }
 }
+
 </style>
 </head>
 
@@ -203,10 +349,20 @@ footer{
   <h1>Notre Collection</h1>
 </header>
 
+<div class="welcome-banner">
+  <h2>Bienvenue dans l’univers Éclat de Coco</h2>
+
+  <p>
+    Découvrez nos soins naturels inspirés des traditions africaines,
+    fabriqués avec passion à partir d’ingrédients nobles,
+    huiles végétales et beurres naturels soigneusement sélectionnés.
+  </p>
+</div>
+
 <nav class="categories">
   <a href="#">Savons artisanaux</a>
   <a href="#">Lotions naturelles</a>
-  <a href="#">Beurres corporels version glacée</a>
+  <a href="#">Beurres corporels</a>
   <a href="#">Masques cheveux</a>
   <a href="#">Sérums cheveux</a>
   <a href="#">Sérums visage</a>
@@ -218,60 +374,115 @@ footer{
 
 <section class="products">
 
+  <!-- PRODUCT 1 -->
+
   <div class="card">
-    <img src="rose-vanille.jpg" alt="Rose de Vanille">
+
+    <img src="rose-vanille.jpg" alt="Rose & Vanille">
+
     <div class="card-content">
+
       <h2>Rose & Vanille</h2>
-      <p>Savon délicatement parfumé à la rose et à la vanille, pour une peau douce et raffinée.</p>
+
+      <p>
+        Savon délicatement parfumé à la rose et à la vanille,
+        conçu pour nettoyer la peau tout en douceur.
+      </p>
+
       <p class="price">3 000 FCFA</p>
+
       <p class="stock">Stock : 12</p>
 
       <div class="qty-box">
-        <button onclick="changeQty('Rose & Vanille', 3000, -1)">-</button>
+        <button onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
+
         <span id="qty-Rose & Vanille">0</span>
-        <button onclick="changeQty('Rose & Vanille', 3000, 1)">+</button>
+
+        <button onclick="changeQty('Rose & Vanille',3000,1)">+</button>
       </div>
+
     </div>
   </div>
 
+  <!-- PRODUCT 2 -->
+
   <div class="card">
+
     <img src="veloursdecafe.PNG" alt="Velours de Café">
+
     <div class="card-content">
+
       <h2>Velours de Café</h2>
-      <p>Savon exfoliant enrichi en café naturel, pour nettoyer la peau et révéler son éclat.</p>
+
+      <p>
+        Savon exfoliant enrichi en café naturel,
+        idéal pour purifier et révéler l’éclat de la peau.
+      </p>
+
       <p class="price">3 000 FCFA</p>
+
       <p class="stock">Stock : 14</p>
 
       <div class="qty-box">
-        <button onclick="changeQty('Velours de Café', 3000, -1)">-</button>
+        <button onclick="changeQty('Velours de Café',3000,-1)">−</button>
+
         <span id="qty-Velours de Café">0</span>
-        <button onclick="changeQty('Velours de Café', 3000, 1)">+</button>
+
+        <button onclick="changeQty('Velours de Café',3000,1)">+</button>
       </div>
+
     </div>
   </div>
 
 </section>
 
+<!-- CART -->
+
 <aside class="cart-box">
-  <h2>🛒 Panier</h2>
+
+  <h2 class="cart-title">🛒 Votre Panier</h2>
 
   <div id="cartItems">
     <p>Votre panier est vide.</p>
   </div>
 
-  <p class="total" id="total">Total : 0 FCFA</p>
+  <p class="total" id="total">
+    Total : 0 FCFA
+  </p>
 
   <h3>Informations client</h3>
 
   <input type="text" id="name" placeholder="Nom complet">
+
   <input type="tel" id="phone" placeholder="Numéro de téléphone">
+
   <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
-  <p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
-  <p>Paiement à la livraison.</p>
+  <p>
+    Livraison : à partir de 2 000 FCFA selon votre commune.
+  </p>
 
-  <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
+  <p>
+    Paiement à la livraison.
+  </p>
+
+  <button class="confirm-btn" onclick="confirmOrder()">
+    Confirmer la commande
+  </button>
+
 </aside>
+
+</div>
+
+<div class="thank-you">
+
+  <h2>Merci pour votre achat ✨</h2>
+
+  <p>
+    Merci de faire partie de l’univers Éclat de Coco.
+    Chaque produit est conçu avec amour,
+    élégance et ingrédients naturels soigneusement sélectionnés.
+  </p>
 
 </div>
 
@@ -280,118 +491,198 @@ footer{
 </footer>
 
 <script>
+
 emailjs.init("uXzUSZQODQlmyuGgb");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 let total = 0;
 
+/* CHANGE QUANTITY */
+
 function changeQty(name, price, change){
+
   let item = cart.find(product => product.name === name);
 
   if(item){
+
     item.quantity += change;
 
     if(item.quantity <= 0){
       cart = cart.filter(product => product.name !== name);
     }
+
   } else if(change > 0){
+
     cart.push({
       name:name,
       price:price,
       quantity:1
     });
+
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+
   renderCart();
 }
+
+/* REMOVE ITEM */
 
 function removeItem(name){
+
   cart = cart.filter(item => item.name !== name);
+
   localStorage.setItem("cart", JSON.stringify(cart));
+
   renderCart();
 }
 
+/* RENDER CART */
+
 function renderCart(){
+
   const cartItems = document.getElementById("cartItems");
+
   const totalEl = document.getElementById("total");
 
   cartItems.innerHTML = "";
+
   total = 0;
 
-  document.querySelectorAll(".qty-box span").forEach(span => {
+  document.querySelectorAll(".qty-box span").forEach(span=>{
     span.innerText = "0";
   });
 
   if(cart.length === 0){
+
     cartItems.innerHTML = "<p>Votre panier est vide.</p>";
   }
 
-  cart.forEach(item => {
+  cart.forEach(item=>{
+
     total += item.price * item.quantity;
 
     let qtySpan = document.getElementById("qty-" + item.name);
+
     if(qtySpan){
       qtySpan.innerText = item.quantity;
     }
 
     cartItems.innerHTML += `
       <div class="cart-item">
+
         <h4>${item.name}</h4>
+
         <p>Quantité : ${item.quantity}</p>
-        <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
-        <button class="remove-btn" onclick="removeItem('${item.name}')">Retirer</button>
+
+        <p>
+          Sous-total :
+          ${(item.price * item.quantity).toLocaleString()} FCFA
+        </p>
+
+        <button class="remove-btn"
+        onclick="removeItem('${item.name}')">
+          Retirer
+        </button>
+
       </div>
     `;
   });
 
-  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
+  totalEl.innerText =
+  "Total : " + total.toLocaleString() + " FCFA";
 }
 
+/* CONFIRM ORDER */
+
 function confirmOrder(){
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
+
+  const name =
+  document.getElementById("name").value.trim();
+
+  const phone =
+  document.getElementById("phone").value.trim();
+
+  const address =
+  document.getElementById("address").value.trim();
 
   if(cart.length === 0){
+
     alert("Votre panier est vide.");
+
     return;
   }
 
   if(!name || !phone || !address){
-    alert("Veuillez remplir votre nom, téléphone et adresse.");
+
+    alert("Veuillez remplir toutes les informations.");
+
     return;
   }
 
   const orderDetails = cart.map(item => {
-    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
+
+    return `
+${item.name}
+x${item.quantity}
+=
+${(item.price * item.quantity).toLocaleString()} FCFA`;
+
   }).join("\n");
 
   const templateParams = {
-    email: "sarahajamii@icloud.com",
-    customer_name: name,
-    customer_phone: phone,
-    customer_address: address,
-    order_details: orderDetails,
-    order_total: total.toLocaleString() + " FCFA",
-    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
-    order_id: "EDC-" + Date.now()
+
+    email:"sarahajamii@icloud.com",
+
+    customer_name:name,
+
+    customer_phone:phone,
+
+    customer_address:address,
+
+    order_details:orderDetails,
+
+    order_total:total.toLocaleString() + " FCFA",
+
+    delivery_note:
+    "Livraison à partir de 2 000 FCFA selon la commune.",
+
+    order_id:"EDC-" + Date.now()
   };
 
-  emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
-    .then(function(){
-      alert("Commande confirmée. Nous vous contacterons pour la livraison.");
-      localStorage.removeItem("cart");
-      cart = [];
-      renderCart();
-    })
-    .catch(function(error){
-      alert("Erreur : la commande n'a pas été envoyée. Veuillez réessayer.");
-      console.log(error);
-    });
+  emailjs.send(
+    "service_buy8fox",
+    "template_97nbk68",
+    templateParams
+  )
+
+  .then(function(){
+
+    alert(
+      "Commande confirmée. Nous vous contacterons rapidement."
+    );
+
+    localStorage.removeItem("cart");
+
+    cart = [];
+
+    renderCart();
+
+  })
+
+  .catch(function(error){
+
+    alert(
+      "Erreur : la commande n'a pas été envoyée."
+    );
+
+    console.log(error);
+  });
 }
 
 renderCart();
+
 </script>
 
 </body>

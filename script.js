@@ -1,4 +1,3 @@
-console.log(templateParams);
 emailjs.init("uXzUSZQODQlmyuGgb");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -37,27 +36,6 @@ function updateCartCount(){
   document.getElementById("cartCount").innerText = count;
 }
 
-function filterProducts(category, btn){
-  const products = document.querySelectorAll(".product");
-
-  products.forEach(product => {
-    product.style.display =
-      category === "all" || product.dataset.category === category
-      ? "block"
-      : "none";
-  });
-
-  document.querySelectorAll(".menu-list button").forEach(button => {
-    button.classList.remove("active");
-  });
-
-  if(btn){
-    btn.classList.add("active");
-  }
-
-  closeDrawers();
-}
-
 function changeQty(name, price, change){
   let item = cart.find(product => product.name === name);
   let currentQty = item ? item.quantity : 0;
@@ -73,11 +51,11 @@ function changeQty(name, price, change){
     if(item.quantity <= 0){
       cart = cart.filter(product => product.name !== name);
     }
-  } else if(change > 0){
+  }else if(change > 0){
     cart.push({
-      name:name,
-      price:price,
-      quantity:1
+      name: name,
+      price: price,
+      quantity: 1
     });
   }
 
@@ -109,8 +87,7 @@ function renderCart(){
   cart.forEach(item=>{
     total += item.price * item.quantity;
 
-    let qtySpan = document.getElementById("qty-" + item.name);
-
+    const qtySpan = document.getElementById("qty-" + item.name);
     if(qtySpan){
       qtySpan.innerText = item.quantity;
     }
@@ -122,7 +99,7 @@ function renderCart(){
           <p>Quantité : ${item.quantity}</p>
           <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
         </div>
-        <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
+        <button class="remove-btn" onclick="removeItem('${item.name}')">×</button>
       </div>
     `;
   });
@@ -158,49 +135,8 @@ function renderCart(){
   updateCartCount();
 }
 
-(function(){
-  emailjs.init("TON_PUBLIC_KEY"); // ⚠️ à remplacer
-})();
-
 function confirmOrder(){
-
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-
-  if(!name || !phone || !address){
-    alert("Veuillez remplir toutes les informations");
-    return;
-  }
-
-  if(cart.length === 0){
-    alert("Votre panier est vide");
-    return;
-  }
-
-  let orderText = "";
-  let total = 0;
-
-  cart.forEach(item=>{
-    orderText += `${item.name} x${item.qty} = ${item.price * item.qty} FCFA\n`;
-    total += item.price * item.qty;
-  });
-
-  let templateParams = {
-    name: name,
-    phone: phone,
-    address: address,
-    order: orderText,
-    total: total + " FCFA"
-  };
-
-  emailjs.send("TON_SERVICE_ID","TON_TEMPLATE_ID",templateParams)
-  .then(function(response){
-      alert("Commande envoyée avec succès ✨");
-      cart = [];
-      updateCart();
-  }, function(error){
-      alert("Erreur lors de l'envoi ❌");
-      console.log(error);
-  });
+  alert("Commande confirmée.");
 }
+
+renderCart();

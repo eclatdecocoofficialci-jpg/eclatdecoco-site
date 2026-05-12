@@ -19,7 +19,6 @@
   --coffee-light:#c49a6c;
   --dark:#2d1f16;
   --soft:#eadfd6;
-  --text:#2d1f16;
   --danger:#b3261e;
 }
 
@@ -28,72 +27,26 @@
 body{
   margin:0;
   font-family:'Questrial', sans-serif;
-  background:var(--cream);
-  color:var(--text);
+  color:var(--dark);
+  background:
+    linear-gradient(rgba(248,243,238,0.70), rgba(248,243,238,0.80)),
+    url("coco-bg.jpg") center/cover fixed no-repeat;
 }
 
-/* HERO */
-
-.hero{
-  position:relative;
-  height:360px;
-  background-image:url("coco-bg.jpg");
-  background-size:cover;
-  background-position:center 35%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.42);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  color:white;
-  padding:20px;
-}
-
-.brand-name{
-  font-size:3.6rem;
-  font-weight:400;
-  margin:0;
-  letter-spacing:2px;
-}
-
-.brand-sub{
-  margin-top:15px;
-  letter-spacing:7px;
-  text-transform:uppercase;
-  font-size:0.9rem;
-}
-
-.hero-text{
-  max-width:720px;
-  margin:22px auto 0;
-  line-height:1.7;
-  font-size:0.95rem;
-  color:#f8f3ee;
-}
-
-/* TOP BAR */
+/* TOP NAV */
 
 .top-bar{
+  height:82px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 35px;
-  background:white;
-  border-bottom:1px solid var(--soft);
+  padding:0 36px;
+  background:rgba(255,250,246,0.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(234,223,214,0.8);
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:50;
 }
 
 .menu-btn{
@@ -105,20 +58,10 @@ body{
   letter-spacing:1px;
 }
 
-.menu-btn:hover{
-  color:var(--coffee);
-}
-
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
 .page-title{
-  letter-spacing:3px;
+  letter-spacing:7px;
   text-transform:uppercase;
-  font-size:0.85rem;
+  font-size:0.9rem;
   color:#5f4633;
 }
 
@@ -128,19 +71,13 @@ body{
   background:#fffaf6;
   color:var(--coffee);
   border:1px solid var(--soft);
-  width:50px;
-  height:50px;
+  width:52px;
+  height:52px;
   border-radius:50%;
   cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:0.3s;
-}
-
-.cart-icon-btn:hover{
-  background:#f3e6da;
-  transform:translateY(-2px);
 }
 
 .cart-icon-btn span{
@@ -158,103 +95,95 @@ body{
   justify-content:center;
 }
 
-/* SIDE MENU */
+/* HERO */
 
-.side-menu{
+.hero{
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 20px 40px;
+}
+
+.hero-content{
+  max-width:850px;
+  color:white;
+  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+}
+
+.brand-name{
+  font-size:4.4rem;
+  font-weight:400;
+  margin:0;
+  letter-spacing:2px;
+}
+
+.brand-sub{
+  margin-top:18px;
+  letter-spacing:8px;
+  text-transform:uppercase;
+  font-size:0.95rem;
+}
+
+.hero-line{
+  width:80px;
+  height:1px;
+  background:white;
+  margin:22px auto;
+}
+
+.hero-text{
+  max-width:760px;
+  margin:auto;
+  line-height:1.9;
+  font-size:1.05rem;
+}
+
+/* DRAWERS */
+
+.drawer-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:100;
+  opacity:0;
+  visibility:hidden;
+  transition:0.3s;
+}
+
+.drawer-bg.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.side-menu,
+.cart-drawer{
   position:fixed;
   top:0;
-  left:-330px;
-  width:310px;
-  height:100%;
-  background:#fffaf6;
-  z-index:100;
-  padding:30px 25px;
-  box-shadow:10px 0 30px rgba(0,0,0,0.12);
-  transition:0.35s ease;
+  height:100vh;
+  width:340px;
+  max-width:90%;
+  background:rgba(255,250,246,0.96);
+  backdrop-filter:blur(14px);
+  z-index:150;
+  padding:28px;
   overflow-y:auto;
+  transition:0.35s ease;
+  box-shadow:0 0 35px rgba(0,0,0,0.18);
+}
+
+.side-menu{
+  left:-360px;
 }
 
 .side-menu.active{
   left:0;
 }
 
-.close-menu{
-  border:none;
-  background:var(--coffee);
-  color:white;
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  float:right;
-  cursor:pointer;
-}
-
-.side-menu h2{
-  margin-top:60px;
-  color:var(--coffee);
-  font-size:1.4rem;
-  letter-spacing:1px;
-}
-
-.about-text{
-  font-size:0.92rem;
-  line-height:1.8;
-  color:#5f4633;
-  border-bottom:1px solid var(--soft);
-  padding-bottom:20px;
-  margin-bottom:20px;
-}
-
-.menu-list button{
-  width:100%;
-  text-align:left;
-  border:none;
-  background:white;
-  color:#5f4633;
-  padding:14px 15px;
-  margin-bottom:8px;
-  border-radius:20px;
-  cursor:pointer;
-  font-family:'Questrial', sans-serif;
-  transition:0.3s;
-}
-
-.menu-list button:hover,
-.menu-list button.active{
-  background:var(--coffee);
-  color:white;
-}
-
-/* CART DRAWER */
-
-.drawer-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.35);
-  z-index:150;
-  opacity:0;
-  visibility:hidden;
-  transition:0.3s;
-}
-
-.drawer-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
 .cart-drawer{
-  position:fixed;
-  top:0;
-  right:-430px;
+  right:-440px;
   width:420px;
-  max-width:92%;
-  height:100vh;
-  background:#fffaf6;
-  z-index:200;
-  padding:25px;
-  box-shadow:-10px 0 30px rgba(0,0,0,0.15);
-  transition:0.35s ease;
-  overflow-y:auto;
 }
 
 .cart-drawer.active{
@@ -272,75 +201,97 @@ body{
 
 .drawer-header h2{
   margin:0;
-  color:var(--coffee);
   font-weight:400;
-  letter-spacing:1px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:1rem;
+  color:var(--dark);
 }
 
-.close-cart{
+.close-btn{
   border:none;
-  background:var(--coffee);
-  color:white;
-  width:34px;
-  height:34px;
-  border-radius:50%;
+  background:transparent;
+  font-size:1.5rem;
+  color:var(--dark);
   cursor:pointer;
 }
 
-/* WELCOME */
+/* MENU */
 
-.welcome-banner{
-  text-align:center;
-  padding:35px 25px;
-  background:linear-gradient(to bottom,#ffffff,#f8f3ee);
-}
-
-.welcome-banner h2{
-  font-size:2.1rem;
-  font-weight:400;
+.about-title{
   color:var(--coffee);
-  margin:0 0 12px;
-  letter-spacing:1px;
+  font-size:1.1rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:25px;
 }
 
-.welcome-banner p{
-  max-width:780px;
-  margin:auto;
-  font-size:0.95rem;
-  line-height:1.7;
+.about-text{
+  font-size:0.92rem;
+  line-height:1.8;
   color:#5f4633;
+  border-bottom:1px solid var(--soft);
+  padding-bottom:20px;
+  margin-bottom:20px;
+}
+
+.menu-list button{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:#5f4633;
+  padding:14px 12px;
+  text-align:left;
+  border-bottom:1px solid rgba(234,223,214,0.8);
+  font-family:'Questrial', sans-serif;
+  cursor:pointer;
+}
+
+.menu-list button.active,
+.menu-list button:hover{
+  background:#ead7c5;
+  border-radius:14px;
+  color:var(--dark);
 }
 
 /* PRODUCTS */
 
-.shop-layout{
-  padding:30px 35px 35px;
+.collection-title{
+  text-align:center;
+  color:white;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:1rem;
+  margin:0 0 28px;
+  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+}
+
+.products-area{
+  padding:20px 6% 70px;
 }
 
 .products{
+  max-width:1050px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
 
 .card{
-  background:white;
-  border-radius:26px;
+  background:rgba(255,250,246,0.88);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(234,223,214,0.65);
+  border-radius:22px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(80,50,30,0.10);
-  transition:0.3s ease;
-}
-
-.card:hover{
-  transform:translateY(-6px);
+  box-shadow:0 12px 35px rgba(80,50,30,0.16);
 }
 
 .card img{
   width:100%;
   aspect-ratio:1/1;
-  object-fit:contain;
+  object-fit:cover;
   background:#f3ebe4;
-  padding:12px;
 }
 
 .card-content{
@@ -349,41 +300,38 @@ body{
 }
 
 .card-content h2{
-  font-size:1.45rem;
+  font-size:1.35rem;
   font-weight:400;
-  color:#4b3425;
-  margin:10px 0;
-  letter-spacing:1px;
+  margin:0 0 12px;
+  color:#3d2a1e;
 }
 
 .card-content p{
-  font-size:0.92rem;
+  font-size:0.9rem;
   line-height:1.7;
   color:#5f4633;
 }
 
 .price{
-  font-size:1.2rem;
   color:var(--coffee);
-  margin-top:18px;
+  font-size:1.15rem;
+  margin-top:15px;
 }
 
 .stock{
   color:#7b6b60;
-  font-size:0.9rem;
+  font-size:0.85rem;
 }
 
 .out-stock{
-  margin-top:12px;
+  margin-top:10px;
   display:inline-block;
   background:var(--danger);
   color:white;
   padding:8px 14px;
   border-radius:30px;
-  font-size:0.85rem;
+  font-size:0.8rem;
 }
-
-/* QUANTITY */
 
 .qty-box{
   display:flex;
@@ -394,13 +342,13 @@ body{
 }
 
 .qty-box button{
-  width:42px;
-  height:42px;
+  width:40px;
+  height:40px;
   border:none;
+  border-radius:50%;
   background:var(--coffee);
   color:white;
-  border-radius:50%;
-  font-size:1.3rem;
+  font-size:1.2rem;
   cursor:pointer;
 }
 
@@ -414,33 +362,28 @@ body{
 }
 
 .qty-box span{
-  font-size:1.2rem;
   min-width:20px;
-  text-align:center;
 }
 
-/* CART CONTENT */
+/* CART */
 
 .cart-item{
   display:grid;
   grid-template-columns:1fr 34px;
   gap:10px;
-  align-items:start;
   border-bottom:1px solid var(--soft);
   padding:15px 0;
 }
 
 .cart-item h4{
   margin:0;
-  font-size:1rem;
   font-weight:400;
-  letter-spacing:1px;
 }
 
 .cart-item p{
   margin:6px 0;
-  font-size:0.9rem;
   color:#5f4633;
+  font-size:0.9rem;
 }
 
 .remove-btn{
@@ -451,37 +394,29 @@ body{
   color:var(--coffee);
   border-radius:50%;
   cursor:pointer;
-  font-size:1rem;
   font-weight:bold;
 }
 
-.remove-btn:hover{
-  background:var(--coffee);
-  color:white;
-}
-
 .total{
+  color:var(--coffee);
   font-size:1.35rem;
   margin-top:25px;
-  color:#6b4a34;
   padding-top:15px;
   border-top:1px solid var(--soft);
 }
 
-input,
-textarea{
+input, textarea{
   width:100%;
   padding:14px;
   margin:10px 0;
   border:1px solid #d8c7b7;
   border-radius:14px;
   font-family:'Questrial', sans-serif;
-  font-size:0.9rem;
   background:#fffdfb;
 }
 
 textarea{
-  min-height:110px;
+  min-height:100px;
   resize:none;
 }
 
@@ -490,8 +425,8 @@ textarea{
   border:1px solid var(--soft);
   padding:13px;
   border-radius:18px;
-  font-size:0.9rem;
   color:#5f4633;
+  font-size:0.9rem;
 }
 
 .confirm-btn{
@@ -501,110 +436,103 @@ textarea{
   background:var(--coffee);
   color:white;
   border-radius:40px;
-  font-size:1rem;
-  cursor:pointer;
   margin-top:15px;
-  font-family:'Questrial', sans-serif;
+  cursor:pointer;
   letter-spacing:1px;
 }
 
-.confirm-btn:hover{
-  background:var(--coffee-light);
-}
-
-/* THANK YOU */
+/* FOOTER */
 
 .thank-you{
+  background:rgba(255,250,246,0.88);
   text-align:center;
-  padding:50px 25px;
-  background:white;
+  padding:45px 25px;
 }
 
 .thank-you h2{
-  font-size:2.1rem;
-  font-weight:400;
   color:var(--coffee);
+  font-weight:400;
+  font-size:2rem;
 }
 
 .thank-you p{
   max-width:750px;
   margin:auto;
-  font-size:1rem;
-  line-height:1.9;
+  line-height:1.8;
   color:#5f4633;
 }
 
 footer{
-  padding:30px;
+  padding:28px;
   text-align:center;
-  background:var(--dark);
+  background:rgba(45,31,22,0.92);
   color:white;
-  font-size:0.9rem;
 }
 
 /* MOBILE */
 
-@media(max-width:1000px){
+@media(max-width:900px){
   .products{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:650px){
-  .hero{height:300px;}
-  .brand-name{font-size:2.7rem;}
-  .brand-sub{font-size:0.7rem;letter-spacing:4px;}
-  .hero-text{font-size:0.85rem;margin-top:16px;}
-  .welcome-banner h2{font-size:1.7rem;}
-  .products{grid-template-columns:1fr;}
-  .shop-layout{padding:22px;}
-  .top-bar{padding:16px 22px;}
-  .page-title{font-size:0.7rem;letter-spacing:2px;}
+  .top-bar{
+    padding:14px 18px;
+  }
+
+  .page-title{
+    font-size:0.7rem;
+    letter-spacing:3px;
+  }
+
+  .hero{
+    min-height:360px;
+  }
+
+  .brand-name{
+    font-size:2.8rem;
+  }
+
+  .brand-sub{
+    font-size:0.72rem;
+    letter-spacing:4px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header class="hero">
-  <div class="hero-content">
-    <h1 class="brand-name">Éclat de Coco</h1>
-    <p class="brand-sub">100% Natural Products</p>
-    <p class="hero-text">
-      Soins naturels inspirés des traditions africaines,
-      pensés pour révéler l’éclat authentique de votre peau
-      avec élégance, douceur et luxe.
-    </p>
-  </div>
+<div class="drawer-bg" id="drawerBg" onclick="closeDrawers()"></div>
+
+<header class="top-bar">
+  <button class="menu-btn" onclick="openMenu()">☰ Catégories</button>
+
+  <div class="page-title">Boutique officielle</div>
+
+  <button class="cart-icon-btn" onclick="openCart()">
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width="22" height="22" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 7h12l-1 14H7L6 7z"></path>
+      <path d="M9 7a3 3 0 0 1 6 0"></path>
+    </svg>
+    <span id="cartCount">0</span>
+  </button>
 </header>
 
-<div class="top-bar">
-  <button class="menu-btn" onclick="toggleMenu()">☰ Catégories</button>
-
-  <div class="nav-right">
-    <div class="page-title">Boutique officielle</div>
-
-    <button class="cart-icon-btn" onclick="toggleCart()">
-      <svg xmlns="http://www.w3.org/2000/svg"
-           width="22" height="22" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="1.8"
-           stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 7h12l-1 14H7L6 7z"></path>
-        <path d="M9 7a3 3 0 0 1 6 0"></path>
-      </svg>
-      <span id="cartCount">0</span>
-    </button>
+<aside class="side-menu" id="sideMenu">
+  <div class="drawer-header">
+    <h2>Catégories</h2>
+    <button class="close-btn" onclick="closeDrawers()">×</button>
   </div>
-</div>
-
-<div class="side-menu" id="sideMenu">
-  <button class="close-menu" onclick="toggleMenu()">✕</button>
-  <h2>À propos de nous</h2>
-  <p class="about-text">
-    Éclat de Coco est une marque de soins naturels inspirée des traditions africaines
-    et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
-    pour offrir une expérience douce, sensorielle et élégante.
-  </p>
 
   <div class="menu-list">
     <button class="active" onclick="filterProducts('all', this)">Toutes les collections</button>
@@ -617,14 +545,19 @@ footer{
     <button onclick="filterProducts('creme', this)">Crème hydratante</button>
     <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
   </div>
-</div>
 
-<div class="drawer-overlay" id="drawerOverlay" onclick="toggleCart()"></div>
+  <h3 class="about-title">À propos de nous</h3>
+  <p class="about-text">
+    Éclat de Coco est une marque de soins naturels inspirée des traditions africaines
+    et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
+    pour offrir une expérience douce, sensorielle et élégante.
+  </p>
+</aside>
 
 <aside class="cart-drawer" id="cartDrawer">
   <div class="drawer-header">
     <h2>Votre Panier</h2>
-    <button class="close-cart" onclick="toggleCart()">✕</button>
+    <button class="close-btn" onclick="closeDrawers()">×</button>
   </div>
 
   <div id="cartItems">
@@ -647,61 +580,66 @@ footer{
   <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
 </aside>
 
-<div class="welcome-banner">
-  <h2>Bienvenue dans l’univers Éclat de Coco</h2>
-  <p>
-    Découvrez nos soins naturels inspirés des traditions africaines,
-    fabriqués avec passion à partir d’ingrédients nobles,
-    huiles végétales et beurres naturels soigneusement sélectionnés.
-  </p>
-</div>
-
-<div class="shop-layout">
-<section class="products">
-
-  <div class="card product" data-category="savons">
-    <img src="rose-vanille.jpg" alt="Rose & Vanille">
-    <div class="card-content">
-      <h2>Rose & Vanille</h2>
-      <p>Savon délicatement parfumé à la rose et à la vanille, conçu pour nettoyer la peau tout en douceur.</p>
-      <p class="price">3 000 FCFA</p>
-      <p class="stock" id="stock-Rose & Vanille">Stock : 12</p>
-      <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
-
-      <div class="qty-box">
-        <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
-        <span id="qty-Rose & Vanille">0</span>
-        <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
-      </div>
-    </div>
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="brand-name">Éclat de Coco</h1>
+    <p class="brand-sub">100% Natural Products</p>
+    <div class="hero-line"></div>
+    <p class="hero-text">
+      Soins naturels inspirés des traditions africaines,
+      pensés pour révéler l’éclat authentique de votre peau
+      avec élégance, douceur et luxe.
+    </p>
   </div>
-
-  <div class="card product" data-category="savons">
-    <img src="veloursdecafe.PNG" alt="Velours de Café">
-    <div class="card-content">
-      <h2>Velours de Café</h2>
-      <p>Savon exfoliant enrichi en café naturel, idéal pour purifier et révéler l’éclat de la peau.</p>
-      <p class="price">3 000 FCFA</p>
-      <p class="stock" id="stock-Velours de Café">Stock : 14</p>
-      <div class="out-stock" id="out-Velours de Café" style="display:none;">Rupture de stock</div>
-
-      <div class="qty-box">
-        <button id="minus-Velours de Café" onclick="changeQty('Velours de Café',3000,-1)">−</button>
-        <span id="qty-Velours de Café">0</span>
-        <button id="plus-Velours de Café" onclick="changeQty('Velours de Café',3000,1)">+</button>
-      </div>
-    </div>
-  </div>
-
 </section>
-</div>
+
+<section class="products-area">
+  <h2 class="collection-title">Nos Collections</h2>
+
+  <div class="products">
+
+    <div class="card product" data-category="savons">
+      <img src="rose-vanille.jpg" alt="Rose & Vanille">
+      <div class="card-content">
+        <h2>Rose & Vanille</h2>
+        <p>Savon délicatement parfumé à la rose et à la vanille, conçu pour nettoyer la peau tout en douceur.</p>
+        <p class="price">3 000 FCFA</p>
+        <p class="stock" id="stock-Rose & Vanille">Stock : 12</p>
+        <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
+
+        <div class="qty-box">
+          <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
+          <span id="qty-Rose & Vanille">0</span>
+          <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card product" data-category="savons">
+      <img src="veloursdecafe.PNG" alt="Velours de Café">
+      <div class="card-content">
+        <h2>Velours de Café</h2>
+        <p>Savon exfoliant enrichi en café naturel, idéal pour purifier et révéler l’éclat de la peau.</p>
+        <p class="price">3 000 FCFA</p>
+        <p class="stock" id="stock-Velours de Café">Stock : 14</p>
+        <div class="out-stock" id="out-Velours de Café" style="display:none;">Rupture de stock</div>
+
+        <div class="qty-box">
+          <button id="minus-Velours de Café" onclick="changeQty('Velours de Café',3000,-1)">−</button>
+          <span id="qty-Velours de Café">0</span>
+          <button id="plus-Velours de Café" onclick="changeQty('Velours de Café',3000,1)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <div class="thank-you">
   <h2>Merci pour votre achat ✨</h2>
   <p>
     Merci de faire partie de l’univers Éclat de Coco.
-    Chaque produit est conçu avec amour,
-    élégance et ingrédients naturels soigneusement sélectionnés.
+    Chaque produit est conçu avec amour, élégance et ingrédients naturels soigneusement sélectionnés.
   </p>
 </div>
 
@@ -720,13 +658,22 @@ const stock = {
   "Velours de Café":14
 };
 
-function toggleMenu(){
-  document.getElementById("sideMenu").classList.toggle("active");
+function openMenu(){
+  closeDrawers();
+  document.getElementById("sideMenu").classList.add("active");
+  document.getElementById("drawerBg").classList.add("active");
 }
 
-function toggleCart(){
-  document.getElementById("cartDrawer").classList.toggle("active");
-  document.getElementById("drawerOverlay").classList.toggle("active");
+function openCart(){
+  closeDrawers();
+  document.getElementById("cartDrawer").classList.add("active");
+  document.getElementById("drawerBg").classList.add("active");
+}
+
+function closeDrawers(){
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("cartDrawer").classList.remove("active");
+  document.getElementById("drawerBg").classList.remove("active");
 }
 
 function updateCartCount(){
@@ -750,7 +697,7 @@ function filterProducts(category, btn){
 
   if(btn){ btn.classList.add("active"); }
 
-  toggleMenu();
+  closeDrawers();
 }
 
 function changeQty(name, price, change){
@@ -764,7 +711,6 @@ function changeQty(name, price, change){
 
   if(item){
     item.quantity += change;
-
     if(item.quantity <= 0){
       cart = cart.filter(product => product.name !== name);
     }
@@ -820,8 +766,12 @@ function renderCart(){
     const qty = item ? item.quantity : 0;
     const remain = stock[product] - qty;
 
-    document.getElementById("stock-" + product).innerText = "Stock : " + Math.max(remain, 0);
-    document.getElementById("out-" + product).style.display = remain <= 0 ? "inline-block" : "none";
+    document.getElementById("stock-" + product).innerText =
+      "Stock : " + Math.max(remain, 0);
+
+    document.getElementById("out-" + product).style.display =
+      remain <= 0 ? "inline-block" : "none";
+
     document.getElementById("plus-" + product).disabled = remain <= 0;
     document.getElementById("minus-" + product).disabled = qty <= 0;
   });
@@ -866,7 +816,7 @@ function confirmOrder(){
     localStorage.removeItem("cart");
     cart = [];
     renderCart();
-    toggleCart();
+    closeDrawers();
   })
   .catch(function(error){
     alert("Erreur EmailJS : " + JSON.stringify(error));

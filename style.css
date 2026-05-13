@@ -84,18 +84,13 @@ body{
   height:500px;
   background:
     linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
-    url("landscape-photo.jpg") center 38%/cover no-repeat;
+    url("landscape-photo.jpg") center 40%/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
-@media(max-width:650px){
-  .hero{
-    height:380px;
-    background-position:center 40%;
-  }
-}
+
 .hero-content{
   max-width:760px;
   color:white;
@@ -158,14 +153,21 @@ body{
   overflow:hidden;
   box-shadow:0 8px 25px rgba(80,50,30,0.10);
   border:1px solid #f0e5da;
+  transition:0.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(80,50,30,0.15);
 }
 
 .product-card img{
   width:100%;
-  height:230px;
-  object-fit:cover;
+  height:260px;
+  object-fit:contain;
+  object-position:center;
   display:block;
-  background:#f3ebe4;
+  background:#f4eadf;
 }
 
 .product-content{
@@ -189,7 +191,6 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px;
   margin-top:18px;
 }
 
@@ -239,7 +240,6 @@ body{
 
 .qty-box button:disabled{
   background:#d7c5b7;
-  cursor:not-allowed;
 }
 
 /* DRAWERS */
@@ -250,7 +250,6 @@ body{
   z-index:100;
   opacity:0;
   visibility:hidden;
-  transition:0.3s;
 }
 
 .drawer-bg.active{
@@ -264,13 +263,11 @@ body{
   top:0;
   height:100vh;
   width:340px;
-  max-width:90%;
   background:#fffaf6;
   z-index:150;
   padding:28px;
   overflow-y:auto;
-  transition:0.35s ease;
-  box-shadow:0 0 35px rgba(0,0,0,0.18);
+  transition:0.35s;
 }
 
 .side-menu{
@@ -282,132 +279,12 @@ body{
 }
 
 .cart-drawer{
-  right:-440px;
+  right:-420px;
   width:420px;
 }
 
 .cart-drawer.active{
   right:0;
-}
-
-.drawer-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--soft);
-  padding-bottom:15px;
-  margin-bottom:20px;
-}
-
-.close-btn{
-  border:none;
-  background:transparent;
-  font-size:1.5rem;
-  cursor:pointer;
-}
-
-.menu-list button{
-  width:100%;
-  border:none;
-  background:transparent;
-  color:#5f4633;
-  padding:14px 12px;
-  text-align:left;
-  border-bottom:1px solid var(--soft);
-  font-family:'Questrial', sans-serif;
-  cursor:pointer;
-}
-
-.menu-list button.active,
-.menu-list button:hover{
-  background:#ead7c5;
-  border-radius:14px;
-}
-
-.about-title{
-  color:var(--coffee);
-  font-size:1rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-top:25px;
-}
-
-.about-text{
-  font-size:0.9rem;
-  line-height:1.8;
-  color:#5f4633;
-}
-
-/* CART */
-.cart-item{
-  display:grid;
-  grid-template-columns:1fr 34px;
-  gap:10px;
-  border-bottom:1px solid var(--soft);
-  padding:15px 0;
-}
-
-.remove-btn{
-  width:30px;
-  height:30px;
-  border:none;
-  background:#f3e6dc;
-  color:var(--coffee);
-  border-radius:50%;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.total{
-  color:var(--coffee);
-  font-size:1.25rem;
-  margin-top:25px;
-  padding-top:15px;
-  border-top:1px solid var(--soft);
-}
-
-input,
-textarea{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border:1px solid #d8c7b7;
-  border-radius:14px;
-  font-family:'Questrial', sans-serif;
-  background:#fffdfb;
-}
-
-textarea{
-  min-height:100px;
-  resize:none;
-}
-
-.note{
-  background:white;
-  border:1px solid var(--soft);
-  padding:13px;
-  border-radius:18px;
-  color:#5f4633;
-  font-size:0.9rem;
-}
-
-.cart-thankyou{
-  margin-top:28px;
-  padding-top:22px;
-  border-top:1px solid var(--soft);
-  text-align:center;
-}
-
-.confirm-btn{
-  width:100%;
-  padding:15px;
-  border:none;
-  background:var(--coffee);
-  color:white;
-  border-radius:40px;
-  margin-top:15px;
-  cursor:pointer;
-  letter-spacing:1px;
 }
 
 /* FOOTER */
@@ -420,14 +297,10 @@ footer{
   line-height:1.8;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* RESPONSIVE */
+@media(max-width:700px){
   .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero{
-    height:330px;
+    grid-template-columns:1fr;
   }
 }
 
@@ -442,7 +315,8 @@ footer{
   }
 
   .hero{
-    height:300px;
+    height:380px;
+    background-position:center 45%;
   }
 
   .brand-name{
@@ -457,13 +331,5 @@ footer{
 
   .hero-text{
     font-size:0.85rem;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .product-card img{
-    height:230px;
   }
 }

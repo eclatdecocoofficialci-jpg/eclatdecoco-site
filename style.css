@@ -250,6 +250,7 @@ body{
   z-index:100;
   opacity:0;
   visibility:hidden;
+  transition:0.3s ease;
 }
 
 .drawer-bg.active{
@@ -262,16 +263,18 @@ body{
   position:fixed;
   top:0;
   height:100vh;
-  width:340px;
   background:#fffaf6;
   z-index:150;
   padding:28px;
   overflow-y:auto;
-  transition:0.35s;
+  transition:0.35s ease;
 }
 
 .side-menu{
   left:-360px;
+  width:340px;
+  max-width:90%;
+  box-shadow:18px 0 45px rgba(45,31,22,0.18);
 }
 
 .side-menu.active{
@@ -279,12 +282,213 @@ body{
 }
 
 .cart-drawer{
-  right:-420px;
-  width:420px;
+  right:-470px;
+  width:470px;
+  max-width:92%;
+  padding:34px 32px;
+  box-shadow:-18px 0 45px rgba(45,31,22,0.20);
 }
 
 .cart-drawer.active{
   right:0;
+}
+
+/* DRAWER HEADER */
+.drawer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eadfd6;
+  padding-bottom:16px;
+  margin-bottom:22px;
+}
+
+.drawer-header h2{
+  margin:0;
+  font-family:Georgia, serif;
+  font-size:2rem;
+  font-weight:400;
+  letter-spacing:1px;
+  color:#5a3a25;
+}
+
+.close-btn{
+  border:none;
+  background:transparent;
+  font-size:1.8rem;
+  color:#5a3a25;
+  cursor:pointer;
+}
+
+/* SIDE MENU */
+.menu-list button{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:#5f4633;
+  padding:14px 12px;
+  text-align:left;
+  border-bottom:1px solid var(--soft);
+  font-family:'Questrial', sans-serif;
+  cursor:pointer;
+}
+
+.menu-list button.active,
+.menu-list button:hover{
+  background:#ead7c5;
+  border-radius:14px;
+}
+
+.about-title{
+  color:var(--coffee);
+  font-size:1rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:25px;
+}
+
+.about-text{
+  font-size:0.9rem;
+  line-height:1.8;
+  color:#5f4633;
+}
+
+/* CART PREMIUM */
+.cart-drawer h3{
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:#6b4a34;
+  margin:24px 0 12px;
+}
+
+.cart-drawer h3::before{
+  content:"●";
+  color:#9b7448;
+  margin-right:8px;
+  font-size:0.75rem;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:1fr 34px;
+  gap:12px;
+  border-bottom:1px solid #eadfd6;
+  padding:17px 0;
+}
+
+.cart-item h4{
+  margin:0 0 8px;
+  font-size:1rem;
+  font-weight:400;
+  letter-spacing:0.4px;
+  color:#2d1f16;
+}
+
+.cart-item p{
+  margin:5px 0;
+  color:#6b4a34;
+  font-size:0.9rem;
+}
+
+.remove-btn{
+  width:30px;
+  height:30px;
+  border:none;
+  background:#f3e6dc;
+  color:#9b7448;
+  border-radius:50%;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.total{
+  background:#fff3ea;
+  border:1px solid #eadfd6;
+  border-radius:16px;
+  padding:18px;
+  color:#9b7448;
+  font-size:1.25rem;
+  margin-top:22px;
+  text-align:right;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:14px 16px;
+  margin:8px 0;
+  border:none;
+  border-bottom:1px solid #e3d3c6;
+  border-radius:0;
+  font-family:'Questrial', sans-serif;
+  background:transparent;
+  color:#2d1f16;
+  font-size:0.95rem;
+}
+
+input:focus,
+textarea:focus{
+  outline:none;
+  border-bottom:1px solid var(--coffee);
+}
+
+textarea{
+  min-height:82px;
+  resize:none;
+}
+
+.note{
+  background:#fff3ea;
+  border:1px solid #eadfd6;
+  padding:15px 16px;
+  border-radius:16px;
+  color:#5f4633;
+  font-size:0.9rem;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+.cart-thankyou{
+  margin-top:26px;
+  padding-top:20px;
+  border-top:1px solid #eadfd6;
+  text-align:center;
+}
+
+.cart-thankyou h3{
+  text-transform:none;
+  letter-spacing:0;
+  color:#5a3a25;
+  font-size:1.25rem;
+  margin-bottom:10px;
+}
+
+.cart-thankyou h3::before{
+  content:"";
+}
+
+.cart-thankyou p{
+  font-size:0.9rem;
+  line-height:1.7;
+  color:#5f4633;
+}
+
+.confirm-btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  background:#9b7448;
+  color:white;
+  border-radius:40px;
+  margin-top:18px;
+  cursor:pointer;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.confirm-btn:hover{
+  background:#7b5737;
 }
 
 /* FOOTER */
@@ -331,5 +535,19 @@ footer{
 
   .hero-text{
     font-size:0.85rem;
+  }
+
+  .cart-drawer{
+    width:92%;
+    right:-100%;
+    padding:28px 22px;
+  }
+
+  .cart-drawer.active{
+    right:0;
+  }
+
+  .cart-drawer .drawer-header h2{
+    font-size:1.7rem;
   }
 }

@@ -10,9 +10,9 @@ const stock = {
   "Élixir de Ruche": 10,
   "Organique Pur Olive": 14,
   "Éclat de Laurier": 14,
-  "Éclat de Romarin": 14
+  "Éclat de Romarin": 14,
+  "Masque Capillaire Nourrissant": 3
 };
-
 function openMenu(){
   closeDrawers();
   document.getElementById("sideMenu").classList.add("active");
@@ -109,14 +109,14 @@ function renderCart(){
     const qty = item ? item.quantity : 0;
     const remain = stock[product] - qty;
 
-    const stockEl = document.getElementById("stock-" + product);
+    const badge = document.getElementById("badge-" + product);
     const outEl = document.getElementById("out-" + product);
     const plusBtn = document.getElementById("plus-" + product);
     const minusBtn = document.getElementById("minus-" + product);
 
-    if(stockEl){
-      stockEl.innerText = "Stock : " + Math.max(remain, 0);
-    }
+    if(badge){
+  badge.style.display = remain <= 0 ? "block" : "none";
+}
 
     if(outEl){
       outEl.style.display = remain <= 0 ? "inline-block" : "none";
@@ -178,3 +178,8 @@ function confirmOrder(){
       console.log("Erreur EmailJS :", error);
     });
 }
+renderCart();
+
+document.addEventListener("DOMContentLoaded", function(){
+  filterProducts("savons", document.querySelector(".menu-list button.active"));
+});

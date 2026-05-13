@@ -1,4 +1,4 @@
-emailjs.init("uXzUSZQODQlmyuGgb");
+emailjs.init("wSP62MSM78UlgV4eF");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;

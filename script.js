@@ -155,7 +155,7 @@ function confirmOrder(){
   }).join("\n");
 
   const templateParams = {
-    email: "sarahajamii@icloud.com",
+    to_email: "sarahajamii@icloud.com",
     customer_name: name,
     customer_phone: phone,
     customer_address: address,
@@ -166,14 +166,15 @@ function confirmOrder(){
   };
 
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
-  .then(function(){
-    alert("Commande confirmée. Nous vous contacterons rapidement.");
-    localStorage.removeItem("cart");
-    cart = [];
-    renderCart();
-    closeDrawers();
-  })
-.catch(function(error){
-  alert("Erreur EmailJS : " + JSON.stringify(error));
-});
+    .then(function(response){
+      alert("Commande envoyée avec succès !");
+      localStorage.removeItem("cart");
+      cart = [];
+      renderCart();
+      closeDrawers();
+    })
+    .catch(function(error){
+      alert("Erreur EmailJS : " + JSON.stringify(error));
+      console.log("Erreur EmailJS :", error);
+    });
 }

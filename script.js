@@ -13,6 +13,7 @@ const stock = {
   "Éclat de Romarin": 14,
   "Masque Capillaire Nourrissant": 3
 };
+
 function openMenu(){
   closeDrawers();
   document.getElementById("sideMenu").classList.add("active");
@@ -34,6 +35,27 @@ function closeDrawers(){
 function updateCartCount(){
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("cartCount").innerText = count;
+}
+
+function filterProducts(category, btn){
+  const products = document.querySelectorAll(".product");
+
+  products.forEach(product => {
+    product.style.display =
+      category === "all" || product.dataset.category === category
+      ? "block"
+      : "none";
+  });
+
+  document.querySelectorAll(".menu-list button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  closeDrawers();
 }
 
 function changeQty(name, price, change){
@@ -108,39 +130,36 @@ function renderCart(){
     const item = cart.find(i => i.name === product);
     const qty = item ? item.quantity : 0;
     const remain = stock[product] - qty;
-const badge = document.getElementById("badge-" + product);
-const promoBadge = document.querySelector(`[data-name="${product}"] .badge-product`);
-const outEl = document.getElementById("out-" + product);
-const plusBtn = document.getElementById("plus-" + product);
-const minusBtn = document.getElementById("minus-" + product);
 
-if(badge){
-  badge.style.display = remain <= 0 ? "block" : "none";
-}
+    const badge = document.getElementById("badge-" + product);
+    const promoBadge = document.querySelector(`[data-name="${product}"] .badge-product`);
+    const outEl = document.getElementById("out-" + product);
+    const plusBtn = document.getElementById("plus-" + product);
+    const minusBtn = document.getElementById("minus-" + product);
 
-if(promoBadge){
-  promoBadge.style.display = remain <= 0 ? "none" : "block";
-}
-function filterProducts(category, btn){
-  const products = document.querySelectorAll(".product");
+    if(badge){
+      badge.style.display = remain <= 0 ? "block" : "none";
+    }
 
-  products.forEach(product => {
-    if(category === "all" || product.dataset.category === category){
-      product.style.display = "block";
-    }else{
-      product.style.display = "none";
+    if(promoBadge){
+      promoBadge.style.display = remain <= 0 ? "none" : "block";
+    }
+
+    if(outEl){
+      outEl.style.display = remain <= 0 ? "inline-block" : "none";
+    }
+
+    if(plusBtn){
+      plusBtn.disabled = remain <= 0;
+    }
+
+    if(minusBtn){
+      minusBtn.disabled = qty <= 0;
     }
   });
 
-  document.querySelectorAll(".menu-list button").forEach(button => {
-    button.classList.remove("active");
-  });
-
-  if(btn){
-    btn.classList.add("active");
-  }
-
-  closeDrawers();
+  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
+  updateCartCount();
 }
 
 function confirmOrder(){
@@ -174,7 +193,7 @@ function confirmOrder(){
   };
 
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
-    .then(function(response){
+    .then(function(){
       alert("Commande envoyée avec succès !");
       localStorage.removeItem("cart");
       cart = [];
@@ -186,8 +205,8 @@ function confirmOrder(){
       console.log("Erreur EmailJS :", error);
     });
 }
-renderCart();
 
 document.addEventListener("DOMContentLoaded", function(){
+  renderCart();
   filterProducts("savons", document.querySelector(".menu-list button.active"));
 });

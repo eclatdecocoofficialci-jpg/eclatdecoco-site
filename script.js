@@ -215,3 +215,7 @@ document.addEventListener("DOMContentLoaded", function(){
   renderCart();
   filterProducts("savons", document.querySelector(".menu-list button.active"));
 });
+document.addEventListener("DOMContentLoaded", function(){
+  renderCart();
+  filterProducts("lotions naturelles", document.querySelector(".menu-list button.active"));
+});

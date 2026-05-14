@@ -108,31 +108,18 @@ function renderCart(){
     const item = cart.find(i => i.name === product);
     const qty = item ? item.quantity : 0;
     const remain = stock[product] - qty;
+const badge = document.getElementById("badge-" + product);
+const promoBadge = document.querySelector(`[data-name="${product}"] .badge-product`);
+const outEl = document.getElementById("out-" + product);
+const plusBtn = document.getElementById("plus-" + product);
+const minusBtn = document.getElementById("minus-" + product);
 
-    const badge = document.getElementById("badge-" + product);
-    const outEl = document.getElementById("out-" + product);
-    const plusBtn = document.getElementById("plus-" + product);
-    const minusBtn = document.getElementById("minus-" + product);
-
-    if(badge){
+if(badge){
   badge.style.display = remain <= 0 ? "block" : "none";
 }
 
-    if(outEl){
-      outEl.style.display = remain <= 0 ? "inline-block" : "none";
-    }
-
-    if(plusBtn){
-      plusBtn.disabled = remain <= 0;
-    }
-
-    if(minusBtn){
-      minusBtn.disabled = qty <= 0;
-    }
-  });
-
-  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
-  updateCartCount();
+if(promoBadge){
+  promoBadge.style.display = remain <= 0 ? "none" : "block";
 }
 function filterProducts(category, btn){
   const products = document.querySelectorAll(".product");

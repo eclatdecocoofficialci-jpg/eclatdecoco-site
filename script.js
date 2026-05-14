@@ -134,6 +134,27 @@ function renderCart(){
   totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
   updateCartCount();
 }
+function filterProducts(category, btn){
+  const products = document.querySelectorAll(".product");
+
+  products.forEach(product => {
+    if(category === "all" || product.dataset.category === category){
+      product.style.display = "block";
+    }else{
+      product.style.display = "none";
+    }
+  });
+
+  document.querySelectorAll(".menu-list button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  closeDrawers();
+}
 
 function confirmOrder(){
   const name = document.getElementById("name").value.trim();

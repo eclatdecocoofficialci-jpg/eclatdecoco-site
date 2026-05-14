@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=30">
+  <link rel="stylesheet" href="style.css?v=2000">
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -41,21 +41,18 @@
     <button class="close-btn" onclick="closeDrawers()">×</button>
   </div>
 
-<div class="menu-list">
-  <button onclick="filterProducts('all', this)">Toutes les collections</button>
+  <div class="menu-list">
+    <button onclick="filterProducts('all', this)">Toutes les collections</button>
+    <button class="active" onclick="filterProducts('savons', this)">Savons artisanaux</button>
+    <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
+    <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
+    <button onclick="filterProducts('masques', this)">Masques cheveux</button>
+    <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
+    <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
+    <button onclick="filterProducts('creme', this)">Crème hydratante</button>
+    <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
+  </div>
 
-  <button class="active" onclick="filterProducts('savons', this)">
-    Savons artisanaux
-  </button>
-
-  <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
-  <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
-  <button onclick="filterProducts('masques', this)">Masques cheveux</button>
-  <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
-  <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
-  <button onclick="filterProducts('creme', this)">Crème hydratante</button>
-  <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
-</div>
   <h3 class="about-title">À propos de nous</h3>
   <p class="about-text">
     Éclat de Coco est une marque de soins naturels inspirée des traditions africaines 
@@ -88,7 +85,7 @@
   </div>
 
   <div class="cart-thankyou">
-    <h3>Merci pour votre achat </h3>
+    <h3>Merci pour votre achat</h3>
     <p>
       Merci de faire partie de l’univers Éclat de Coco.
       Chaque commande est préparée avec soin, élégance et ingrédients naturels soigneusement sélectionnés.
@@ -110,7 +107,7 @@
     </p>
   </div>
 </section>
-  
+
 <section class="best-sellers">
   <p class="section-label">Sélection signature</p>
   <h2>Best Sellers</h2>
@@ -140,14 +137,15 @@
 
   </div>
 </section>
+
 <section class="products-area">
   <h2 class="collection-title">Nos Collections</h2>
-  
 
   <div class="products">
 
-    <div class="product-card product" data-category="savons">
+    <div class="product-card product" data-category="savons" data-name="Rose & Vanille">
       <img src="rose-vanille.jpg" alt="Savon Rose & Vanille">
+
       <div class="product-content">
         <h3>Rose & Vanille</h3>
         <p class="description">
@@ -155,11 +153,13 @@
           d’huile de rose fabriquée à la main et d’extraits de fleurs cultivées dans nos jardins.
           Une mousse douce au parfum élégant de rose et de vanille.
         </p>
+
         <div class="product-info">
           <span class="price">3000 FCFA</span>
-          <span class="stock" id="stock-Rose & Vanille">Stock : 21</span>
         </div>
+
         <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
+
         <div class="qty-box">
           <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
           <span id="qty-Rose & Vanille">0</span>
@@ -168,8 +168,9 @@
       </div>
     </div>
 
-    <div class="product-card product" data-category="savons">
+    <div class="product-card product" data-category="savons" data-name="Douceur de Coco">
       <img src="douceurdecoco.jpg" alt="Savon Douceur de Coco">
+
       <div class="product-content">
         <h3>Douceur de Coco</h3>
         <p class="description">
@@ -177,11 +178,13 @@
           d’extrait de coco râpé et de beurre de karité.
           Il nettoie la peau en douceur tout en laissant une sensation gourmande et réconfortante.
         </p>
+
         <div class="product-info">
           <span class="price">3000 FCFA</span>
-          <span class="stock" id="stock-Douceur de Coco">Stock : 8</span>
         </div>
+
         <div class="out-stock" id="out-Douceur de Coco" style="display:none;">Rupture de stock</div>
+
         <div class="qty-box">
           <button id="minus-Douceur de Coco" onclick="changeQty('Douceur de Coco',3000,-1)">−</button>
           <span id="qty-Douceur de Coco">0</span>
@@ -190,8 +193,9 @@
       </div>
     </div>
 
-    <div class="product-card product" data-category="savons">
+    <div class="product-card product" data-category="savons" data-name="Câlin d’Orange">
       <img src="calindorange.jpg" alt="Savon Câlin d’Orange">
+
       <div class="product-content">
         <h3>Câlin d’Orange</h3>
         <p class="description">
@@ -199,11 +203,13 @@
           à base d’huile de coco pure, de beurre de karité et d’extrait naturel d’orange.
           Sa mousse douce enveloppe la peau d’un parfum frais et ensoleillé.
         </p>
+
         <div class="product-info">
           <span class="price">3000 FCFA</span>
-          <span class="stock" id="stock-Câlin d’Orange">Stock : 6</span>
         </div>
+
         <div class="out-stock" id="out-Câlin d’Orange" style="display:none;">Rupture de stock</div>
+
         <div class="qty-box">
           <button id="minus-Câlin d’Orange" onclick="changeQty('Câlin d’Orange',3000,-1)">−</button>
           <span id="qty-Câlin d’Orange">0</span>
@@ -212,8 +218,9 @@
       </div>
     </div>
 
-    <div class="product-card product" data-category="savons">
+    <div class="product-card product" data-category="savons" data-name="Élixir de Ruche">
       <img src="elixirderuche2.jpg" alt="Savon Élixir de Ruche">
+
       <div class="product-content">
         <h3>Élixir de Ruche</h3>
         <p class="description">
@@ -221,11 +228,13 @@
           formulé à base d’huile de coco, de miel d’acacia pur
           et d’extraits naturels de cire et de pépins de ruche.
         </p>
+
         <div class="product-info">
           <span class="price">2000 FCFA</span>
-          <span class="stock" id="stock-Élixir de Ruche">Stock : 10</span>
         </div>
+
         <div class="out-stock" id="out-Élixir de Ruche" style="display:none;">Rupture de stock</div>
+
         <div class="qty-box">
           <button id="minus-Élixir de Ruche" onclick="changeQty('Élixir de Ruche',2000,-1)">−</button>
           <span id="qty-Élixir de Ruche">0</span>
@@ -234,8 +243,9 @@
       </div>
     </div>
 
-    <div class="product-card product" data-category="savons">
+    <div class="product-card product" data-category="savons" data-name="Organique Pur Olive">
       <img src="olivekarite2.jpg" alt="Savon Organique Pur Olive">
+
       <div class="product-content">
         <h3>Organique Pur Olive</h3>
         <p class="description">
@@ -243,11 +253,13 @@
           enrichi en beurre de karité et en huile de coco naturelle.
           Sa formule douce nettoie la peau sans l’assécher.
         </p>
+
         <div class="product-info">
           <span class="price">3000 FCFA</span>
-          <span class="stock" id="stock-Organique Pur Olive">Stock : 14</span>
         </div>
+
         <div class="out-stock" id="out-Organique Pur Olive" style="display:none;">Rupture de stock</div>
+
         <div class="qty-box">
           <button id="minus-Organique Pur Olive" onclick="changeQty('Organique Pur Olive',3000,-1)">−</button>
           <span id="qty-Organique Pur Olive">0</span>
@@ -255,101 +267,95 @@
         </div>
       </div>
     </div>
-      <div class="product-card product" data-category="savons">
-  <img src="eclatdelaurier.jpg" alt="Savon Éclat de Laurier">
 
-  <div class="product-content">
-    <h3>Éclat de Laurier</h3>
+    <div class="product-card product" data-category="savons" data-name="Éclat de Laurier">
+      <img src="eclatdelaurier.jpg" alt="Savon Éclat de Laurier">
 
-    <p class="description">
-      Un savon purifiant et apaisant inspiré des vertus du laurier,
-      à base d’huile de coco, de beurre de karité et d’extrait naturel
-      de feuilles de laurier. Il aide à nettoyer la peau en douceur
-      tout en laissant une sensation fraîche et équilibrée.
-    </p>
+      <div class="product-content">
+        <h3>Éclat de Laurier</h3>
+        <p class="description">
+          Un savon purifiant et apaisant inspiré des vertus du laurier,
+          à base d’huile de coco, de beurre de karité et d’extrait naturel
+          de feuilles de laurier. Il aide à nettoyer la peau en douceur
+          tout en laissant une sensation fraîche et équilibrée.
+        </p>
 
-    <div class="product-info">
-      <span class="price">3000 FCFA</span>
-      <span class="stock" id="stock-Éclat de Laurier">Stock : 14</span>
+        <div class="product-info">
+          <span class="price">3000 FCFA</span>
+        </div>
+
+        <div class="out-stock" id="out-Éclat de Laurier" style="display:none;">Rupture de stock</div>
+
+        <div class="qty-box">
+          <button id="minus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,-1)">−</button>
+          <span id="qty-Éclat de Laurier">0</span>
+          <button id="plus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,1)">+</button>
+        </div>
+      </div>
     </div>
 
-    <div class="out-stock" id="out-Éclat de Laurier" style="display:none;">
-      Rupture de stock
+    <div class="product-card product" data-category="savons" data-name="Éclat de Romarin">
+      <img src="eclatderomarin.jpg" alt="Savon Éclat de Romarin">
+
+      <div class="product-content">
+        <h3>Éclat de Romarin</h3>
+        <p class="description">
+          Un savon tonifiant et purifiant aux notes végétales,
+          formulé à base d’huile de coco, de beurre de karité
+          et d’extrait naturel de romarin. Il réveille l’éclat de la peau
+          et procure une sensation de fraîcheur naturelle.
+        </p>
+
+        <div class="product-info">
+          <span class="price">3000 FCFA</span>
+        </div>
+
+        <div class="out-stock" id="out-Éclat de Romarin" style="display:none;">Rupture de stock</div>
+
+        <div class="qty-box">
+          <button id="minus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,-1)">−</button>
+          <span id="qty-Éclat de Romarin">0</span>
+          <button id="plus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,1)">+</button>
+        </div>
+      </div>
     </div>
 
-    <div class="qty-box">
-      <button id="minus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,-1)">−</button>
-      <span id="qty-Éclat de Laurier">0</span>
-      <button id="plus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,1)">+</button>
+    <div class="product-card product" data-category="masques" data-name="Masque Capillaire Nourrissant">
+      <img src="masquecapillaire.jpg" alt="Masque Capillaire Nourrissant">
+
+      <span class="badge-product badge-new">Nouveau</span>
+
+      <div class="badge-out" id="badge-Masque Capillaire Nourrissant">
+        Rupture
+      </div>
+
+      <div class="product-content">
+        <h3>Masque Capillaire Nourrissant</h3>
+
+        <p class="description">
+          Un soin capillaire riche et gourmand à base d’huile d’argan pure,
+          avec une douce odeur tropicale. Il nourrit intensément les cheveux,
+          aide à les lisser, réduit les cassures et apporte souplesse,
+          douceur et brillance, idéal pour les cheveux frisés, secs ou abîmés.
+        </p>
+
+        <div class="product-info">
+          <span class="price">13 000 FCFA</span>
+        </div>
+
+        <div class="out-stock" id="out-Masque Capillaire Nourrissant" style="display:none;">
+          Rupture de stock
+        </div>
+
+        <div class="qty-box">
+          <button id="minus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,-1)">−</button>
+          <span id="qty-Masque Capillaire Nourrissant">0</span>
+          <button id="plus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,1)">+</button>
+        </div>
+      </div>
     </div>
+
   </div>
-</div>
-
-<div class="product-card product" data-category="savons">
-  <img src="eclatderomarin.jpg" alt="Savon Éclat de Romarin">
-
-  <div class="product-content">
-    <h3>Éclat de Romarin</h3>
-
-    <p class="description">
-      Un savon tonifiant et purifiant aux notes végétales,
-      formulé à base d’huile de coco, de beurre de karité
-      et d’extrait naturel de romarin. Il réveille l’éclat de la peau
-      et procure une sensation de fraîcheur naturelle.
-    </p>
-
-    <div class="product-info">
-      <span class="price">3000 FCFA</span>
-      <span class="stock" id="stock-Éclat de Romarin">Stock : 14</span>
-    </div>
-
-    <div class="out-stock" id="out-Éclat de Romarin" style="display:none;">
-      Rupture de stock
-    </div>
-
-    <div class="qty-box">
-      <button id="minus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,-1)">−</button>
-      <span id="qty-Éclat de Romarin">0</span>
-      <button id="plus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,1)">+</button>
-    </div>
-  </div>
-</div>
-  </div>  
-  <div class="product-card product" data-category="masques">
-
-  <img src="masquecapillaire.jpg" alt="Masque Capillaire Nourrissant">
-
-  <div class="badge-out" id="badge-Masque Capillaire Nourrissant">
-    Rupture
-  </div>
-
-  <div class="product-content">
-   <h3>Masque Capillaire Nourissant</h3> 
-
-    <p class="description">
-      
-  Un soin capillaire riche et gourmand à base d’huile d’argan pure,
-  avec une douce odeur tropicale. Il nourrit intensément les cheveux,
-  aide à les lisser, réduit les cassures et apporte souplesse,
-  douceur et brillance, idéal pour les cheveux frisés, secs ou abîmés.
-    </p>
-
-    <div class="product-info">
-      <span class="price">13 000 FCFA</span>
-    </div>
-
-    <div class="out-stock" id="out-Masque Capillaire Nourrissant" style="display:none;">
-      Rupture de stock
-    </div>
-
-    <div class="qty-box">
-      <button id="minus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,-1)">−</button>
-      <span id="qty-Masque Capillaire Nourrissant">0</span>
-      <button id="plus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,1)">+</button>
-    </div>
-  </div>
-  </div>
-</div>
 </section>
 
 <footer>
@@ -359,7 +365,7 @@
   Abidjan — Côte d’Ivoire
 </footer>
 
-<script src="script.js?v=2000"></script>
+<script src="script.js?v=2001"></script>
 
 </body>
 </html>

@@ -44,6 +44,7 @@ function updateCartCount(){
 
 function filterProducts(category, btn){
   const products = document.querySelectorAll(".product");
+  const lotionHero = document.getElementById("lotionHero");
 
   products.forEach(product => {
     product.style.display =
@@ -51,6 +52,21 @@ function filterProducts(category, btn){
       ? "block"
       : "none";
   });
+
+  if(lotionHero){
+    lotionHero.classList.toggle("active", category === "lotions");
+  }
+
+  document.querySelectorAll(".menu-list button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  closeDrawers();
+}
 
   document.querySelectorAll(".menu-list button").forEach(button => {
     button.classList.remove("active");

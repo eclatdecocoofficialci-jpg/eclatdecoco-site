@@ -54,6 +54,10 @@ function filterProducts(category, btn){
 
   if(lotionHero){
     lotionHero.classList.toggle("active", category === "lotions");
+
+    if(category === "lotions"){
+      window.scrollTo({ top: lotionHero.offsetTop - 80, behavior: "smooth" });
+    }
   }
 
   document.querySelectorAll(".menu-list button").forEach(button => {

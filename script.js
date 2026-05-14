@@ -12,7 +12,6 @@ const stock = {
   "Éclat de Laurier": 14,
   "Éclat de Romarin": 14,
   "Masque Capillaire Nourrissant": 3,
-
   "Baby Rose": 5,
   "Bubble Gum": 5,
   "Lotion Câlin d’Orange": 5,
@@ -68,17 +67,6 @@ function filterProducts(category, btn){
   closeDrawers();
 }
 
-  document.querySelectorAll(".menu-list button").forEach(button => {
-    button.classList.remove("active");
-  });
-
-  if(btn){
-    btn.classList.add("active");
-  }
-
-  closeDrawers();
-}
-
 function changeQty(name, price, change){
   let item = cart.find(product => product.name === name);
   let currentQty = item ? item.quantity : 0;
@@ -90,16 +78,11 @@ function changeQty(name, price, change){
 
   if(item){
     item.quantity += change;
-
     if(item.quantity <= 0){
       cart = cart.filter(product => product.name !== name);
     }
   }else if(change > 0){
-    cart.push({
-      name: name,
-      price: price,
-      quantity: 1
-    });
+    cart.push({ name:name, price:price, quantity:1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -131,9 +114,7 @@ function renderCart(){
     total += item.price * item.quantity;
 
     const qtySpan = document.getElementById("qty-" + item.name);
-    if(qtySpan){
-      qtySpan.innerText = item.quantity;
-    }
+    if(qtySpan) qtySpan.innerText = item.quantity;
 
     cartItems.innerHTML += `
       <div class="cart-item">
@@ -158,25 +139,11 @@ function renderCart(){
     const plusBtn = document.getElementById("plus-" + product);
     const minusBtn = document.getElementById("minus-" + product);
 
-    if(badge){
-      badge.style.display = remain <= 0 ? "block" : "none";
-    }
-
-    if(promoBadge){
-      promoBadge.style.display = remain <= 0 ? "none" : "block";
-    }
-
-    if(outEl){
-      outEl.style.display = remain <= 0 ? "inline-block" : "none";
-    }
-
-    if(plusBtn){
-      plusBtn.disabled = remain <= 0;
-    }
-
-    if(minusBtn){
-      minusBtn.disabled = qty <= 0;
-    }
+    if(badge) badge.style.display = remain <= 0 ? "block" : "none";
+    if(promoBadge) promoBadge.style.display = remain <= 0 ? "none" : "block";
+    if(outEl) outEl.style.display = remain <= 0 ? "inline-block" : "none";
+    if(plusBtn) plusBtn.disabled = remain <= 0;
+    if(minusBtn) minusBtn.disabled = qty <= 0;
   });
 
   totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
@@ -198,9 +165,9 @@ function confirmOrder(){
     return;
   }
 
-  const orderDetails = cart.map(item => {
-    return `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`;
-  }).join("\n");
+  const orderDetails = cart.map(item =>
+    `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
+  ).join("\n");
 
   const templateParams = {
     to_email: "sarahajamii@icloud.com",
@@ -230,8 +197,4 @@ function confirmOrder(){
 document.addEventListener("DOMContentLoaded", function(){
   renderCart();
   filterProducts("savons", document.querySelector(".menu-list button.active"));
-});
-document.addEventListener("DOMContentLoaded", function(){
-  renderCart();
-  filterProducts("lotions naturelles", document.querySelector(".menu-list button.active"));
 });

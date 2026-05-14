@@ -335,3 +335,65 @@ footer{
   position:relative;
   z-index:1;
 }
+/* ===== MENU CATÉGORIES PREMIUM ===== */
+.side-menu{
+  background:#fffaf6;
+  padding:32px 28px;
+}
+
+.drawer-header h2{
+  font-family:Georgia, serif;
+  font-size:2.1rem;
+  font-weight:400;
+  color:#5a3a25;
+  margin:0;
+}
+
+.menu-list{
+  margin-top:22px;
+}
+
+.menu-list button{
+  width:100%;
+  display:block;
+  border:none;
+  background:transparent;
+  color:#5f4633;
+  padding:15px 14px;
+  text-align:left;
+  border-bottom:1px solid #eadfd6;
+  font-family:'Questrial', sans-serif;
+  font-size:0.95rem;
+  cursor:pointer;
+  border-radius:0;
+}
+
+.menu-list button.active,
+.menu-list button:hover{
+  background:#ead7c5;
+  color:#5a3a25;
+  border-radius:16px;
+  border-bottom:1px solid transparent;
+}
+
+.close-btn{
+  border:none;
+  background:transparent;
+  font-size:1.8rem;
+  color:#5a3a25;
+  cursor:pointer;
+}
+
+.about-title{
+  color:#9b7448;
+  font-size:1rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:30px;
+}
+
+.about-text{
+  font-size:0.95rem;
+  line-height:1.75;
+  color:#5f4633;
+}

@@ -11,11 +11,12 @@ const stock = {
   "Organique Pur Olive": 14,
   "Éclat de Laurier": 14,
   "Éclat de Romarin": 14,
-  "Masque Capillaire Nourrissant": 3
-    "Baby Rose": 5,
+  "Masque Capillaire Nourrissant": 3,
+
+  "Baby Rose": 5,
   "Bubble Gum": 5,
+  "Lotion Câlin d’Orange": 5,
   "El Mango": 5
-"Lotion Câlin d’Orange": 5
 };
 
 function openMenu(){

@@ -642,3 +642,62 @@ footer{
     font-size:2rem;
   }
 }
+/* BADGES PRODUITS */
+
+.product-card{
+  position:relative;
+}
+
+.badge-out{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#2d1f16;
+  color:white;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:0.72rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  z-index:4;
+  display:none;
+}
+
+.badge-product{
+  position:absolute;
+  top:15px;
+  right:15px;
+  color:white;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:0.72rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  z-index:3;
+  animation:badgeSoft 2.8s ease-in-out infinite;
+}
+
+.badge-best{
+  background:#9b7448;
+}
+
+.badge-new{
+  background:#c8a06a;
+}
+
+@keyframes badgeSoft{
+  0%{
+    transform:translateY(0);
+    opacity:0.9;
+  }
+
+  50%{
+    transform:translateY(-3px);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(0);
+    opacity:0.9;
+  }
+}

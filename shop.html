@@ -6,11 +6,9 @@
   <title>Boutique | Éclat de Coco</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=5000">
-
+  <link rel="stylesheet" href="style.css?v=9000">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
@@ -20,473 +18,145 @@
 
 <header class="top-bar">
   <button class="menu-btn" onclick="openMenu()">☰ Catégories</button>
-
   <div class="page-title">Boutique officielle</div>
-
   <button class="cart-icon-btn" onclick="openCart()">
-    <svg xmlns="http://www.w3.org/2000/svg"
-      width="22" height="22" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="1.8"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 7h12l-1 14H7L6 7z"></path>
-      <path d="M9 7a3 3 0 0 1 6 0"></path>
-    </svg>
-    <span id="cartCount">0</span>
+    🛒 <span id="cartCount">0</span>
   </button>
 </header>
 
+<!-- MENU -->
 <aside class="side-menu" id="sideMenu">
   <div class="drawer-header">
     <h2>Catégories</h2>
-    <button class="close-btn" onclick="closeDrawers()">×</button>
+    <button onclick="closeDrawers()">×</button>
   </div>
 
   <div class="menu-list">
-    <button onclick="filterProducts('all', this)">Toutes les collections</button>
-    <button class="active" onclick="filterProducts('savons', this)">Savons artisanaux</button>
-    <button onclick="filterProducts('lotions', this)">Lotions naturelles</button>
-    <button onclick="filterProducts('beurres', this)">Beurres corporels</button>
-    <button onclick="filterProducts('masques', this)">Masques cheveux</button>
-    <button onclick="filterProducts('serums-cheveux', this)">Sérums cheveux</button>
-    <button onclick="filterProducts('serums-visage', this)">Sérums visage</button>
-    <button onclick="filterProducts('creme', this)">Crème hydratante</button>
-    <button onclick="filterProducts('personnaliser', this)">Personnaliser</button>
+    <button onclick="filterProducts('all', this)">Toutes</button>
+    <button class="active" onclick="filterProducts('savons', this)">Savons</button>
+    <button onclick="filterProducts('lotions', this)">Lotions</button>
+    <button onclick="filterProducts('masques', this)">Masques</button>
   </div>
-
-  <h3 class="about-title">À propos de nous</h3>
-  <p class="about-text">
-    Éclat de Coco est une marque de soins naturels inspirée des traditions africaines 
-    et de la richesse botanique de la Côte d’Ivoire. Nos produits sont imaginés
-    pour offrir une expérience douce, sensorielle et élégante.
-  </p>
 </aside>
 
+<!-- PANIER -->
 <aside class="cart-drawer" id="cartDrawer">
   <div class="drawer-header">
     <h2>Votre Panier</h2>
-    <button class="close-btn" onclick="closeDrawers()">×</button>
+    <button onclick="closeDrawers()">×</button>
   </div>
 
-  <div id="cartItems">
-    <p>Votre panier est vide.</p>
-  </div>
+  <div id="cartItems"></div>
+  <p id="total">Total : 0 FCFA</p>
 
-  <p class="total" id="total">Total : 0 FCFA</p>
+  <input type="text" id="name" placeholder="Nom">
+  <input type="tel" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse"></textarea>
 
-  <h3>Informations client</h3>
-
-  <input type="text" id="name" placeholder="Nom complet">
-  <input type="tel" id="phone" placeholder="Numéro de téléphone">
-  <textarea id="address" placeholder="Adresse de livraison"></textarea>
-
-  <div class="note">
-    <p>Livraison : à partir de 2 000 FCFA selon votre commune.</p>
-    <p>Paiement à la livraison.</p>
-  </div>
-
-  <div class="cart-thankyou">
-    <h3>Merci pour votre achat</h3>
-    <p>
-      Merci de faire partie de l’univers Éclat de Coco.
-      Chaque commande est préparée avec soin, élégance et ingrédients naturels soigneusement sélectionnés.
-    </p>
-  </div>
-
-  <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande</button>
+  <button onclick="confirmOrder()">Commander</button>
 </aside>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1 class="brand-name">Éclat de Coco Official</h1>
-    <p class="brand-sub">100% Natural Products</p>
-    <div class="hero-line"></div>
-    <p class="hero-text">
-      Soins naturels inspirés des traditions africaines,
-      pensés pour révéler l’éclat authentique de votre peau
-      avec élégance, douceur et luxe.
-    </p>
+    <h1>Éclat de Coco</h1>
+    <p>Soins naturels premium</p>
   </div>
 </section>
 
-<section class="best-sellers">
-  <p class="section-label">Sélection signature</p>
-  <h2>Best Sellers</h2>
-
-  <div class="best-grid">
-
-    <div class="best-card">
-      <span class="best-badge">Best Seller</span>
-      <img src="rose-vanille.jpg" alt="Rose & Vanille">
-      <h3>Rose & Vanille</h3>
-      <p>Un savon floral, doux et gourmand pour une peau délicatement parfumée.</p>
-    </div>
-
-    <div class="best-card">
-      <span class="best-badge">Coup de cœur</span>
-      <img src="elixirderuche2.jpg" alt="Élixir de Ruche">
-      <h3>Élixir de Ruche</h3>
-      <p>Un soin sucré et nourrissant inspiré des trésors naturels de la ruche.</p>
-    </div>
-
-    <div class="best-card">
-      <span class="best-badge">Nouveau</span>
-      <img src="masquecapillaire.jpg" alt="Masque Capillaire Nourrissant">
-      <h3>Masque Capillaire Nourrissant</h3>
-      <p>Un soin tropical à l’huile d’argan pour nourrir, lisser et sublimer les cheveux.</p>
-    </div>
-
-  </div>
-  <section class="category-hero lotion-hero" id="lotionHero">
+<!-- HERO LOTION -->
+<section class="category-hero" id="lotionHero">
   <div class="category-hero-content">
     <h2>SIGNATURE ÉCLAT DE COCO</h2>
-
-    <p class="category-subtitle">
-      L’essence du soin naturel, inspirée par la nature ivoirienne.
-    </p>
-
-    <p class="category-text">
-      Chaque formule est développée avec une exigence de qualité et de pureté,
-      en privilégiant des ingrédients d’origine naturelle soigneusement sélectionnés.
-    </p>
-
-    <p class="category-points">
-      Sans parabènes • Sans silicones • Respect du film naturel de la peau
-    </p>
-
-    <p class="category-made">
-      Fabrication artisanale en Côte d’Ivoire
-    </p>
-
-    <p class="category-signature">
-      Éclat de Coco — révéler la beauté naturelle avec élégance.
-    </p>
+    <p>L’essence du soin naturel, inspirée par la nature ivoirienne.</p>
+    <p>Sans parabènes • Sans silicones • Respect du film naturel</p>
+    <p>Fabrication artisanale en Côte d’Ivoire</p>
   </div>
 </section>
-</section>
 
+<!-- PRODUITS -->
 <section class="products-area">
   <h2 class="collection-title">Nos Collections</h2>
 
   <div class="products">
 
+    <!-- SAVONS -->
     <div class="product-card product" data-category="savons" data-name="Rose & Vanille">
-      <img src="rose-vanille.jpg" alt="Savon Rose & Vanille">
-
-      <div class="product-content">
-        <h3>Rose & Vanille</h3>
-        <p class="description">
-          Un savon floral et gourmand à base de beurre de karité, d’huile de coco,
-          d’huile de rose fabriquée à la main et d’extraits de fleurs cultivées dans nos jardins.
-          Une mousse douce au parfum élégant de rose et de vanille.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Rose & Vanille" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,-1)">−</button>
-          <span id="qty-Rose & Vanille">0</span>
-          <button id="plus-Rose & Vanille" onclick="changeQty('Rose & Vanille',3000,1)">+</button>
-        </div>
+      <img src="rose-vanille.jpg">
+      <h3>Rose & Vanille</h3>
+      <p>3000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('Rose & Vanille',3000,-1)">-</button>
+        <span id="qty-Rose & Vanille">0</span>
+        <button onclick="changeQty('Rose & Vanille',3000,1)">+</button>
       </div>
     </div>
 
-    <div class="product-card product" data-category="savons" data-name="Douceur de Coco">
-      <img src="douceurdecoco.jpg" alt="Savon Douceur de Coco">
-
-      <div class="product-content">
-        <h3>Douceur de Coco</h3>
-        <p class="description">
-          Un savon crémeux et délicat à base d’huile de coco pure,
-          d’extrait de coco râpé et de beurre de karité.
-          Il nettoie la peau en douceur tout en laissant une sensation gourmande et réconfortante.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Douceur de Coco" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Douceur de Coco" onclick="changeQty('Douceur de Coco',3000,-1)">−</button>
-          <span id="qty-Douceur de Coco">0</span>
-          <button id="plus-Douceur de Coco" onclick="changeQty('Douceur de Coco',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card product" data-category="savons" data-name="Câlin d’Orange">
-      <img src="calindorange.jpg" alt="Savon Câlin d’Orange">
-
-      <div class="product-content">
-        <h3>Câlin d’Orange</h3>
-        <p class="description">
-          Un savon lumineux et réconfortant aux notes d’agrumes,
-          à base d’huile de coco pure, de beurre de karité et d’extrait naturel d’orange.
-          Sa mousse douce enveloppe la peau d’un parfum frais et ensoleillé.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Câlin d’Orange" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Câlin d’Orange" onclick="changeQty('Câlin d’Orange',3000,-1)">−</button>
-          <span id="qty-Câlin d’Orange">0</span>
-          <button id="plus-Câlin d’Orange" onclick="changeQty('Câlin d’Orange',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card product" data-category="savons" data-name="Élixir de Ruche">
-      <img src="elixirderuche2.jpg" alt="Savon Élixir de Ruche">
-
-      <div class="product-content">
-        <h3>Élixir de Ruche</h3>
-        <p class="description">
-          Un savon riche et nourrissant inspiré des trésors de la ruche,
-          formulé à base d’huile de coco, de miel d’acacia pur
-          et d’extraits naturels de cire et de pépins de ruche.
-        </p>
-
-        <div class="product-info">
-          <span class="price">2000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Élixir de Ruche" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Élixir de Ruche" onclick="changeQty('Élixir de Ruche',2000,-1)">−</button>
-          <span id="qty-Élixir de Ruche">0</span>
-          <button id="plus-Élixir de Ruche" onclick="changeQty('Élixir de Ruche',2000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card product" data-category="savons" data-name="Organique Pur Olive">
-      <img src="olivekarite2.jpg" alt="Savon Organique Pur Olive">
-
-      <div class="product-content">
-        <h3>Organique Pur Olive</h3>
-        <p class="description">
-          Un savon organique pur à base d’huile d’olive pressée à froid,
-          enrichi en beurre de karité et en huile de coco naturelle.
-          Sa formule douce nettoie la peau sans l’assécher.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Organique Pur Olive" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Organique Pur Olive" onclick="changeQty('Organique Pur Olive',3000,-1)">−</button>
-          <span id="qty-Organique Pur Olive">0</span>
-          <button id="plus-Organique Pur Olive" onclick="changeQty('Organique Pur Olive',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card product" data-category="savons" data-name="Éclat de Laurier">
-      <img src="eclatdelaurier.jpg" alt="Savon Éclat de Laurier">
-
-      <div class="product-content">
-        <h3>Éclat de Laurier</h3>
-        <p class="description">
-          Un savon purifiant et apaisant inspiré des vertus du laurier,
-          à base d’huile de coco, de beurre de karité et d’extrait naturel
-          de feuilles de laurier. Il aide à nettoyer la peau en douceur
-          tout en laissant une sensation fraîche et équilibrée.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Éclat de Laurier" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,-1)">−</button>
-          <span id="qty-Éclat de Laurier">0</span>
-          <button id="plus-Éclat de Laurier" onclick="changeQty('Éclat de Laurier',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card product" data-category="savons" data-name="Éclat de Romarin">
-      <img src="eclatderomarin.jpg" alt="Savon Éclat de Romarin">
-
-      <div class="product-content">
-        <h3>Éclat de Romarin</h3>
-        <p class="description">
-          Un savon tonifiant et purifiant aux notes végétales,
-          formulé à base d’huile de coco, de beurre de karité
-          et d’extrait naturel de romarin. Il réveille l’éclat de la peau
-          et procure une sensation de fraîcheur naturelle.
-        </p>
-
-        <div class="product-info">
-          <span class="price">3000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Éclat de Romarin" style="display:none;">Rupture de stock</div>
-
-        <div class="qty-box">
-          <button id="minus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,-1)">−</button>
-          <span id="qty-Éclat de Romarin">0</span>
-          <button id="plus-Éclat de Romarin" onclick="changeQty('Éclat de Romarin',3000,1)">+</button>
-        </div>
-      </div>
-    </div>
-
+    <!-- MASQUE -->
     <div class="product-card product" data-category="masques" data-name="Masque Capillaire Nourrissant">
-      <img src="masquecapillaire.jpg" alt="Masque Capillaire Nourrissant">
-
-      <span class="badge-product badge-new">Nouveau</span>
-
-      <div class="badge-out" id="badge-Masque Capillaire Nourrissant">
-        Rupture
-      </div>
-
-      <div class="product-content">
-        <h3>Masque Capillaire Nourrissant</h3>
-
-        <p class="description">
-          Un soin capillaire riche et gourmand à base d’huile d’argan pure,
-          avec une douce odeur tropicale. Il nourrit intensément les cheveux,
-          aide à les lisser, réduit les cassures et apporte souplesse,
-          douceur et brillance, idéal pour les cheveux frisés, secs ou abîmés.
-        </p>
-
-        <div class="product-info">
-          <span class="price">13 000 FCFA</span>
-        </div>
-
-        <div class="out-stock" id="out-Masque Capillaire Nourrissant" style="display:none;">
-          Rupture de stock
-        </div>
-
-        <div class="qty-box">
-          <button id="minus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,-1)">−</button>
-          <span id="qty-Masque Capillaire Nourrissant">0</span>
-          <button id="plus-Masque Capillaire Nourrissant" onclick="changeQty('Masque Capillaire Nourrissant',13000,1)">+</button>
-        </div>
+      <img src="masquecapillaire.jpg">
+      <h3>Masque Capillaire</h3>
+      <p>13 000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('Masque Capillaire Nourrissant',13000,-1)">-</button>
+        <span id="qty-Masque Capillaire Nourrissant">0</span>
+        <button onclick="changeQty('Masque Capillaire Nourrissant',13000,1)">+</button>
       </div>
     </div>
 
+    <!-- LOTIONS -->
+    <div class="product-card product" data-category="lotions" data-name="Baby Rose">
+      <img src="rosevanille.jpg">
+      <h3>Baby Rose</h3>
+      <p>5 000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('Baby Rose',5000,-1)">-</button>
+        <span id="qty-Baby Rose">0</span>
+        <button onclick="changeQty('Baby Rose',5000,1)">+</button>
+      </div>
+    </div>
+
+    <div class="product-card product" data-category="lotions" data-name="Bubble Gum">
+      <img src="bubblegum.jpg">
+      <h3>Bubble Gum</h3>
+      <p>5 000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('Bubble Gum',5000,-1)">-</button>
+        <span id="qty-Bubble Gum">0</span>
+        <button onclick="changeQty('Bubble Gum',5000,1)">+</button>
+      </div>
+    </div>
+
+    <div class="product-card product" data-category="lotions" data-name="Lotion Câlin d’Orange">
+      <img src="calindorange.jpg">
+      <h3>Câlin d’Orange</h3>
+      <p>5 000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('Lotion Câlin d’Orange',5000,-1)">-</button>
+        <span id="qty-Lotion Câlin d’Orange">0</span>
+        <button onclick="changeQty('Lotion Câlin d’Orange',5000,1)">+</button>
+      </div>
+    </div>
+
+    <div class="product-card product" data-category="lotions" data-name="El Mango">
+      <img src="elmango.jpg">
+      <h3>El Mango</h3>
+      <p>5 000 FCFA</p>
+      <div class="qty-box">
+        <button onclick="changeQty('El Mango',5000,-1)">-</button>
+        <span id="qty-El Mango">0</span>
+        <button onclick="changeQty('El Mango',5000,1)">+</button>
+      </div>
+    </div>
+
   </div>
-  <!-- BABY ROSE -->
-  <div class="product-card product" data-category="lotions" data-name="Baby Rose">
-
-<!-- BUBBLE GUM -->
-<div class="product-card product" data-category="lotions" data-name="Bubble Gum">
-  <img src="bubblegum.jpg" alt="Bubble Gum">
-
-  <span class="badge-product badge-new">Nouveau</span>
-
-  <div class="product-content">
-    <h3>Bubble Gum</h3>
-
-    <p class="description">
-      Une signature moderne, douce et irrésistiblement addictive. Sa texture légère
-      hydrate la peau et laisse un sillage sucré, discret et raffiné pour une peau
-      souple, lumineuse et pleine de fraîcheur.
-    </p>
-
-    <div class="product-info">
-      <span class="price">5 000 FCFA</span>
-    </div>
-
-    <p class="format">100 ML</p>
-
-    <div class="out-stock" id="out-Bubble Gum" style="display:none;">Rupture de stock</div>
-
-    <div class="qty-box">
-      <button id="minus-Bubble Gum" onclick="changeQty('Bubble Gum',5000,-1)">−</button>
-      <span id="qty-Bubble Gum">0</span>
-      <button id="plus-Bubble Gum" onclick="changeQty('Bubble Gum',5000,1)">+</button>
-    </div>
-  </div>
-</div>
-
-<!-- LOTION CÂLIN D’ORANGE -->
-<div class="product-card product" data-category="lotions" data-name="Lotion Câlin d’Orange">
-  <img src="calindorange.jpg" alt="Lotion Câlin d’Orange">
-
-  <div class="product-content">
-    <h3>Lotion Câlin d’Orange</h3>
-
-    <p class="description">
-      Un souffle d’énergie et de lumière. Cette lotion aux agrumes hydrate,
-      revitalise et apporte éclat et fraîcheur immédiate tout en laissant
-      une sensation légère et lumineuse sur la peau.
-    </p>
-
-    <div class="product-info">
-      <span class="price">5 000 FCFA</span>
-    </div>
-
-    <p class="format">100 ML</p>
-
-    <div class="out-stock" id="out-Lotion Câlin d’Orange" style="display:none;">
-      Rupture de stock
-    </div>
-
-    <div class="qty-box">
-      <button id="minus-Lotion Câlin d’Orange" onclick="changeQty('Lotion Câlin d’Orange',5000,-1)">−</button>
-      <span id="qty-Lotion Câlin d’Orange">0</span>
-      <button id="plus-Lotion Câlin d’Orange" onclick="changeQty('Lotion Câlin d’Orange',5000,1)">+</button>
-    </div>
-  </div>
-</div>
-
-<!-- EL MANGO -->
-<div class="product-card product" data-category="lotions" data-name="El Mango">
-  <img src="elmango.jpg" alt="El Mango">
-
-  <span class="badge-product badge-best">Best Seller</span>
-
-  <div class="product-content">
-    <h3>El Mango</h3>
-
-    <p class="description">
-      Une escapade sensorielle au cœur des tropiques. Sa texture riche et veloutée
-      nourrit intensément la peau, améliore sa souplesse et laisse un parfum
-      de mangue doux, solaire et irrésistible.
-    </p>
-
-    <div class="product-info">
-      <span class="price">5 000 FCFA</span>
-    </div>
-
-    <p class="format">100 ML</p>
-
-    <div class="out-stock" id="out-El Mango" style="display:none;">Rupture de stock</div>
-
-    <div class="qty-box">
-      <button id="minus-El Mango" onclick="changeQty('El Mango',5000,-1)">−</button>
-      <span id="qty-El Mango">0</span>
-      <button id="plus-El Mango" onclick="changeQty('El Mango',5000,1)">+</button>
-    </div>
-  </div>
-</div>
 </section>
 
 <footer>
-  © 2025 Éclat de Coco Official  
-  Tous droits réservés  
-  <br>
-  Abidjan — Côte d’Ivoire
+  © 2025 Éclat de Coco
 </footer>
 
-<script src="script.js?v=5000"></script>
+<script src="script.js?v=9000"></script>
 
 </body>
 </html>

@@ -700,3 +700,79 @@ footer{
     opacity:0.9;
   }
 }
+.category-hero{
+  display:none;
+  min-height:420px;
+  background:
+    linear-gradient(rgba(45,31,22,0.35), rgba(45,31,22,0.35)),
+    url("eclatcocolandscape.jpg") center/cover no-repeat;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 7%;
+  color:white;
+}
+
+.category-hero.active{
+  display:flex;
+}
+
+.category-hero-content{
+  max-width:850px;
+}
+
+.category-hero h2{
+  font-family:Georgia, serif;
+  font-size:2.6rem;
+  font-weight:400;
+  letter-spacing:3px;
+  margin:0 0 18px;
+}
+
+.category-subtitle{
+  font-size:1.05rem;
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+
+.category-text{
+  font-size:0.98rem;
+  line-height:1.8;
+  max-width:720px;
+  margin:0 auto 18px;
+}
+
+.category-points{
+  font-size:0.9rem;
+  letter-spacing:1.2px;
+  margin:18px 0;
+}
+
+.category-made{
+  margin-top:28px;
+  font-size:0.9rem;
+  letter-spacing:1.5px;
+}
+
+.category-signature{
+  margin-top:22px;
+  font-family:Georgia, serif;
+  font-size:1.15rem;
+}
+
+@media(max-width:650px){
+  .category-hero{
+    min-height:380px;
+    padding:45px 24px;
+  }
+
+  .category-hero h2{
+    font-size:1.8rem;
+  }
+
+  .category-text,
+  .category-subtitle,
+  .category-points{
+    font-size:0.85rem;
+  }
+}

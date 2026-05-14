@@ -304,3 +304,34 @@ footer{
   .products{ grid-template-columns:1fr; }
   .best-grid{ grid-template-columns:1fr; }
 }
+/* ===== FIX SUPER IMPORTANT ===== */
+
+/* overlay derrière tout */
+.drawer-bg{
+  z-index:1000;
+  transition:0.3s;
+}
+
+/* menu + panier AU-DESSUS */
+.side-menu{
+  z-index:1100;
+  box-shadow:18px 0 45px rgba(45,31,22,0.25);
+}
+
+.cart-drawer{
+  z-index:1100;
+  box-shadow:-18px 0 45px rgba(45,31,22,0.25);
+}
+
+/* scroll dans menu */
+.side-menu,
+.cart-drawer{
+  overflow-y:auto;
+}
+
+/* éviter que les produits passent au-dessus */
+.products-area,
+.hero{
+  position:relative;
+  z-index:1;
+}

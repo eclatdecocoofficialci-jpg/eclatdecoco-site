@@ -161,12 +161,13 @@ body{
   box-shadow:0 12px 30px rgba(80,50,30,0.15);
 }
 
-..product-card img{
+.product-card img{
   width:100%;
   aspect-ratio:1/1;
-  object-fit:cover;
+  object-fit:contain;
   object-position:center;
   display:block;
+  background:white;
 }
 
 .product-content{

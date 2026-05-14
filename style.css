@@ -397,3 +397,141 @@ footer{
   line-height:1.75;
   color:#5f4633;
 }
+/* ===== PANIER LUXE ===== */
+
+.cart-drawer{
+  background:#fff8f2;
+  border-left:1px solid #eadfd6;
+  padding:30px 25px;
+}
+
+/* TITRE */
+.cart-drawer h2{
+  font-family:Georgia, serif;
+  font-size:2rem;
+  font-weight:400;
+  color:#5a3a25;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+/* SECTIONS */
+.cart-drawer h3{
+  font-size:0.9rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#9b7448;
+  margin-top:25px;
+}
+
+/* INPUTS */
+.cart-drawer input,
+.cart-drawer textarea{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #eadfd6;
+  background:transparent;
+  padding:12px 5px;
+  margin-bottom:12px;
+  font-family:'Questrial', sans-serif;
+  font-size:0.9rem;
+}
+
+.cart-drawer input:focus,
+.cart-drawer textarea:focus{
+  outline:none;
+  border-bottom:1px solid #9b7448;
+}
+
+/* PRODUITS */
+#cartItems{
+  margin-top:15px;
+}
+
+.cart-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+  border-bottom:1px solid #f1e5dc;
+  padding-bottom:12px;
+}
+
+.cart-item img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  margin-right:10px;
+}
+
+.cart-item-name{
+  flex:1;
+  font-size:0.9rem;
+  color:#5f4633;
+}
+
+.cart-item-price{
+  color:#9b7448;
+  font-size:0.9rem;
+}
+
+/* QTY */
+.cart-item-qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.cart-item-qty button{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:1px solid #eadfd6;
+  background:transparent;
+  cursor:pointer;
+}
+
+/* TOTAL */
+.total{
+  margin-top:20px;
+  font-size:1rem;
+  font-weight:500;
+  color:#5a3a25;
+}
+
+/* BOUTON */
+.confirm-btn{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#e6b8a2,#dba48c);
+  color:white;
+  font-size:0.95rem;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.confirm-btn:hover{
+  opacity:0.9;
+}
+
+/* NOTE */
+.note{
+  font-size:0.8rem;
+  color:#7a5c47;
+  margin-top:15px;
+  line-height:1.5;
+}
+
+/* THANK YOU */
+.cart-thankyou{
+  margin-top:20px;
+  background:#fff1e8;
+  padding:15px;
+  border-radius:12px;
+  font-size:0.85rem;
+  color:#5a3a25;
+}

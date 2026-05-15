@@ -573,6 +573,6 @@ footer{
 }
 .mask-hero{
   background:
-    linear-gradient(rgba(45,31,22,0.40), rgba(45,31,22,0.40)),
-    url("masquecapillaire.jpg") center/cover no-repeat;
+    linear-gradient(rgba(45,31,22,0.38), rgba(45,31,22,0.38)),
+    url("masquecapillaire.jpg") center 30%/cover no-repeat;
 }

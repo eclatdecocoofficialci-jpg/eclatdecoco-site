@@ -572,7 +572,9 @@ footer{
   }
 }
 .mask-hero{
+  min-height:460px;
   background:
-    linear-gradient(rgba(45,31,22,0.38), rgba(45,31,22,0.38)),
-    url("masquecapillaire.jpg") center 30%/cover no-repeat;
+    linear-gradient(rgba(45,31,22,0.35), rgba(45,31,22,0.35)),
+    url("masquecapillaire.jpg") center center/contain no-repeat;
+  background-color:#d8c2ac;
 }

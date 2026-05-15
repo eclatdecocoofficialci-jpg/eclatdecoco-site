@@ -571,7 +571,7 @@ footer{
     font-size:16px;
   }
 }
-.mask-hero{
+..mask-hero{
   min-height:460px;
   background:
     linear-gradient(rgba(45,31,22,0.35), rgba(45,31,22,0.35)),

@@ -44,6 +44,7 @@ function updateCartCount(){
 function filterProducts(category, btn){
   const products = document.querySelectorAll(".product");
   const lotionHero = document.getElementById("lotionHero");
+  const maskHero = document.getElementById("maskHero");
 
   products.forEach(product => {
     product.style.display =
@@ -54,10 +55,10 @@ function filterProducts(category, btn){
 
   if(lotionHero){
     lotionHero.classList.toggle("active", category === "lotions");
+  }
 
-    if(category === "lotions"){
-      window.scrollTo({ top: lotionHero.offsetTop - 80, behavior: "smooth" });
-    }
+  if(maskHero){
+    maskHero.classList.toggle("active", category === "masques");
   }
 
   document.querySelectorAll(".menu-list button").forEach(button => {
@@ -66,6 +67,14 @@ function filterProducts(category, btn){
 
   if(btn){
     btn.classList.add("active");
+  }
+
+  if(category === "lotions" && lotionHero){
+    window.scrollTo({ top: lotionHero.offsetTop - 80, behavior: "smooth" });
+  }
+
+  if(category === "masques" && maskHero){
+    window.scrollTo({ top: maskHero.offsetTop - 80, behavior: "smooth" });
   }
 
   closeDrawers();

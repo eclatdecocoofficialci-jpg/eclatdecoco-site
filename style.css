@@ -571,7 +571,6 @@ footer{
     font-size:16px;
   }
 }
-/* HERO MASQUE CAPILLAIRE PREMIUM */
 .mask-hero{
   min-height:550px;
 
@@ -583,13 +582,12 @@ footer{
 
   background:
     linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
-    url("masquecapillaire.jpg") center 45% / cover no-repeat;
+    url("masquecapi.jpg") center 45% / cover no-repeat;
+} 
+.category-hero{
+  display:none;
 }
 
-/* HERO MASQUE CAPILLAIRE PREMIUM */
-.mask-hero{
-  min-height:550px;
-  background:
-    linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
-    url("masquecapi.jpg") center 45% / cover no-repeat;
+.category-hero.active{
+  display:flex;
 }

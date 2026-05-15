@@ -43,13 +43,11 @@ function updateCartCount(){
 
 function filterProducts(category, btn){
   const products = document.querySelectorAll(".product");
-
   const mainHero = document.querySelector(".hero");
   const lotionHero = document.getElementById("lotionHero");
   const maskHero = document.getElementById("maskHero");
   const bestSellers = document.querySelector(".best-sellers");
 
-  // FILTER PRODUITS
   products.forEach(product => {
     product.style.display =
       category === "all" || product.dataset.category === category
@@ -57,30 +55,33 @@ function filterProducts(category, btn){
       : "none";
   });
 
-  // RESET TOUS LES HERO
-  mainHero.style.display = "none";
+  if(mainHero) mainHero.style.display = "none";
+  if(bestSellers) bestSellers.style.display = "none";
   if(lotionHero) lotionHero.classList.remove("active");
   if(maskHero) maskHero.classList.remove("active");
 
-  // LOGIQUE HERO
   if(category === "all" || category === "savons"){
-    mainHero.style.display = "flex";
-    bestSellers.style.display = "block";
-  } 
-  else if(category === "lotions"){
-    lotionHero.classList.add("active");
-    bestSellers.style.display = "none";
-  } 
-  else if(category === "masques"){
-    maskHero.classList.add("active");
-    bestSellers.style.display = "none";
-  } 
-  else {
-    bestSellers.style.display = "none";
+    if(mainHero) mainHero.style.display = "flex";
+    if(bestSellers) bestSellers.style.display = "block";
   }
 
-  // SCROLL VERS HERO
-  let activeHero =
+  if(category === "lotions"){
+    if(lotionHero) lotionHero.classList.add("active");
+  }
+
+  if(category === "masques"){
+    if(maskHero) maskHero.classList.add("active");
+  }
+
+  document.querySelectorAll(".menu-list button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  const activeHero =
     category === "lotions" ? lotionHero :
     category === "masques" ? maskHero :
     mainHero;
@@ -90,15 +91,6 @@ function filterProducts(category, btn){
       top: activeHero.offsetTop - 80,
       behavior:"smooth"
     });
-  }
-
-  // ACTIVE BUTTON
-  document.querySelectorAll(".menu-list button").forEach(button => {
-    button.classList.remove("active");
-  });
-
-  if(btn){
-    btn.classList.add("active");
   }
 
   closeDrawers();

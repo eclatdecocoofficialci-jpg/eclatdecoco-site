@@ -571,10 +571,53 @@ footer{
     font-size:16px;
   }
 }
+/* HERO MASQUE CAPILLAIRE PREMIUM */
 .mask-hero{
-  min-height:500px;
+  min-height:550px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 7%;
 
   background:
     linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
-    url("masquecapi.jpg") center 20% / cover no-repeat;
+    url("masquecapillaire.jpg") center 45% / cover no-repeat;
+}
+
+/* TEXTE HERO */
+.category-hero-content{
+  max-width:800px;
+  color:white;
+}
+
+.category-hero-content h2{
+  font-size:2rem;
+  letter-spacing:4px;
+  margin-bottom:15px;
+}
+
+.category-subtitle{
+  font-size:1rem;
+  margin-bottom:15px;
+  opacity:0.95;
+}
+
+.category-text{
+  font-size:0.95rem;
+  line-height:1.7;
+  margin-bottom:15px;
+}
+
+.category-points{
+  font-size:0.85rem;
+  margin-bottom:10px;
+  opacity:0.9;
+}
+
+.category-signature{
+  font-size:0.85rem;
+  margin-top:10px;
+  opacity:0.85;
 }

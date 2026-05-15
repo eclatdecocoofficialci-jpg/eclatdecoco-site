@@ -571,10 +571,10 @@ footer{
     font-size:16px;
   }
 }
-..mask-hero{
-  min-height:460px;
+.mask-hero{
+  min-height:500px;
+
   background:
-    linear-gradient(rgba(45,31,22,0.35), rgba(45,31,22,0.35)),
-    url("masque.png") center center/contain no-repeat;
-  background-color:#d8c2ac;
+    linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
+    url("masquecapi.jpg") center 20% / cover no-repeat;
 }

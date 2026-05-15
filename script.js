@@ -45,6 +45,8 @@ function filterProducts(category, btn){
   const products = document.querySelectorAll(".product");
   const lotionHero = document.getElementById("lotionHero");
   const maskHero = document.getElementById("maskHero");
+  const mainHero = document.querySelector(".hero");
+  const bestSellers = document.querySelector(".best-sellers");
 
   products.forEach(product => {
     product.style.display =
@@ -52,6 +54,14 @@ function filterProducts(category, btn){
       ? "block"
       : "none";
   });
+
+  if(mainHero){
+    mainHero.style.display = category === "all" ? "flex" : "none";
+  }
+
+  if(bestSellers){
+    bestSellers.style.display = category === "all" ? "block" : "none";
+  }
 
   if(lotionHero){
     lotionHero.classList.toggle("active", category === "lotions");
@@ -69,12 +79,10 @@ function filterProducts(category, btn){
     btn.classList.add("active");
   }
 
-  if(category === "lotions" && lotionHero){
-    window.scrollTo({ top: lotionHero.offsetTop - 80, behavior: "smooth" });
-  }
+  const activeHero = category === "lotions" ? lotionHero : category === "masques" ? maskHero : null;
 
-  if(category === "masques" && maskHero){
-    window.scrollTo({ top: maskHero.offsetTop - 80, behavior: "smooth" });
+  if(activeHero){
+    window.scrollTo({ top: activeHero.offsetTop - 80, behavior:"smooth" });
   }
 
   closeDrawers();

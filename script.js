@@ -55,22 +55,29 @@ function filterProducts(category, btn){
       : "none";
   });
 
-  if(mainHero) mainHero.style.display = "none";
-  if(bestSellers) bestSellers.style.display = "none";
   if(lotionHero) lotionHero.classList.remove("active");
   if(maskHero) maskHero.classList.remove("active");
 
-  if(category === "all" || category === "savons"){
-    if(mainHero) mainHero.style.display = "flex";
-    if(bestSellers) bestSellers.style.display = "block";
+  if(mainHero){
+    mainHero.style.display =
+      category === "all" || category === "savons"
+      ? "flex"
+      : "none";
   }
 
-  if(category === "lotions"){
-    if(lotionHero) lotionHero.classList.add("active");
+  if(bestSellers){
+    bestSellers.style.display =
+      category === "all" || category === "savons"
+      ? "block"
+      : "none";
   }
 
-  if(category === "masques"){
-    if(maskHero) maskHero.classList.add("active");
+  if(category === "lotions" && lotionHero){
+    lotionHero.classList.add("active");
+  }
+
+  if(category === "masques" && maskHero){
+    maskHero.classList.add("active");
   }
 
   document.querySelectorAll(".menu-list button").forEach(button => {
@@ -95,7 +102,6 @@ function filterProducts(category, btn){
 
   closeDrawers();
 }
-
 function changeQty(name, price, change){
   let item = cart.find(product => product.name === name);
   let currentQty = item ? item.quantity : 0;

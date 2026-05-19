@@ -591,3 +591,128 @@ footer{
 .category-hero.active{
   display:flex;
 }
+/* HERO BEURRE CORPOREL — LUXE PREMIUM */
+.butter-hero{
+  min-height:550px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:60px 7%;
+
+  background:
+    linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
+    url("bodybutterme.jpg") center 40% / cover no-repeat;
+}
+
+/* CONTENU TEXTE */
+.category-hero-content{
+  max-width:700px;
+  margin:auto;
+  color:white;
+}
+
+/* TITRE */
+.butter-hero h2{
+  font-size:2rem;
+  letter-spacing:4px;
+  font-weight:400;
+  margin-bottom:15px;
+}
+
+/* SOUS-TITRE */
+.butter-hero .category-subtitle{
+  font-size:0.85rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  opacity:0.9;
+}
+
+/* TEXTE PRINCIPAL */
+.butter-hero .category-text{
+  font-size:0.95rem;
+  line-height:1.8;
+  margin-bottom:20px;
+  opacity:0.95;
+}
+
+/* POINTS */
+.butter-hero .category-points{
+  font-size:0.8rem;
+  letter-spacing:2px;
+  margin-bottom:20px;
+  opacity:0.85;
+}
+
+/* SIGNATURE */
+.butter-hero .category-signature{
+  font-size:0.9rem;
+  letter-spacing:3px;
+  opacity:0.9;
+}
+
+/* RESPONSIVE MOBILE */
+@media(max-width:700px){
+  .butter-hero{
+    min-height:420px;
+    padding:40px 20px;
+    background-position:center 50%;
+  }
+
+  .butter-hero h2{
+    font-size:1.5rem;
+  }
+
+  .butter-hero .category-text{
+    font-size:0.85rem;
+  }
+}
+/* ANIMATION HERO LUXE */
+.category-hero.active{
+  animation: heroFade 1s ease forwards;
+}
+
+.category-hero-content{
+  animation: textLuxury 1.2s ease forwards;
+}
+
+@keyframes heroFade{
+  from{
+    opacity:0;
+    transform:scale(1.03);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes textLuxury{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ANIMATION PRODUITS */
+.product-card{
+  animation: productFade 0.8s ease forwards;
+}
+
+@keyframes productFade{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}

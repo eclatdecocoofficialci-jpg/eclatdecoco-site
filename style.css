@@ -716,3 +716,22 @@ footer{
     transform:translateY(0);
   }
 }
+/* PHOTOS PRODUITS EN CARRÉ - SANS COUPER */
+.product-card img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  background:white;
+  padding:18px;
+}
+.format{
+  display:inline-block;
+  margin-top:10px;
+  font-size:0.78rem;
+  letter-spacing:1.5px;
+  color:#9b7448;
+  text-transform:uppercase;
+}

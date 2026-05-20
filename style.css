@@ -716,19 +716,11 @@ footer{
     transform:translateY(0);
   }
 }
-/* IMAGE PRODUIT PROPRE COMME SAVONS */
-.product-card img{
-  width:100%;
-  height:220px; /* taille fixe comme tes savons */
-  object-fit:cover; /* remplissage propre */
-  object-position:center;
-  border-radius:12px;
-  display:block;
-}
-.product-card img{
-  transition: transform 0.4s ease;
+.product-card{
+  transition: all 0.3s ease;
 }
 
-.product-card:hover img{
-  transform:scale(1.05);
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }

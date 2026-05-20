@@ -701,26 +701,28 @@ footer{
   }
 }
 
-/* ANIMATION PRODUITS */
-.product-card{
-  animation: productFade 0.8s ease forwards;
+/* GRID PRODUITS (3 PAR LIGNE) */
+.products{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:25px;
 }
-
-@keyframes productFade{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
+/* TABLET */
+@media(max-width:900px){
+  .products{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-.product-card{
-  transition: all 0.3s ease;
-}
 
-.product-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+/* MOBILE */
+@media(max-width:600px){
+  .products{
+    grid-template-columns: 1fr;
+  }
+}
+.product-card{
+  background:#fff;
+  padding:15px;
+  border-radius:18px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05);
 }

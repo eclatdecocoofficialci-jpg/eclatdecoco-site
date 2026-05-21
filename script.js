@@ -3,6 +3,7 @@ emailjs.init("wSP62MSM78UlgV4eF");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
+
 const stock = {
   "Rose & Vanille": 21,
   "Douceur de Coco": 8,
@@ -15,12 +16,12 @@ const stock = {
   "Baby Rose": 5,
   "Bubble Gum": 5,
   "Lotion Câlin d’Orange": 5,
-  "El Mango": 5
+  "El Mango": 5,
   "Rose & Vanille Butter": 10,
-"Bubble Gum Butter": 10,
-"Calin d’Orange Butter": 10,
-"El Mango Butter": 10,
-"Eclat Naturel Coco Butter": 10
+  "Bubble Gum Butter": 10,
+  "Calin d’Orange Butter": 10,
+  "El Mango Butter": 10,
+  "Eclat Naturel Coco Butter": 10
 };
 
 function openMenu(){
@@ -114,27 +115,6 @@ function filterProducts(category, btn){
 
   closeDrawers();
 }
-function changeQty(name, price, change){
-  let item = cart.find(product => product.name === name);
-  let currentQty = item ? item.quantity : 0;
-
-  if(change > 0 && currentQty >= stock[name]){
-    alert("Ce produit est en rupture de stock.");
-    return;
-  }
-
-  if(item){
-    item.quantity += change;
-    if(item.quantity <= 0){
-      cart = cart.filter(product => product.name !== name);
-    }
-  }else if(change > 0){
-    cart.push({ name:name, price:price, quantity:1 });
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
 
 function removeItem(name){
   cart = cart.filter(item => item.name !== name);
@@ -226,7 +206,41 @@ function confirmOrder(){
     delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
     order_id: "EDC-" + Date.now()
   };
+  
+function changeQty(name, price, change){
+  let item = cart.find(product => product.name === name);
+  let currentQty = item ? item.quantity : 0;
 
+  // Vérification stock
+  if(change > 0 && currentQty >= stock[name]){
+    alert("Ce produit est en rupture de stock.");
+    return;
+  }
+
+  // Si produit existe déjà
+  if(item){
+    item.quantity += change;
+
+    // Si quantité devient 0 → supprimer
+    if(item.quantity <= 0){
+      cart = cart.filter(product => product.name !== name);
+    }
+  }
+  // Si produit n'existe pas → ajouter
+  else if(change > 0){
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+  }
+
+  // Sauvegarde
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Mise à jour affichage
+  renderCart();
+}
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
     .then(function(){
       alert("Commande envoyée avec succès !");

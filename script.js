@@ -16,6 +16,11 @@ const stock = {
   "Bubble Gum": 5,
   "Lotion Câlin d’Orange": 5,
   "El Mango": 5
+  "Rose & Vanille Butter": 10,
+"Bubble Gum Butter": 10,
+"Calin d’Orange Butter": 10,
+"El Mango Butter": 10,
+"Eclat Naturel Coco Butter": 10
 };
 
 function openMenu(){
@@ -46,6 +51,7 @@ function filterProducts(category, btn){
   const mainHero = document.querySelector(".hero");
   const lotionHero = document.getElementById("lotionHero");
   const maskHero = document.getElementById("maskHero");
+  const butterHero = document.getElementById("butterHero");
   const bestSellers = document.querySelector(".best-sellers");
 
   products.forEach(product => {
@@ -57,6 +63,7 @@ function filterProducts(category, btn){
 
   if(lotionHero) lotionHero.classList.remove("active");
   if(maskHero) maskHero.classList.remove("active");
+  if(butterHero) butterHero.classList.remove("active");
 
   if(mainHero){
     mainHero.style.display =
@@ -80,6 +87,10 @@ function filterProducts(category, btn){
     maskHero.classList.add("active");
   }
 
+  if(category === "beurres" && butterHero){
+    butterHero.classList.add("active");
+  }
+
   document.querySelectorAll(".menu-list button").forEach(button => {
     button.classList.remove("active");
   });
@@ -91,6 +102,7 @@ function filterProducts(category, btn){
   const activeHero =
     category === "lotions" ? lotionHero :
     category === "masques" ? maskHero :
+    category === "beurres" ? butterHero :
     mainHero;
 
   if(activeHero){

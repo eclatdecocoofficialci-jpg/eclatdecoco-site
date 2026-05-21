@@ -701,28 +701,22 @@ footer{
   }
 }
 
-/* GRID PRODUITS (3 PAR LIGNE) */
+/* GRID PRODUITS - 3 PAR LIGNE */
 .products{
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:25px;
+  gap: 25px;
 }
-/* TABLET */
+
+/* RESPONSIVE */
 @media(max-width:900px){
   .products{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* MOBILE */
 @media(max-width:600px){
   .products{
     grid-template-columns: 1fr;
   }
-}
-.product-card{
-  background:#fff;
-  padding:15px;
-  border-radius:18px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.05);
 }

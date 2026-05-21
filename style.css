@@ -732,3 +732,12 @@ footer{
     grid-template-columns:1fr !important;
   }
 }
+footer{
+  padding:40px 20px;
+  text-align:center;
+  background:#2d1f16;
+  color:white;
+  font-size:0.8rem;
+  letter-spacing:1px;
+  opacity:0.95;
+}

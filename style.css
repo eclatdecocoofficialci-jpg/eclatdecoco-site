@@ -591,15 +591,13 @@ footer{
 .category-hero.active{
   display:flex;
 }
-/* HERO BEURRE CORPOREL — LUXE PREMIUM */
+
+/* HERO BEURRE CORPOREL */
 .butter-hero{
   min-height:550px;
-
-  display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-
   padding:60px 7%;
 
   background:

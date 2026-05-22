@@ -121,7 +121,34 @@ function removeItem(name){
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
+function changeQty(name, price, change){
+  let item = cart.find(product => product.name === name);
+  let currentQty = item ? item.quantity : 0;
 
+  const productStock = stock[name] ?? 999;
+
+  if(change > 0 && currentQty >= productStock){
+    alert("Ce produit est en rupture de stock.");
+    return;
+  }
+
+  if(item){
+    item.quantity += change;
+
+    if(item.quantity <= 0){
+      cart = cart.filter(product => product.name !== name);
+    }
+  }else if(change > 0){
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
 function renderCart(){
   const cartItems = document.getElementById("cartItems");
   const totalEl = document.getElementById("total");
@@ -206,41 +233,7 @@ function confirmOrder(){
     delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
     order_id: "EDC-" + Date.now()
   };
-  
-function changeQty(name, price, change){
-  let item = cart.find(product => product.name === name);
-  let currentQty = item ? item.quantity : 0;
 
-  // Vérification stock
-  if(change > 0 && currentQty >= stock[name]){
-    alert("Ce produit est en rupture de stock.");
-    return;
-  }
-
-  // Si produit existe déjà
-  if(item){
-    item.quantity += change;
-
-    // Si quantité devient 0 → supprimer
-    if(item.quantity <= 0){
-      cart = cart.filter(product => product.name !== name);
-    }
-  }
-  // Si produit n'existe pas → ajouter
-  else if(change > 0){
-    cart.push({
-      name: name,
-      price: price,
-      quantity: 1
-    });
-  }
-
-  // Sauvegarde
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Mise à jour affichage
-  renderCart();
-}
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
     .then(function(){
       alert("Commande envoyée avec succès !");

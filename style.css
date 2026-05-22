@@ -822,15 +822,10 @@ footer{
   }
 }
 .brand-values img{
-  width:65px;
-  height:65px;
-  object-fit:contain;
-  margin-bottom:14px;
-  opacity:0.85;
-  transition:0.3s;
-}
-
-.brand-values img:hover{
-  transform:scale(1.05);
-  opacity:1;
+  width:50px !important;
+  height:50px !important;
+  max-width:50px !important;
+  object-fit:contain !important;
+  display:block;
+  margin:0 auto 10px;
 }

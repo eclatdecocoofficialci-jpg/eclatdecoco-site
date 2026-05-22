@@ -741,3 +741,45 @@ footer{
   letter-spacing:1px;
   opacity:0.95;
 }
+/* SECTION VALEURS AVANT FOOTER */
+.brand-values{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:80px;
+  padding:55px 20px;
+  background:#fffaf6;
+  text-align:center;
+}
+
+.value{
+  min-width:180px;
+}
+
+.value-icon{
+  width:48px;
+  height:48px;
+  margin:0 auto 14px;
+  border:1px solid #c8a06a;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#9b7448;
+  font-size:1.2rem;
+}
+
+.value p{
+  margin:0;
+  font-size:0.75rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#7a5c47;
+}
+
+@media(max-width:700px){
+  .brand-values{
+    flex-direction:column;
+    gap:28px;
+  }
+}

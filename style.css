@@ -783,3 +783,41 @@ footer{
     gap:28px;
   }
 }
+/* FIX FINAL — PRODUITS MÊME STYLE QUE LOTIONS */
+.products{
+  max-width:1180px !important;
+  margin:auto !important;
+  display:grid !important;
+  grid-template-columns:repeat(3, 1fr) !important;
+  gap:32px !important;
+}
+
+.product-card{
+  width:auto !important;
+  background:white !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  box-shadow:0 8px 25px rgba(80,50,30,0.08) !important;
+}
+
+.product-card img{
+  width:100% !important;
+  height:260px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:white !important;
+  padding:18px !important;
+  display:block !important;
+}
+
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(3, 1fr) !important;
+  }
+}
+
+@media(max-width:600px){
+  .products{
+    grid-template-columns:1fr !important;
+  }
+}

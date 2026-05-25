@@ -827,3 +827,26 @@ footer{
   object-fit:contain;
   margin-bottom:18px;
 }
+/* FIX ALIGNEMENT - 0 + */
+.qty-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:18px !important;
+}
+
+.qty-box span{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:36px !important;
+  min-width:24px !important;
+  line-height:36px !important;
+  font-size:1rem !important;
+}
+
+.qty-box button{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}

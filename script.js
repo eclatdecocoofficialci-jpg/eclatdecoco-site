@@ -5,23 +5,24 @@ let total = 0;
 
 
 const stock = {
-  "Rose & Vanille": 21,
-  "Douceur de Coco": 8,
-  "Câlin d’Orange": 6,
-  "Élixir de Ruche": 10,
-  "Organique Pur Olive": 14,
-  "Éclat de Laurier": 14,
-  "Éclat de Romarin": 14,
-  "Masque Capillaire Nourrissant": 3,
-  "Baby Rose": 5,
-  "Bubble Gum": 5,
-  "Lotion Câlin d’Orange": 5,
-  "El Mango": 5,
-  "Rose & Vanille Butter": 10,
-  "Bubble Gum Butter": 10,
-  "Calin d’Orange Butter": 10,
-  "El Mango Butter": 10,
-  "Eclat Naturel Coco Butter": 10
+ "Pétales de Bissap":100,
+  "Rose & Vanille": 100,
+  "Douceur de Coco": 100,
+  "Câlin d’Orange": 100,
+  "Élixir de Ruche": 100,
+  "Organique Pur Olive": 100,
+  "Éclat de Laurier": 100,
+  "Éclat de Romarin": 100,
+  "Masque Capillaire Nourrissant": 100,
+  "Baby Rose": 100,
+  "Bubble Gum": 100,
+  "Lotion Câlin d’Orange": 100,
+  "El Mango": 100,
+  "Rose & Vanille Butter": 100,
+  "Bubble Gum Butter": 100,
+  "Calin d’Orange Butter": 100,
+  "El Mango Butter": 100,
+  "Eclat Naturel Coco Butter": 100
 };
 
 function openMenu(){

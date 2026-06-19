@@ -850,3 +850,19 @@ footer{
   align-items:center !important;
   justify-content:center !important;
 }
+.scrub-hero{
+  display:none;
+  min-height:500px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:
+  linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+  url('heroscrub.JPG') center center/cover no-repeat;
+  color:white;
+}
+
+.scrub-hero.active{
+  display:flex;
+}

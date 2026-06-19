@@ -57,6 +57,7 @@ function filterProducts(category, btn){
   const lotionHero = document.getElementById("lotionHero");
   const maskHero = document.getElementById("maskHero");
   const butterHero = document.getElementById("butterHero");
+  const scrubHero = document.getElementById("scrubHero");
   const bestSellers = document.querySelector(".best-sellers");
 
   products.forEach(product => {
@@ -69,6 +70,7 @@ function filterProducts(category, btn){
   if(lotionHero) lotionHero.classList.remove("active");
   if(maskHero) maskHero.classList.remove("active");
   if(butterHero) butterHero.classList.remove("active");
+  if(scrubHero) scrubHero.classList.remove("active");
 
   if(mainHero){
     mainHero.style.display =
@@ -96,6 +98,10 @@ function filterProducts(category, btn){
     butterHero.classList.add("active");
   }
 
+  if(category === "scrubs" && scrubHero){
+    scrubHero.classList.add("active");
+  }
+
   document.querySelectorAll(".menu-list button").forEach(button => {
     button.classList.remove("active");
   });
@@ -108,6 +114,7 @@ function filterProducts(category, btn){
     category === "lotions" ? lotionHero :
     category === "masques" ? maskHero :
     category === "beurres" ? butterHero :
+    category === "scrubs" ? scrubHero :
     mainHero;
 
   if(activeHero){
@@ -119,95 +126,6 @@ function filterProducts(category, btn){
 
   closeDrawers();
 }
-
-function removeItem(name){
-  cart = cart.filter(item => item.name !== name);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-function changeQty(name, price, change){
-  let item = cart.find(product => product.name === name);
-  let currentQty = item ? item.quantity : 0;
-
-  const productStock = stock[name] ?? 999;
-
-  if(change > 0 && currentQty >= productStock){
-    alert("Ce produit est en rupture de stock.");
-    return;
-  }
-
-  if(item){
-    item.quantity += change;
-
-    if(item.quantity <= 0){
-      cart = cart.filter(product => product.name !== name);
-    }
-  }else if(change > 0){
-    cart.push({
-      name: name,
-      price: price,
-      quantity: 1
-    });
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-function renderCart(){
-  const cartItems = document.getElementById("cartItems");
-  const totalEl = document.getElementById("total");
-
-  cartItems.innerHTML = "";
-  total = 0;
-
-  document.querySelectorAll(".qty-box span").forEach(span=>{
-    span.innerText = "0";
-  });
-
-  if(cart.length === 0){
-    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
-  }
-
-  cart.forEach(item=>{
-    total += item.price * item.quantity;
-
-    const qtySpan = document.getElementById("qty-" + item.name);
-    if(qtySpan) qtySpan.innerText = item.quantity;
-
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <div>
-          <h4>${item.name}</h4>
-          <p>Quantité : ${item.quantity}</p>
-          <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
-        </div>
-        <button class="remove-btn" onclick="removeItem('${item.name}')">×</button>
-      </div>
-    `;
-  });
-
-  Object.keys(stock).forEach(product => {
-    const item = cart.find(i => i.name === product);
-    const qty = item ? item.quantity : 0;
-    const remain = stock[product] - qty;
-
-    const badge = document.getElementById("badge-" + product);
-    const promoBadge = document.querySelector(`[data-name="${product}"] .badge-product`);
-    const outEl = document.getElementById("out-" + product);
-    const plusBtn = document.getElementById("plus-" + product);
-    const minusBtn = document.getElementById("minus-" + product);
-
-    if(badge) badge.style.display = remain <= 0 ? "block" : "none";
-    if(promoBadge) promoBadge.style.display = remain <= 0 ? "none" : "block";
-    if(outEl) outEl.style.display = remain <= 0 ? "inline-block" : "none";
-    if(plusBtn) plusBtn.disabled = remain <= 0;
-    if(minusBtn) minusBtn.disabled = qty <= 0;
-  });
-
-  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
-  updateCartCount();
-}
-
 function confirmOrder(){
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();

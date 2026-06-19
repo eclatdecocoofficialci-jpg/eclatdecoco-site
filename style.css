@@ -860,3 +860,114 @@ footer{
     linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
     url("heroscrub.JPG") center center / cover no-repeat;
 }
+.custom-section{
+  display:none;
+  padding:90px 7%;
+  background:
+    radial-gradient(circle at top left, rgba(200,160,106,0.18), transparent 35%),
+    linear-gradient(180deg,#fffaf6,#fbf7f1);
+}
+
+.custom-section[style*="block"]{
+  display:block;
+}
+
+.custom-content{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+  animation:textLuxury 1s ease forwards;
+}
+
+.custom-eyebrow{
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9b7448;
+  font-size:0.75rem;
+  margin-bottom:12px;
+}
+
+.custom-content h2{
+  font-family:Georgia, serif;
+  font-size:2.6rem;
+  font-weight:400;
+  color:#2d1f16;
+  margin-bottom:20px;
+}
+
+.custom-intro{
+  max-width:760px;
+  margin:0 auto 45px;
+  line-height:1.8;
+  color:#5f4633;
+}
+
+.custom-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+  margin-bottom:45px;
+}
+
+.custom-card,
+.custom-process,
+.custom-note-box{
+  background:white;
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 12px 35px rgba(80,50,30,0.08);
+}
+
+.custom-card h3,
+.custom-process h3,
+.custom-note-box h3{
+  color:#9b7448;
+  font-weight:400;
+  letter-spacing:1px;
+}
+
+.custom-card p,
+.custom-process p,
+.custom-note-box p{
+  color:#5f4633;
+  line-height:1.7;
+}
+
+.custom-process{
+  max-width:760px;
+  margin:0 auto 30px;
+}
+
+.custom-note-box{
+  max-width:760px;
+  margin:0 auto 35px;
+  border:1px solid #eadfd6;
+}
+
+.custom-btn{
+  display:inline-block;
+  padding:15px 34px;
+  border-radius:40px;
+  background:#9b7448;
+  color:white;
+  text-decoration:none;
+  letter-spacing:1px;
+  transition:0.3s;
+}
+
+.custom-btn:hover{
+  transform:translateY(-3px);
+  background:#7a5633;
+}
+
+.custom-contact{
+  margin-top:22px;
+  color:#7a5c47;
+  line-height:1.8;
+}
+
+@media(max-width:900px){
+  .custom-grid{
+    grid-template-columns:1fr;
+  }
+}

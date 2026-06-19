@@ -155,7 +155,77 @@ function confirmOrder(){
     delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
     order_id: "EDC-" + Date.now()
   };
+function removeItem(name){
+  cart = cart.filter(item => item.name !== name);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
 
+function changeQty(name, price, change){
+  let item = cart.find(product => product.name === name);
+  let currentQty = item ? item.quantity : 0;
+
+  const productStock = stock[name] ?? 999;
+
+  if(change > 0 && currentQty >= productStock){
+    alert("Ce produit est en rupture de stock.");
+    return;
+  }
+
+  if(item){
+    item.quantity += change;
+
+    if(item.quantity <= 0){
+      cart = cart.filter(product => product.name !== name);
+    }
+  }else if(change > 0){
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart(){
+  const cartItems = document.getElementById("cartItems");
+  const totalEl = document.getElementById("total");
+
+  cartItems.innerHTML = "";
+  total = 0;
+
+  document.querySelectorAll(".qty-box span").forEach(span=>{
+    span.innerText = "0";
+  });
+
+  if(cart.length === 0){
+    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
+  }
+
+  cart.forEach(item=>{
+    total += item.price * item.quantity;
+
+    const qtySpan = document.getElementById("qty-" + item.name);
+    if(qtySpan) qtySpan.innerText = item.quantity;
+
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <h4>${item.name}</h4>
+          <p>Quantité : ${item.quantity}</p>
+          <p>Sous-total : ${(item.price * item.quantity).toLocaleString()} FCFA</p>
+        </div>
+        <button class="remove-btn" onclick="removeItem('${item.name}')">×</button>
+      </div>
+    `;
+  });
+
+  totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
+  updateCartCount();
+}
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
     .then(function(){
       alert("Commande envoyée avec succès !");

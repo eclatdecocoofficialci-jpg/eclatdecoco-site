@@ -974,7 +974,7 @@ footer{
 .custom-section{
   display:none;
   padding:35px 7% 80px;
-  margin-top:-40px;
+  margin-top:-80px;
   background:
     radial-gradient(circle at top left, rgba(200,160,106,0.16), transparent 35%),
     linear-gradient(180deg,#fffaf6,#fbf7f1);

@@ -23,7 +23,9 @@ const stock = {
   "Calin d’Orange Butter": 100,
   "El Mango Butter": 100,
   "Eclat Naturel Coco Butter": 100,
-   "Délice de Mangue": 100
+   "Délice de Mangue": 100,
+ "Cafféchino": 100,
+"Cheesecake Fondant": 100
 };
 
 function openMenu(){

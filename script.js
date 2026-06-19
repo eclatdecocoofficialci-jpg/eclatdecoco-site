@@ -3,9 +3,8 @@ emailjs.init("wSP62MSM78UlgV4eF");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
-
 const stock = {
- "Pétales de Bissap":100,
+  "Pétales de Bissap": 100,
   "Rose & Vanille": 100,
   "Douceur de Coco": 100,
   "Câlin d’Orange": 100,
@@ -23,9 +22,9 @@ const stock = {
   "Calin d’Orange Butter": 100,
   "El Mango Butter": 100,
   "Eclat Naturel Coco Butter": 100,
-   "Délice de Mangue": 100,
- "Cafféchino": 100,
-"Cheesecake Fondant": 100
+  "Délice de Mangue": 100,
+  "Cafféchino": 100,
+  "Cheesecake Fondant": 100
 };
 
 function openMenu(){
@@ -126,35 +125,7 @@ function filterProducts(category, btn){
 
   closeDrawers();
 }
-function confirmOrder(){
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
 
-  if(cart.length === 0){
-    alert("Votre panier est vide.");
-    return;
-  }
-
-  if(!name || !phone || !address){
-    alert("Veuillez remplir toutes les informations.");
-    return;
-  }
-
-  const orderDetails = cart.map(item =>
-    `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
-  ).join("\n");
-
-  const templateParams = {
-    to_email: "sarahajamii@icloud.com",
-    customer_name: name,
-    customer_phone: phone,
-    customer_address: address,
-    order_details: orderDetails,
-    order_total: total.toLocaleString() + " FCFA",
-    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
-    order_id: "EDC-" + Date.now()
-  };
 function removeItem(name){
   cart = cart.filter(item => item.name !== name);
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -226,6 +197,37 @@ function renderCart(){
   totalEl.innerText = "Total : " + total.toLocaleString() + " FCFA";
   updateCartCount();
 }
+
+function confirmOrder(){
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+
+  if(cart.length === 0){
+    alert("Votre panier est vide.");
+    return;
+  }
+
+  if(!name || !phone || !address){
+    alert("Veuillez remplir toutes les informations.");
+    return;
+  }
+
+  const orderDetails = cart.map(item =>
+    `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
+  ).join("\n");
+
+  const templateParams = {
+    to_email: "sarahajamii@icloud.com",
+    customer_name: name,
+    customer_phone: phone,
+    customer_address: address,
+    order_details: orderDetails,
+    order_total: total.toLocaleString() + " FCFA",
+    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
+    order_id: "EDC-" + Date.now()
+  };
+
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
     .then(function(){
       alert("Commande envoyée avec succès !");

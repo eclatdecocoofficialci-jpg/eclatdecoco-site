@@ -58,6 +58,7 @@ function filterProducts(category, btn){
   const butterHero = document.getElementById("butterHero");
   const scrubHero = document.getElementById("scrubHero");
   const bestSellers = document.querySelector(".best-sellers");
+  const collectionTitle = document.querySelector(".collection-title");
 
   products.forEach(product => {
     product.style.display =
@@ -108,7 +109,10 @@ function filterProducts(category, btn){
   if(btn){
     btn.classList.add("active");
   }
-
+if(collectionTitle){
+  collectionTitle.style.display =
+    category === "personnaliser" ? "none" : "block";
+}
   const activeHero =
     category === "lotions" ? lotionHero :
     category === "masques" ? maskHero :

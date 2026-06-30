@@ -26,6 +26,7 @@ const stock = {
   "Cafféchino": 100,
   "Sérum Anti-Pellicules": 100,
 "Sérum Royal Ivoirien": 100,
+  "The Revolution of She": 100,
   "Cheesecake Fondant": 100
 };
 

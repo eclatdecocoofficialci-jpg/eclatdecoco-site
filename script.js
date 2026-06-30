@@ -53,7 +53,7 @@ function updateCartCount(){
 }
 
 function filterProducts(category, btn){
-  const products = document.querySelectorAll(".product");
+  const products = document.querySelectorAll(".product-card.product, .custom-section.product");
   const mainHero = document.querySelector(".hero");
   const lotionHero = document.getElementById("lotionHero");
   const maskHero = document.getElementById("maskHero");

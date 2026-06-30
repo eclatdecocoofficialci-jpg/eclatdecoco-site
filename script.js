@@ -24,6 +24,8 @@ const stock = {
   "Eclat Naturel Coco Butter": 100,
   "Délice de Mangue": 100,
   "Cafféchino": 100,
+  "Sérum Anti-Pellicules": 100,
+"Sérum Royal Ivoirien": 100,
   "Cheesecake Fondant": 100
 };
 

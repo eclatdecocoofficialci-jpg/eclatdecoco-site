@@ -27,6 +27,7 @@ const stock = {
   "Sérum Anti-Pellicules": 100,
 "Sérum Royal Ivoirien": 100,
   "The Revolution of She": 100,
+  "Nuage Hydratant": 100,
   "Cheesecake Fondant": 100
 };
 
@@ -62,7 +63,7 @@ function filterProducts(category, btn){
   const scrubHero = document.getElementById("scrubHero");
   const bestSellers = document.querySelector(".best-sellers");
   const collectionTitle = document.querySelector(".collection-title");
-
+const cremeHero = document.getElementById("cremeHero");
   products.forEach(product => {
     product.style.display =
       category === "all" || product.dataset.category === category
@@ -74,6 +75,7 @@ function filterProducts(category, btn){
   if(maskHero) maskHero.classList.remove("active");
   if(butterHero) butterHero.classList.remove("active");
   if(scrubHero) scrubHero.classList.remove("active");
+  if(cremeHero) cremeHero.classList.remove("active");
 
   if(mainHero){
     mainHero.style.display =
@@ -104,7 +106,9 @@ function filterProducts(category, btn){
   if(category === "scrubs" && scrubHero){
     scrubHero.classList.add("active");
   }
-
+if(category === "creme" && cremeHero){
+  cremeHero.classList.add("active");
+}
   document.querySelectorAll(".menu-list button").forEach(button => {
     button.classList.remove("active");
   });
@@ -121,6 +125,7 @@ if(collectionTitle){
     category === "masques" ? maskHero :
     category === "beurres" ? butterHero :
     category === "scrubs" ? scrubHero :
+    category === "creme" ? cremeHero :
     mainHero;
 
   if(activeHero){

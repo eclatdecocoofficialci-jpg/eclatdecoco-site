@@ -1034,3 +1034,13 @@ footer{
 .product-content{
   padding:26px 10px 18px !important;
 }
+.creme-hero{
+  min-height:550px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 7%;
+  background:
+    linear-gradient(rgba(45,31,22,0.45), rgba(45,31,22,0.45)),
+    url("landscapenuage.JPG") center center / cover no-repeat;
+}

@@ -1182,3 +1182,15 @@ footer{
     line-height:1.75;
   }
 }
+/* FIX HEROS CATEGORIES */
+.category-hero{
+  display:none !important;
+}
+
+.category-hero.active{
+  display:flex !important;
+}
+
+.hero{
+  display:flex;
+}

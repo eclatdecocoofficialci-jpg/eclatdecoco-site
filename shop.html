@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=700000">
+  <link rel="stylesheet" href="style.css?v=800000">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
@@ -254,6 +254,7 @@
 
   </div>
 </section>
+  
 <section class="products-area">
   <h2 class="collection-title">Nos Collections</h2>
 
@@ -290,6 +291,44 @@
 
       <button id="plus-Pétales de Bissap"
         onclick="changeQty('Pétales de Bissap',4000,1)">+</button>
+    </div>
+
+  </div>
+</div>
+    <!-- SAVON VELOURS DE CAFÉ -->
+<div class="product-card product" data-category="savons" data-name="Velours de Café" data-stock="100">
+
+  <img src="velourscafe.PNG" alt="Savon Velours de Café">
+
+  <span class="badge-product badge-best">Best Seller</span>
+
+  <div class="product-content">
+
+    <h3>Velours de Café</h3>
+
+    <p class="description">
+      Un savon artisanal au café soigneusement formulé pour purifier et révéler
+      l'éclat naturel de la peau. Il aide à éliminer les impuretés, à améliorer
+      l'apparence des imperfections et des boutons, notamment sur le dos, tout en
+      laissant la peau douce, lisse et fraîche après chaque utilisation.
+    </p>
+
+    <div class="product-info">
+      <span class="price">4 000 FCFA</span>
+    </div>
+
+    <div class="out-stock" id="out-Velours de Café" style="display:none;">
+      Rupture de stock
+    </div>
+
+    <div class="qty-box">
+      <button id="minus-Velours de Café"
+        onclick="changeQty('Velours de Café',4000,-1)">−</button>
+
+      <span id="qty-Velours de Café">0</span>
+
+      <button id="plus-Velours de Café"
+        onclick="changeQty('Velours de Café',4000,1)">+</button>
     </div>
 
   </div>
@@ -1053,7 +1092,7 @@
 </footer>
 
 
-<script src="script.js?v=700000"></script>
+<script src="script.js?v=800000"></script>
 
 </body>
 </html>

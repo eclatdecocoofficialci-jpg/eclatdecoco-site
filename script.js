@@ -17,6 +17,7 @@ const stock = {
   "Bubble Gum": 100,
   "Lotion Câlin d’Orange": 100,
   "El Mango": 100,
+  "Velours de Café": 100,
   "Rose & Vanille Butter": 100,
   "Bubble Gum Butter": 100,
   "Calin d’Orange Butter": 100,

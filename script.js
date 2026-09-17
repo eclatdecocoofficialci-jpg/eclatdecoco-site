@@ -4,6 +4,8 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
 const stock = {
+  "Bissap Rosé": 100,
+"Curcuma Doré": 100,
   "Pétales de Bissap": 100,
   "Rose & Vanille": 100,
   "Douceur de Coco": 100,

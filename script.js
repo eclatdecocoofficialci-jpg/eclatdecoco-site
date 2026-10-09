@@ -157,7 +157,19 @@ function changeQty(name, price, change){
     alert("Ce produit est en rupture de stock.");
     return;
   }
-
+if(change > 0 && typeof gtag === "function"){
+  gtag("event", "add_to_cart", {
+    currency: "XOF",
+    value: price,
+    items: [
+      {
+        item_name: name,
+        price: price,
+        quantity: 1
+      }
+    ]
+  });
+}
   if(item){
     item.quantity += change;
 
@@ -222,39 +234,57 @@ function confirmOrder(){
     alert("Votre panier est vide.");
     return;
   }
+if(!name || !phone || !address){
+  alert("Veuillez remplir toutes les informations.");
+  return;
+}
 
-  if(!name || !phone || !address){
-    alert("Veuillez remplir toutes les informations.");
-    return;
-  }
+const orderDetails = cart.map(item =>
+  `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
+).join("\n");
 
-  const orderDetails = cart.map(item =>
-    `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
-  ).join("\n");
+const orderId = "EDC-" + Date.now();
 
-  const templateParams = {
-    to_email: "sarahajamii@icloud.com",
-    customer_name: name,
-    customer_phone: phone,
-    customer_address: address,
-    order_details: orderDetails,
-    order_total: total.toLocaleString() + " FCFA",
-    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
-    order_id: "EDC-" + Date.now()
-  };
+const templateParams = {
+  to_email: "sarahajamii@icloud.com",
+  customer_name: name,
+  customer_phone: phone,
+  customer_address: address,
+  order_details: orderDetails,
+  order_total: total.toLocaleString() + " FCFA",
+  delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
+  order_id: orderId
+};
 
   emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
-    .then(function(){
-      alert("Commande envoyée avec succès !");
-      localStorage.removeItem("cart");
-      cart = [];
-      renderCart();
-      closeDrawers();
-    })
-    .catch(function(error){
-      alert("Erreur EmailJS : " + JSON.stringify(error));
-      console.log("Erreur EmailJS :", error);
-    });
+  .then(function(){
+
+    // Enregistrer la commande réussie dans Google Analytics
+    if(typeof gtag === "function"){
+      gtag("event", "purchase", {
+        transaction_id: orderId,
+        value: total,
+        currency: "XOF",
+        items: cart.map(item => ({
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
+      });
+    }
+
+    alert("Commande envoyée avec succès !");
+
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCart();
+    closeDrawers();
+  })
+
+  .catch(function(error){
+    alert("Erreur EmailJS : " + JSON.stringify(error));
+    console.log("Erreur EmailJS :", error);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function(){

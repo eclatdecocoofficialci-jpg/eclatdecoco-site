@@ -85,7 +85,13 @@
   <h3>Informations client</h3>
 
   <input type="text" id="name" placeholder="Nom complet">
-  <input type="tel" id="phone" placeholder="Numéro de téléphone">
+  <input
+  type="tel"
+  id="phone"
+  placeholder="Téléphone (ex. 07 97 00 00 52)"
+  inputmode="numeric"
+  autocomplete="tel"
+>
   <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
   <div class="note">
@@ -101,8 +107,8 @@
     </p>
   </div>
 
-<button type="button" class="confirm-btn" onclick="alert('BOUTON OK')">
-  Confirmer la commande
+<button type="button" class="confirm-btn" id="confirmOrderBtn">
+  Commande Confirmée 🌴!
 </button>
   
 </aside>

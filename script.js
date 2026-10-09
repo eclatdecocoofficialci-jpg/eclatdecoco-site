@@ -1,5 +1,6 @@
-emailjs.init("wSP62MSM78UlgV4eF");
-
+emailjs.init({
+  publicKey: "wSP62MSM78UlgV4eF"
+});
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
@@ -259,7 +260,7 @@ function confirmOrder(){
   if(!ivoirePhoneRegex.test(phone)){
     alert(
       "Veuillez entrer un numéro de téléphone ivoirien valide de 10 chiffres.\n\n" +
-      "Exemple : 07 97 00 00 52"
+      "Exemple : 00 00 00 00 00"
     );
     phoneInput.focus();
     return;
@@ -340,22 +341,42 @@ function confirmOrder(){
     }
 
   })
-  .catch(function(error){
+.catch(function(error){
 
-    console.log("Erreur EmailJS complète :", error);
+  console.log("Erreur EmailJS complète :", error);
 
-    if(confirmBtn){
-      confirmBtn.disabled = false;
-      confirmBtn.innerText = "Confirmer la commande";
-    }
+  if(confirmBtn){
+    confirmBtn.disabled = false;
+    confirmBtn.innerText = "Confirmer la commande";
+  }
 
-    alert(
-      "La commande n'a pas pu être envoyée.\n\n" +
-      "Veuillez réessayer dans quelques instants."
-    );
+  alert(
+    "Erreur EmailJS\n\n" +
+    "Status : " + (error.status || "inconnu") + "\n" +
+    "Message : " + (error.text || error.message || "inconnu")
+  );
 
-  });
-}
+});
+
+} // ← ferme confirmOrder()
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  renderCart();
+
+  filterProducts(
+    "savons",
+    document.querySelector(".menu-list button.active")
+  );
+
+  const confirmOrderBtn = document.getElementById("confirmOrderBtn");
+
+  if(confirmOrderBtn){
+    confirmOrderBtn.addEventListener("click", confirmOrder);
+  }
+
+});
 
 
 document.addEventListener("DOMContentLoaded", function(){

@@ -291,6 +291,8 @@ const templateParams = {
   );
 });
 
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   renderCart();
   filterProducts("savons", document.querySelector(".menu-list button.active"));

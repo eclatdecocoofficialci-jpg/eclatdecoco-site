@@ -1194,3 +1194,11 @@ footer{
 .hero{
   display:flex;
 }
+/* BOUTON CONFIRMER COMMANDE - FIX FINAL */
+.confirm-btn{
+  position:relative !important;
+  z-index:9999 !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+  cursor:pointer !important;
+}

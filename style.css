@@ -510,23 +510,56 @@ footer{
   color:#5a3a25;
 }
 
-/* BOUTON */
+
+/* BOUTON CONFIRMER COMMANDE */
 .confirm-btn{
   width:100%;
-  margin-top:20px;
-  padding:14px;
+  margin-top:22px;
+  padding:16px 20px;
+
   border:none;
   border-radius:30px;
-  background:linear-gradient(90deg,#e6b8a2,#dba48c);
-  color:white;
+
+  background:linear-gradient(90deg,#9b7448,#b8895e);
+  color:#ffffff;
+
+  font-family:'Questrial', sans-serif;
   font-size:0.95rem;
-  letter-spacing:1px;
+  font-weight:600;
+  letter-spacing:1.2px;
+
   cursor:pointer;
-  transition:0.3s;
+
+  box-shadow:0 8px 20px rgba(155,116,72,0.28);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
+
+  position:relative;
+  z-index:9999;
+  pointer-events:auto;
+  touch-action:manipulation;
 }
 
 .confirm-btn:hover{
-  opacity:0.9;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(155,116,72,0.35);
+}
+
+.confirm-btn:active{
+  transform:scale(0.98);
+  box-shadow:0 4px 12px rgba(155,116,72,0.25);
+}
+
+/* Seulement si un jour le bouton est réellement désactivé */
+.confirm-btn:disabled{
+  background:#d8cec5;
+  color:#ffffff;
+  box-shadow:none;
+  cursor:not-allowed;
+  opacity:.65;
 }
 
 /* NOTE */

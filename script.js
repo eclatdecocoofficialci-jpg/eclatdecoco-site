@@ -236,24 +236,24 @@ function confirmOrder(){
   const phoneRaw = phoneInput.value.trim();
   const address = addressInput.value.trim();
 
-  // Enlever espaces, tirets, parenthèses, etc.
+  // Enlever les espaces, tirets et autres caractères
   const phone = phoneRaw.replace(/\D/g, "");
 
-  // PANIER
+  // Vérifier le panier
   if(cart.length === 0){
     alert("Votre panier est vide.");
     return;
   }
 
-  // NOM
+  // Vérifier le nom
   if(name.length < 2){
     alert("Veuillez entrer votre nom complet.");
     nameInput.focus();
     return;
   }
 
-  // TÉLÉPHONE CÔTE D'IVOIRE
-  // Mobile ivoirien : 10 chiffres commençant par 01, 05 ou 07
+  // Vérifier le numéro ivoirien
+  // 10 chiffres : 01, 05 ou 07 + 8 chiffres
   const ivoirePhoneRegex = /^(01|05|07)\d{8}$/;
 
   if(!ivoirePhoneRegex.test(phone)){
@@ -265,7 +265,7 @@ function confirmOrder(){
     return;
   }
 
-  // ADRESSE
+  // Vérifier l'adresse
   if(address.length < 3){
     alert("Veuillez entrer votre adresse de livraison.");
     addressInput.focus();
@@ -289,81 +289,17 @@ function confirmOrder(){
     order_id: orderId
   };
 
-  // Éviter plusieurs commandes si la cliente clique plusieurs fois
-  confirmBtn.disabled = true;
-  confirmBtn.innerText = "Confirmation en cours...";
+  // Bloquer le double clic pendant l'envoi
+  if(confirmBtn){
+    confirmBtn.disabled = true;
+    confirmBtn.innerText = "Confirmation en cours...";
+  }
 
   emailjs.send(
     "service_buy8fox",
     "template_97nbk68",
     templateParams
   )
-  .then(function(){
-
-    // Google Analytics : commande réussie
-    if(typeof gtag === "function"){
-      gtag("event", "purchase", {
-        transaction_id: orderId,
-        value: total,
-        currency: "XOF",
-        items: cart.map(item => ({
-          item_name: item.name,
-          price: item.price,
-          quantity: item.quantity
-        }))
-      });
-    }
-
-    alert(
-      "Commande confirmée !\n\n" +
-      "Merci pour votre commande Éclat de Coco. " +
-      "Notre équipe vous contactera pour la livraison."
-    );
-
-    localStorage.removeItem("cart");
-    cart = [];
-
-    nameInput.value = "";
-    phoneInput.value = "";
-    addressInput.value = "";
-
-    renderCart();
-    closeDrawers();
-
-    confirmBtn.disabled = false;
-    confirmBtn.innerText = "Confirmer la commande";
-  })
-  .catch(function(error){
-
-    console.log("Erreur EmailJS :", error);
-
-    confirmBtn.disabled = false;
-    confirmBtn.innerText = "Confirmer la commande";
-
-    alert(
-      "La commande n'a pas pu être envoyée.\n\n" +
-      "Veuillez réessayer dans quelques instants."
-    );
-  });
-}
-const orderDetails = cart.map(item =>
-  `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
-).join("\n");
-
-const orderId = "EDC-" + Date.now();
-
-const templateParams = {
-  to_email: "sarahajamii@icloud.com",
-  customer_name: name,
-  customer_phone: phone,
-  customer_address: address,
-  order_details: orderDetails,
-  order_total: total.toLocaleString() + " FCFA",
-  delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
-  order_id: orderId
-};
-
-  emailjs.send("service_buy8fox", "template_97nbk68", templateParams)
   .then(function(){
 
     // Enregistrer la commande réussie dans Google Analytics
@@ -380,25 +316,47 @@ const templateParams = {
       });
     }
 
-    alert("Commande envoyée avec succès !");
+    alert(
+      "Commande confirmée !\n\n" +
+      "Merci pour votre commande Éclat de Coco. " +
+      "Notre équipe vous contactera pour organiser la livraison."
+    );
 
+    // Vider le panier seulement après succès EmailJS
     localStorage.removeItem("cart");
     cart = [];
+
+    // Vider les informations cliente
+    nameInput.value = "";
+    phoneInput.value = "";
+    addressInput.value = "";
+
     renderCart();
     closeDrawers();
+
+    if(confirmBtn){
+      confirmBtn.disabled = false;
+      confirmBtn.innerText = "Confirmer la commande";
+    }
+
   })
+  .catch(function(error){
 
-.catch(function(error){
-  console.log("Erreur EmailJS complète :", error);
+    console.log("Erreur EmailJS complète :", error);
 
-  alert(
-    "Erreur EmailJS\n" +
-    "Status : " + (error.status || "inconnu") + "\n" +
-    "Message : " + (error.text || error.message || "inconnu")
-  );
-});
+    if(confirmBtn){
+      confirmBtn.disabled = false;
+      confirmBtn.innerText = "Confirmer la commande";
+    }
 
+    alert(
+      "La commande n'a pas pu être envoyée.\n\n" +
+      "Veuillez réessayer dans quelques instants."
+    );
+
+  });
 }
+
 
 document.addEventListener("DOMContentLoaded", function(){
 

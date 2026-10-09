@@ -281,11 +281,15 @@ const templateParams = {
     closeDrawers();
   })
 
-  .catch(function(error){
-    alert("Erreur EmailJS : " + JSON.stringify(error));
-    console.log("Erreur EmailJS :", error);
-  });
-}
+.catch(function(error){
+  console.log("Erreur EmailJS complète :", error);
+
+  alert(
+    "Erreur EmailJS\n" +
+    "Status : " + (error.status || "inconnu") + "\n" +
+    "Message : " + (error.text || error.message || "inconnu")
+  );
+});
 
 document.addEventListener("DOMContentLoaded", function(){
   renderCart();

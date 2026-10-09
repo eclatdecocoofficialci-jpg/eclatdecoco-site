@@ -226,19 +226,126 @@ function renderCart(){
 }
 
 function confirmOrder(){
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
 
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+  const addressInput = document.getElementById("address");
+  const confirmBtn = document.getElementById("confirmOrderBtn");
+
+  const name = nameInput.value.trim();
+  const phoneRaw = phoneInput.value.trim();
+  const address = addressInput.value.trim();
+
+  // Enlever espaces, tirets, parenthèses, etc.
+  const phone = phoneRaw.replace(/\D/g, "");
+
+  // PANIER
   if(cart.length === 0){
     alert("Votre panier est vide.");
     return;
   }
-if(!name || !phone || !address){
-  alert("Veuillez remplir toutes les informations.");
-  return;
-}
 
+  // NOM
+  if(name.length < 2){
+    alert("Veuillez entrer votre nom complet.");
+    nameInput.focus();
+    return;
+  }
+
+  // TÉLÉPHONE CÔTE D'IVOIRE
+  // Mobile ivoirien : 10 chiffres commençant par 01, 05 ou 07
+  const ivoirePhoneRegex = /^(01|05|07)\d{8}$/;
+
+  if(!ivoirePhoneRegex.test(phone)){
+    alert(
+      "Veuillez entrer un numéro de téléphone ivoirien valide de 10 chiffres.\n\n" +
+      "Exemple : 07 97 00 00 52"
+    );
+    phoneInput.focus();
+    return;
+  }
+
+  // ADRESSE
+  if(address.length < 3){
+    alert("Veuillez entrer votre adresse de livraison.");
+    addressInput.focus();
+    return;
+  }
+
+  const orderDetails = cart.map(item =>
+    `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
+  ).join("\n");
+
+  const orderId = "EDC-" + Date.now();
+
+  const templateParams = {
+    to_email: "sarahajamii@icloud.com",
+    customer_name: name,
+    customer_phone: phone,
+    customer_address: address,
+    order_details: orderDetails,
+    order_total: total.toLocaleString() + " FCFA",
+    delivery_note: "Livraison à partir de 2 000 FCFA selon la commune. Paiement à la livraison.",
+    order_id: orderId
+  };
+
+  // Éviter plusieurs commandes si la cliente clique plusieurs fois
+  confirmBtn.disabled = true;
+  confirmBtn.innerText = "Confirmation en cours...";
+
+  emailjs.send(
+    "service_buy8fox",
+    "template_97nbk68",
+    templateParams
+  )
+  .then(function(){
+
+    // Google Analytics : commande réussie
+    if(typeof gtag === "function"){
+      gtag("event", "purchase", {
+        transaction_id: orderId,
+        value: total,
+        currency: "XOF",
+        items: cart.map(item => ({
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
+      });
+    }
+
+    alert(
+      "Commande confirmée !\n\n" +
+      "Merci pour votre commande Éclat de Coco. " +
+      "Notre équipe vous contactera pour la livraison."
+    );
+
+    localStorage.removeItem("cart");
+    cart = [];
+
+    nameInput.value = "";
+    phoneInput.value = "";
+    addressInput.value = "";
+
+    renderCart();
+    closeDrawers();
+
+    confirmBtn.disabled = false;
+    confirmBtn.innerText = "Confirmer la commande";
+  })
+  .catch(function(error){
+
+    console.log("Erreur EmailJS :", error);
+
+    confirmBtn.disabled = false;
+    confirmBtn.innerText = "Confirmer la commande";
+
+    alert(
+      "La commande n'a pas pu être envoyée.\n\n" +
+      "Veuillez réessayer dans quelques instants."
+    );
+  });
+}
 const orderDetails = cart.map(item =>
   `${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()} FCFA`
 ).join("\n");
@@ -294,6 +401,18 @@ const templateParams = {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
+
   renderCart();
-  filterProducts("savons", document.querySelector(".menu-list button.active"));
+
+  filterProducts(
+    "savons",
+    document.querySelector(".menu-list button.active")
+  );
+
+  const confirmOrderBtn = document.getElementById("confirmOrderBtn");
+
+  if(confirmOrderBtn){
+    confirmOrderBtn.addEventListener("click", confirmOrder);
+  }
+
 });
